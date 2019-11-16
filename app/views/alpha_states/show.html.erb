@@ -66,9 +66,18 @@
             <% end %>
             <td><%= state_item.ddescription %></td>
             <td class="text-center"><%= print_date(state_item.completed_at) %></td>
-            <td><%= link_to "根拠を書く", edit_alpha_item_alpha_evidence_path(state_item), class:'my-2 btn btn-primary btn-block btn-sm' %></td>
+            <!-- Button trigger modal -->
+            <% if false %>
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#evidence<%= state_item.id %>">根拠を書く</button></td>
+            <%= render partial: "alpha_evidences/form", locals: { item: state_item } %> 
+            <% end %>
           <tr>
+
+          
         <% end %>
+
+        
+
       </tbody>
     </table>
   </div>
