@@ -1,6 +1,27 @@
+<div class="card p-1 mt-1 border-dark">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-auto">
+        <% if state_item.alpha_evidence.completed %>
+          <%= icon("far fa-lg","check-square") %>
+        <% else %>
+          <%= icon("far fa-lg","square") %>
+        <% end %>
+      </div>
+      <div class="col-7">
+        <%= state_item.ddescription %>
+      </div>
+      <div class="col-3 text-center">
+        <%= print_date(state_item.completed_at) %>
+      </div>
+      <div class="col-auto px-0 d-flex align-items-center">
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#evidence<%= state_item.id %>">根拠を書く</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- モーダル部分 -->
-<div class="modal fade" id="evidence<%= item.id %>" tabindex="-1" role="dialog" aria-labelledby="evidenceLabel" aria-hidden="true">
+<div class="modal fade" id="evidence<%= state_item.id %>" tabindex="-1" role="dialog" aria-labelledby="evidenceLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -11,21 +32,7 @@
       </div>
       <div class="modal-body">
 
-      <%= form_for item.alpha_evidence, url: alpha_item_alpha_evidence_path(item) do |form| %>
-        <% if false %>
-          <% if @alpha_evidence.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(@alpha_evidence.errors.count, "error") %> prohibited this alpha_evidence from being saved:</h2>
-      
-              <ul>
-              <% @alpha_evidence.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-              </ul>
-            </div>
-          <% end %>
-        <% end %>
-      
+      <%= form_for state_item.alpha_evidence, url: alpha_item_alpha_evidence_path(state_item), remote: true do |form| %>
       
         <div class="field">
           <%= form.label "根拠" %>
@@ -36,12 +43,12 @@
           <%= form.check_box :completed, id: :alpha_evidence_completed %>
           <%= form.label "完了" %>
         </div>
-      
+        <div class="actions">
+          <%= form.submit "変更する", class: "btn btn-primary" %>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+        </div>
         <div class="modal-footer">
-          <div class="actions">
-            <%= form.submit "変更する", class: "btn btn-primary" %>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-          </div>
+          
         </div>
       <% end %>
       
