@@ -28,4 +28,8 @@ class AlphaState < ApplicationRecord
   def ddescription
     self.alpha_state_def.ddescription
   end
+
+  def progress_rate
+    self.completed_items.to_f / self.alpha_items.size
+  end
 end
