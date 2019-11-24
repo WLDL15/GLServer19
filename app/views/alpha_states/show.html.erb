@@ -1,15 +1,58 @@
 <div class="page-header">
-  <%= link_to alpha_states_path, class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
-  <% end %>
-  <%= link_to edit_alpha_state_path(@alpha_state), class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    Edit
-  <% end %>
-  <h1>Show alpha_state</h1>
+  <!--<h1><%= @alpha_state.dname %></h1>-->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">
+        <%= link_to @project.get_framework_dname, project_alpha_alphas_path(@project) %>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        <%= @alpha_alpha.dname %>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        チェックリスト
+      </li>
+    </ol>
+  </nav>
 </div>
 
+<!-- 状態のボタン -->
+<div class="row pl-2">
+  <% @alpha_alpha.alpha_states.each_with_index do |alpha_state, index| %>
+    <div class="col-2">
+      <% if index+1 == params[:id].to_i%5 %>
+        <%= link_to alpha_state.dname, alpha_state_path(alpha_state), class: 'btn btn-primary btn-block' %>
+      <% else %>
+        <%= link_to alpha_state.dname, alpha_state_path(alpha_state), class: 'btn btn-outline-primary btn-block' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<!-- table -->
+<!--
+data: {'turbolinks' => false},
+<div class="row pt-3">
+  <div class="col-10">
+    <ul class="list-group">
+      <% @alpha_state.alpha_items.each do |state_item| %>
+        <li class="list-group-item list-group-item-action">
+          <span class="col"><%= icon("far","square") %></span>
+          <span class="col"><%= state_item.ddescription %></span>
+          <span class="col text-right"><%= link_to "根拠を書く", edit_alpha_item_alpha_evidence_path(state_item), class:'btn btn-primary' %></span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+-->
+
+<div class="row pt-3">
+  <div class="col-10" id="ajax_form">
+    <%= render partial: "alpha_evidences/form", collection: @alpha_state.alpha_items, as: :state_item %>
+  </div>
+</div>
+
+<!--元view
 <dl class="dl-horizontal">
   <dt>Completed:</dt>
   <dd><%= @alpha_state.completed %></dd>
@@ -21,9 +64,10 @@
   <dd><%= @alpha_state.completed_at %></dd>
 
   <dt>Alpha alpha:</dt>
-  <dd><%= @alpha_state.alpha_alpha %></dd>
+  <dd><%= @alpha_state.alpha_alpha.dname %></dd>
 
   <dt>Alpha state def:</dt>
-  <dd><%= @alpha_state.alpha_state_def %></dd>
+  <dd><%= @alpha_state.alpha_state_def.dname %></dd>
 
 </dl>
+-->

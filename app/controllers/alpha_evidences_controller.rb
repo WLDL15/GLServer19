@@ -66,7 +66,7 @@ class AlphaEvidencesController < ApplicationController
       end
 
       if success
-        format.html { redirect_to alpha_state_alpha_items_url(@alpha_state), notice: 'Alpha evidence was successfully updated.' }
+        format.html { redirect_to alpha_state_path(@alpha_state), notice: 'Alpha evidence was successfully updated.' }
         format.json { render :show, status: :ok, location: @alpha_evidence }
       else
         format.html { render :edit }
