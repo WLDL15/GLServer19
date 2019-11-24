@@ -17,7 +17,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){
+$(document).on('turbolinks:load',function(){
     $('.event-spin').click(function(){
         if($(this).children("i").hasClass("lotate-anime-before")){
             $(this).children("i").removeClass("lotate-anime-before");
@@ -28,4 +28,3 @@ $(function(){
         }
     });
 });
-
