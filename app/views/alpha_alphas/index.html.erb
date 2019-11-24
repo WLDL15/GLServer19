@@ -11,7 +11,6 @@
   </nav>
 </div>
 
-
 <div class="row px-5">
   <div class="col-md-2 border-right border-dark"><div class="text-center"><h3>STEP1 <i class="far fa-arrow-alt-circle-right"></i></h3></div></div>
   <div class="col-md-2 border-right border-dark"><div class="text-center"><h3>STEP2 <i class="far fa-arrow-alt-circle-right"></i></h3></div></div>
@@ -20,38 +19,77 @@
   <div class="col-md-2"><div class="text-center"><h3>STEP5 <%= icon("fas","flag-checkered") %></h3></div></div>
 </div>
 
+
 <%= content_tag_for(:tr, @alpha_alphas) do |alpha_alpha| %>
   <div class="row px-5 py-1">
     <%= content_tag_for(:td, alpha_alpha.alpha_states) do |alpha_state| %>
-      <div class="col-md-2 border-right border-dark">
-        <div class="card text-center border-dark shadow rounded">
-          <div class="card-header border-dark">
-            <%= alpha_alpha.dname %>
-          </div>
-          <div class="card-body">
-            <p class="card-text">
-              <%= link_to alpha_state.dname,  alpha_state_path(alpha_state), class: 'btn btn-primary btn-block' %>
-            </p>
-            <a class="btn btn-info btn-block p-2 event-spin" data-toggle="collapse" href="#<%= alpha_state.dname %>" role="button" aria-expanded="false" aria-controls="collapseExample">
-              進捗状況を見る <i class="fa fa-angle-double-down lotate-anime-before"></i>
-            </a>
-            <ul class="list-group list-group-flush collapse" id="<%= alpha_state.dname %>">
-              <li class="list-group-item">
+      <% if alpha_state.progress_rate < 1 %>
+        <div class="col-md-2 border-right border-dark">
+          <div class="card text-center border-dark shadow rounded">
+            <div class="card-header border-dark">
+                <%= alpha_alpha.dname %>
+                <%= alpha_state.completed_items %>/<%= alpha_state.alpha_items.size %>
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                <%= link_to alpha_state.dname,  alpha_state_path(alpha_state), class: 'btn btn-primary btn-block' %>
+              </p>
+              <% if false %>
+              <a class="btn btn-info btn-block p-2 event-spin" data-toggle="collapse" href="#<%= alpha_state.dname %>" role="button" aria-expanded="false" aria-controls="collapseExample">
+                進捗状況を見る <i class="fa fa-angle-double-down lotate-anime-before"></i>
+              </a>
+              <% end %>
                 進捗状況
                 <div class="progress">
-                  <div class="progress-bar progress-bar-striped progress-bar-animated pg-primary " role="progressbar" style="width: 100%;">
-                    n%
+                  <div class="progress-bar progress-bar-striped progress-bar-animated pg-primary " role="progressbar" style="width: <%= format("%d", alpha_state.progress_rate * 100) %>%;">
+                  <%= format("%d", alpha_state.progress_rate * 100) %>%
                   </div>
                 </div>
-              </li>
-              <li class="list-group-item">
-              最終更新日:
-              <%= alpha_state.created_at.strftime("%Y/%m/%d") %> 
-              </li>
-            </ul>
+                <div class="badge badge-pill badge-info mt-2 mb-1">最終更新日:<%= alpha_state.created_at.strftime("%Y/%m/%d") %> </div>
+                <% if false %>
+                <li class="list-group-item">
+                最終更新日:
+                <%= alpha_state.created_at.strftime("%Y/%m/%d") %> 
+                </li>
+                <% end %>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>      
+        <% else %>
+        <div class="col-md-2 border-right border-dark">
+          <div class="card text-center border-dark completed-color shadow rounded">
+            <div class="card-header border-dark">
+              <%= alpha_alpha.dname %>
+              <%= alpha_state.completed_items %>/<%= alpha_state.alpha_items.size %> <i class="far fa-check-circle"></i>
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                <%= link_to alpha_state.dname,  alpha_state_path(alpha_state), class: 'btn btn-primary btn-block' %>
+              </p>
+              <% if false %>
+              <a class="btn btn-info btn-block p-2 event-spin" data-toggle="collapse" href="#<%= alpha_state.dname %>" role="button" aria-expanded="false" aria-controls="collapseExample">
+                進捗状況を見る <i class="fa fa-angle-double-down lotate-anime-before"></i>
+              </a>
+              <% end %>
+                  進捗状況
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated pg-primary " role="progressbar" style="width: <%= format("%d", alpha_state.progress_rate * 100) %>%;">
+                      <%= format("%d", alpha_state.progress_rate * 100) %>%
+                    </div>
+                  </div>
+                  <div class="badge badge-pill badge-info mt-2 mb-1">最終更新日:<%= alpha_state.created_at.strftime("%Y/%m/%d") %> </div>
+                <% if false %>
+                <li class="list-group-item">
+                  最終更新日:
+                  <%= alpha_state.created_at.strftime("%Y/%m/%d") %> 
+                <% end %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 <% end %>
