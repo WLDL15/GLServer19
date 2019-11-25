@@ -1,9 +1,16 @@
-<div class="page-header">
-  <%= link_to new_project_sprint_path(@project), class: 'btn btn-primary' do %>
-  <span class="glyphicon glyphicon-plus"></span>
-    新規スプリント作成
-  <% end %>
-  <h1>スプリントリスト</h1>
+
+<div class="navbar navbar-expand shadow-sm">
+  <ul class="nav">
+    <li class="navbar-text"><b>スプリントリスト</b></li>
+  </ul>
+  <ul class="nav ml-auto">
+    <li class="nav-item">
+      <%= link_to new_project_sprint_path(@project), class: 'btn btn-primary' do %>
+        <%= icon("fas","plus") %>
+        スプリントの追加
+      <% end %>
+    </li>
+  </ul>
 </div>
 
 <div class="table-responsive">
