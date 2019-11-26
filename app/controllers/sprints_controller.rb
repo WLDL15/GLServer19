@@ -11,7 +11,7 @@ class SprintsController < ApplicationController
   # GET /sprints/1
   # GET /sprints/1.json
   def show
-    @project = Project.find(@sprint.project_id)
+    @project = @sprint.project
   end
 
   # GET /projects/:project_id/sprints/new
@@ -22,6 +22,7 @@ class SprintsController < ApplicationController
 
   # GET /sprints/1/edit
   def edit
+    @project = @sprint.project
   end
 
   # POST /projects/:project_id/sprints
@@ -31,7 +32,7 @@ class SprintsController < ApplicationController
 
     respond_to do |format|
       if @sprint.save
-        format.html { redirect_to @sprint, notice: 'Sprint was successfully created.' }
+        format.html { redirect_to sprints_path(@project), notice: 'Sprint was successfully created.' }
         format.json { render :show, status: :created, location: @sprint }
       else
         format.html { render :new }
@@ -43,9 +44,10 @@ class SprintsController < ApplicationController
   # PATCH/PUT /sprints/1
   # PATCH/PUT /sprints/1.json
   def update
+    @project = @sprint.project
     respond_to do |format|
       if @sprint.update(sprint_params)
-        format.html { redirect_to @sprint, notice: 'Sprint was successfully updated.' }
+        format.html { redirect_to sprints_path(@project), notice: 'Sprint was successfully updated.' }
         format.json { render :show, status: :ok, location: @sprint }
       else
         format.html { render :edit }

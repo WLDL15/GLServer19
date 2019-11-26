@@ -43,4 +43,12 @@ module ApplicationHelper
     md5_string = md5.to_s
   end
   
+  def moderate_new_edit_button_label()
+		if controller.action_name == "new"
+			"作成する"
+		else
+			"変更する"
+		end
+  end
+  
 end

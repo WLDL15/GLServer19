@@ -1,13 +1,17 @@
-<div class="page-header">
-  <%= link_to sprints_path(@sprint.project_id), class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    スプリント一覧へ
-  <% end %>
-  <%= link_to @sprint, class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-info-sign"></span>
-    スプリント詳細へ
-  <% end %>
-  <h1>スプリント編集</h1>
+<div class="navbar navbar-expand shadow-sm">
+  <ul class="nav">
+    <li class="h4 navbar-text"><b>スプリントの編集</b></li>
+  </ul>
+  <!-- <ul class="nav ml-auto">
+    <li class="nav-item">
+      <%= link_to sprints_path(@project), class: 'nav-link' do %>
+        <%= icon("fas","list") %>
+        スプリント一覧
+      <% end %>
+    </li>
+  </ul> -->
 </div>
 
-<%= render 'form' %>
+<div class="container-fluid mt-4">
+  <%= render 'form' %>
+</div>

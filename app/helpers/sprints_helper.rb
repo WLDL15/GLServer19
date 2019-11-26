@@ -48,4 +48,12 @@ module SprintsHelper
 			Sprint.find(params[:id]).project.id
 		end
 	end
+
+	def moderate_new_edit_path(project, sprint)
+		if controller.action_name == "new"
+			project_sprints_path(project)
+		else
+			sprint_path(sprint)
+		end
+	end
 end
