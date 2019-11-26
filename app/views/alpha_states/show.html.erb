@@ -28,46 +28,8 @@
   <% end %>
 </div>
 
-<!-- table -->
-<!--
-data: {'turbolinks' => false},
-<div class="row pt-3">
-  <div class="col-10">
-    <ul class="list-group">
-      <% @alpha_state.alpha_items.each do |state_item| %>
-        <li class="list-group-item list-group-item-action">
-          <span class="col"><%= icon("far","square") %></span>
-          <span class="col"><%= state_item.ddescription %></span>
-          <span class="col text-right"><%= link_to "根拠を書く", edit_alpha_item_alpha_evidence_path(state_item), class:'btn btn-primary' %></span>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
--->
-
 <div class="row pt-3">
   <div class="col-10" id="ajax_form">
     <%= render partial: "alpha_evidences/form", collection: @alpha_state.alpha_items, as: :state_item %>
   </div>
 </div>
-
-<!--元view
-<dl class="dl-horizontal">
-  <dt>Completed:</dt>
-  <dd><%= @alpha_state.completed %></dd>
-
-  <dt>Completed items:</dt>
-  <dd><%= @alpha_state.completed_items %></dd>
-
-  <dt>Completed at:</dt>
-  <dd><%= @alpha_state.completed_at %></dd>
-
-  <dt>Alpha alpha:</dt>
-  <dd><%= @alpha_state.alpha_alpha.dname %></dd>
-
-  <dt>Alpha state def:</dt>
-  <dd><%= @alpha_state.alpha_state_def.dname %></dd>
-
-</dl>
--->

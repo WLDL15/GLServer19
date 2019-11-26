@@ -15,12 +15,14 @@
         <%= print_date(state_item.completed_at) %>
       </div>
       <div class="col-auto px-0 d-flex align-items-center">
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#evidence<%= state_item.id %>">根拠を書く</button>
+        <%= link_to "根拠", alpha_item_alpha_evidence_path(state_item), class: 'btn btn-primary' %>
       </div>
     </div>
   </div>
 </div>
 
+<% if false %>
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#evidence<%= state_item.id %>">根拠を書く</button>
 <div class="modal" id="evidence<%= state_item.id %>" tabindex="-1" role="dialog" aria-labelledby="evidenceLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -56,4 +58,5 @@
     </div>
   </div>
 </div>
+<% end %>
 <!-- モーダルおわり -->

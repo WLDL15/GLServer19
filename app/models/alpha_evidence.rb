@@ -3,6 +3,7 @@
 class AlphaEvidence < ApplicationRecord
   #belongs_to :scrum_member
   belongs_to :alpha_item
+  has_many :alpha_comments
 
   validate :validate_complete
 

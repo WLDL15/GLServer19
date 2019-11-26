@@ -1,0 +1,2 @@
+module AlphaCommentsHelper
+end

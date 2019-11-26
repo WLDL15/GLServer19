@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyText
+  alpha_evidence: one
+  scrum_member: one
+
+two:
+  body: MyText
+  alpha_evidence: two
+  scrum_member: two
