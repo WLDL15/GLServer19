@@ -1,14 +1,18 @@
-<div class="page-header">
-  <%= link_to sprints_path(@project), class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    スプリント一覧へ
-  <% end %>
-  <%= link_to edit_sprint_path(@sprint), class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    スプリント編集
-  <% end %>
-  <h1>スプリント詳細</h1>
+<div class="navbar navbar-expand shadow-sm">
+  <ul class="nav">
+    <li class="h4 navbar-text"><b>スプリント</b></li>
+  </ul>
+  <ul class="nav ml-auto">
+    <li class="nav-item">
+      <%= link_to sprints_path(@project), class: 'nav-link' do %>
+        <%= icon("fas","list") %>
+        スプリント一覧
+      <% end %>
+    </li>
+  </ul>
 </div>
+
+<div class="container-fluid mt-4">
 
 <dl class="dl-horizontal">
   <dt>No:</dt>
@@ -26,3 +30,4 @@
   <dd><%= @sprint.project.name %></dd>
 
 </dl>
+</div>
