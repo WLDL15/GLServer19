@@ -30,6 +30,7 @@
   <div class="field">
     <%= form.label :document %>
     <%= form.text_field :document, id: :alpha_evidence_document %>
+    <%= form.check_box :completed, id: :alpha_evidence_completed,:as => :boolean%>
   </div>
 
   <div class="actions">

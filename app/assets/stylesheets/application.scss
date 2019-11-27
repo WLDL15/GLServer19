@@ -135,3 +135,32 @@
 .event-spin{
   /*疑似クラス*/
 }
+
+.bg-comment {
+  background-color: #e9e9e9;
+}
+
+.fa-black:before
+{
+	color: rgb(0, 0, 0) ;
+}
+
+div.scrollArea {
+  height: 500px;
+  overflow-y: scroll;
+}
+
+/*スクロールバーの横幅指定*/
+.scrollArea::-webkit-scrollbar {
+  width: 15px;
+}
+/*スクロールバーの背景色・角丸指定*/
+.scrollArea::-webkit-scrollbar-track {
+border-radius: 10px;
+background: #f2f2f2;
+}
+/*スクロールバーの色・角丸指定*/
+.scrollArea::-webkit-scrollbar-thumb {
+border-radius: 10px;
+background:#09C9D9;
+}

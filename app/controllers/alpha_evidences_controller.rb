@@ -9,6 +9,7 @@ class AlphaEvidencesController < ApplicationController
   # GET /alpha_evidences/1
   # GET /alpha_evidences/1.json
   def show
+    puts params
   end
 
   # GET /alpha_evidences/1/edit
