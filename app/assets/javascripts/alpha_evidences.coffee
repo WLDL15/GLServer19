@@ -5,12 +5,15 @@
 
 $(document).on 'ready ajaxComplete', ->
     $('.edit_alpha_evidence').on 'ajax:success', (e, data) ->
+        
         if data.completed
             $('#icon' + data.id).empty()
             $('#icon' + data.id).append('<i class="far fa-lg fa-check-square"></i>')
+            $('#evidence-completed-' + data.id).html(data.date)
         else
             $('#icon' + data.id).empty()
             $('#icon' + data.id).append('<i class="far fa-lg fa-square"></i>')
+            $('#evidence-completed-' + data.id).html("")
 
 $(document).on 'ready ajaxComplete', ->    
     $('.edit_alpha_evidence').on 'ajax:error', (e, data) ->
@@ -23,9 +26,11 @@ $(document).on 'turbolinks:load', ->
         if data.completed
             $('#icon' + data.id).empty()
             $('#icon' + data.id).append('<i class="far fa-lg fa-check-square"></i>')
+            $('#evidence-completed-' + data.id).html(data.date)
         else
             $('#icon' + data.id).empty()
             $('#icon' + data.id).append('<i class="far fa-lg fa-square"></i>')
+            $('#evidence-completed-' + data.id).html("")
 
 $(document).on 'turbolinks:load', ->    
     $('.edit_alpha_evidence').on 'ajax:error', (e, data) ->

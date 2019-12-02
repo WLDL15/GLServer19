@@ -15,7 +15,7 @@
       <div class="col-7">
         <%= state_item.ddescription %>
       </div>
-      <div class="col-3 text-center">
+      <div class="col-3 text-center" id=evidence-completed-<%= state_item.alpha_evidence.id %>>
         <%= print_date(state_item.completed_at) %>
       </div>
       <div class="col-auto px-0 d-flex align-items-center">
