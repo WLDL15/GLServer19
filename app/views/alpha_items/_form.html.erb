@@ -1,0 +1,66 @@
+<% if @alpha_state.alpha_items.first.id == state_item.id %>
+<div class="card p-1 mt-1 border-dark selected" id=card<%= state_item.alpha_evidence.id %>>
+<% else %>
+<div class="card p-1 mt-1 border-dark" id=card<%= state_item.alpha_evidence.id %>>
+<% end %>
+  <div class="card-body" id="cardbodyselect">
+    <div class="row">
+      <div class="col-auto" id=icon<%= state_item.alpha_evidence.id %>>
+        <% if state_item.alpha_evidence.completed %>
+          <%= icon("far fa-lg","check-square") %>
+        <% else %>
+          <%= icon("far fa-lg","square") %>
+        <% end %>
+      </div>
+      <div class="col-7">
+        <%= state_item.ddescription %>
+      </div>
+      <div class="col-3 text-center">
+        <%= print_date(state_item.completed_at) %>
+      </div>
+      <div class="col-auto px-0 d-flex align-items-center">
+        <%= link_to "根拠", 'javascript:;', class: 'btn btn-primary evidence_button', id: state_item.alpha_evidence.id %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if false %>
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#evidence<%= state_item.id %>">根拠を書く</button>
+<div class="modal" id="evidence<%= state_item.id %>" tabindex="-1" role="dialog" aria-labelledby="evidenceLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="evidenceLabel">根拠</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      <%= form_for state_item.alpha_evidence, url: alpha_item_alpha_evidence_path(state_item), remote: true do |form| %>
+      
+        <div class="field">
+          <%= form.text_area :document, id: :alpha_evidence_document, size: "50x4" %>
+        </div>
+      
+        <div class="field">
+          <%= form.check_box :completed, id: :alpha_evidence_completed %>
+          <%= form.label "完了" %>
+        </div>
+        <div class="actions">
+          <%= form.submit "変更する", class: "btn btn-primary" %>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+        </div>
+        <div class="modal-footer">
+          
+        </div>
+      <% end %>
+      
+
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<!-- モーダルおわり -->

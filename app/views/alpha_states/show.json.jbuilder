@@ -1,1 +1,1 @@
-json.partial! "alpha_states/alpha_state", alpha_state: @alpha_state
+json.extract!  @alpha_evidence, :id, :completed, :document

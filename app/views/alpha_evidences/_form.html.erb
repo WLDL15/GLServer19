@@ -1,62 +1,70 @@
-<div class="card p-1 mt-1 border-dark">
-  <div class="card-body">
-    <div class="row">
-      <div class="col-auto">
-        <% if state_item.alpha_evidence.completed %>
-          <%= icon("far fa-lg","check-square") %>
-        <% else %>
-          <%= icon("far fa-lg","square") %>
-        <% end %>
-      </div>
-      <div class="col-7">
-        <%= state_item.ddescription %>
-      </div>
-      <div class="col-3 text-center">
-        <%= print_date(state_item.completed_at) %>
-      </div>
-      <div class="col-auto px-0 d-flex align-items-center">
-        <%= link_to "根拠", alpha_item_alpha_evidence_path(state_item), class: 'btn btn-primary' %>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-5">
 
-<% if false %>
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#evidence<%= state_item.id %>">根拠を書く</button>
-<div class="modal" id="evidence<%= state_item.id %>" tabindex="-1" role="dialog" aria-labelledby="evidenceLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="evidenceLabel">根拠</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+    <h4>根拠</h4>
+    <%= form_for [@alpha_item, @alpha_evidence], remote: true do |form| %>
+    
+        <div class="field">
+        <%= form.text_area :document, id: :alpha_evidence_document, size: "50x4" %>
+        </div>
+    
+        <div class="field">
+        <%= form.check_box :completed, id: :alpha_evidence_completed %>
+        <%= form.label "完了" %>
+        </div>
 
-      <%= form_for state_item.alpha_evidence, url: alpha_item_alpha_evidence_path(state_item), remote: true do |form| %>
-      
-        <div class="field">
-          <%= form.text_area :document, id: :alpha_evidence_document, size: "50x4" %>
-        </div>
-      
-        <div class="field">
-          <%= form.check_box :completed, id: :alpha_evidence_completed %>
-          <%= form.label "完了" %>
-        </div>
         <div class="actions">
-          <%= form.submit "変更する", class: "btn btn-primary" %>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+        <%= form.submit "変更する", class: "btn btn-primary" %>
         </div>
-        <div class="modal-footer">
-          
-        </div>
-      <% end %>
-      
-
-      </div>
+    <% end %>
     </div>
-  </div>
 </div>
-<% end %>
-<!-- モーダルおわり -->
+
+
+<div class="row">
+    <div class="col-10" id="ajax_commnet">
+      <h4>コメント</h4>
+
+      <% if @alpha_evidence.alpha_comments.any? %>
+      <div class="container-fluied">
+        <div class="row">
+          <div class="col scrollArea">
+
+          <% @alpha_evidence.alpha_comments.reverse_each do |comment| %>
+
+            <div class="card mb-3 bg-comment border-0" style="max-width: 540px;">
+              <div class="row no-gutters">
+                <div class="col-md-2 text-center my-1 px-1">
+                  <%= gravatar_for(User.find(comment.user_id),size:80) %>
+                </div>
+                <div class="col-md-9">
+                  <div class="card-body">
+                    <h5 class="card-title border-bottom border-dark"><%= User.find(comment.user_id).name %> <small><small>| <%= comment.how_long_ago %></small></small> </h5>
+                    <p class="card-text"><%= comment.body %></p>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <p class="card-text mt-2">
+                    <% if comment.user_id == current_user.id %>
+                      <%= link_to alpha_comment_path(comment), method: :delete, class: "command alpha_dalete_comment", date: { confirm: 'sure?' }, remote: true do%>
+                        <i class="far fa-times-circle fa-2x fa-black"></i>
+                      <% end %>
+                    <% end %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+
+        </div></div></div>
+      <% end %>
+
+      <%= form_for [@alpha_item, @alpha_evidence ,@alpha_evidence.alpha_comments.build] ,remote: true do |comment| %>
+        <p class="mt-3"><%= comment.text_area :body,  cols: 50, rows: 4 %></p>
+        <p><%= comment.submit "投稿する", class: "btn btn-primary" %></p>
+      <% end %>
+    </div>
+    </div>
+</div>

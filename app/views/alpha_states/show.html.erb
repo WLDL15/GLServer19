@@ -19,7 +19,7 @@
 <div class="row pl-2">
   <% @alpha_alpha.alpha_states.each_with_index do |alpha_state, index| %>
     <div class="col-2">
-      <% if index+1 == params[:id].to_i%5 %>
+      <% if (index+1)%5 == params[:id].to_i%5 %>
         <%= link_to alpha_state.dname, alpha_state_path(alpha_state), class: 'btn btn-primary btn-block' %>
       <% else %>
         <%= link_to alpha_state.dname, alpha_state_path(alpha_state), class: 'btn btn-outline-primary btn-block' %>
@@ -29,7 +29,10 @@
 </div>
 
 <div class="row pt-3">
-  <div class="col-10" id="ajax_form">
-    <%= render partial: "alpha_evidences/form", collection: @alpha_state.alpha_items, as: :state_item %>
+  <div class="col-6">
+    <%= render partial: "alpha_items/form", collection: @alpha_state.alpha_items, as: :state_item %>   
+  </div>
+  <div class="col-6" id="ajax_evidence">
+    <%= render partial: "alpha_evidences/form" %> 
   </div>
 </div>
