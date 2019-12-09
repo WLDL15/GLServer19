@@ -18,9 +18,13 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
+    
     var btn = $('.evidence_button')
     btn.click(function(){
         btn.parents('#cardbodyselect').parent().removeClass('selected');
-        $(this).parents('#cardbodyselect').parent().addClass('selected');
+        btn.parents('#cardbodyselect').parent().removeClass('f-selected');
+        $(this).parents('#cardbodyselect').parent().addClass('selected'); 
+        
     });
+    Turbolinks.clearCache()
  });

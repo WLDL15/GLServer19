@@ -2,7 +2,7 @@ class ScrumMember < ApplicationRecord
   belongs_to :project
   belongs_to :user
   #has_many   :alpha_evidence
-  has_many :alpha_comments
+  #has_many :alpha_comments
 
   attr_accessor :selected_item, :add_item
 

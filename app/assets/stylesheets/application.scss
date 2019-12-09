@@ -137,7 +137,7 @@
 }
 
 .bg-comment {
-  background-color: #e9e9e9;
+  background-color: #90dde9;
 }
 
 .fa-black:before
@@ -158,6 +158,7 @@ div.scrollArea {
 .scrollArea::-webkit-scrollbar-track {
 border-radius: 10px;
 background: #f2f2f2;
+box-shadow: 0 0 4px #aaa inset;
 }
 /*スクロールバーの色・角丸指定*/
 .scrollArea::-webkit-scrollbar-thumb {
@@ -166,5 +167,40 @@ background:#09C9D9;
 }
 
 .selected {
-  background-color: rgb(192, 228, 201);
+  background-color: #51d6ff;
+  animation-name: animation-selected;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  transform:translateX(20px)
+}
+
+.f-selected {
+  background-color: #51d6ff;
+  transform:translateX(20px)
+}
+
+@keyframes animation-selected{
+  0%{
+    transform:translateX(0px)
+  }
+  100%{
+    transform:translateX(20px)
+  }
+}
+
+p.cbody-style{
+  font-size:14px; 
+  word-break: break-all;
+}
+
+span.cname-style{
+  font-size:18px; 
+  word-break: break-all;
+}
+
+span.cday-style{
+  font-size:12px; 
+  opacity: 0.5;
+  font-style:italic;
+  word-break: break-all;
 }

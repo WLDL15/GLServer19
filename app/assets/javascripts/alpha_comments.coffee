@@ -2,44 +2,46 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).on 'ready ajaxComplete', ->
+
+$(document).on 'turbolinks:load', ->
     $('.new_alpha_comment').on 'ajax:success', (e, data) ->
-        $('#ajax_evidence').empty()
-        $('#ajax_evidence').append(data)
+        if (typeof data == "undefined")
+            $(this).off('ajax:success')
+            alert 'コメントを100文字以上にしないでください'
+        else
+            $('#ajax_evidence').empty()
+            $('#ajax_evidence').append(data)
+        
 
-
-$(document).on 'ready ajaxComplete', ->
     $('.new_alpha_comment').on 'ajax:error', (e, data) ->
-        alert '失敗'
+        alert 'コメントを100文字以上にしないでください'
 
-
-$(document).on 'ready ajaxComplete', ->
     $('.alpha_dalete_comment').on 'ajax:success', (e, data) ->
         $('#ajax_evidence').empty()
         $('#ajax_evidence').append(data)
 
-$(document).on 'ready ajaxComplete', ->
     $('.alpha_dalete_comment').on 'ajax:error', (e, data) ->
         alert '失敗'
 
 
-
-
-$(document).on 'turbolinks:load', ->
+$(document).bind 'ready ajaxComplete', ->
     $('.new_alpha_comment').on 'ajax:success', (e, data) ->
-        $('#ajax_evidence').empty()
-        $('#ajax_evidence').append(data)
+        console.log e
+        if (typeof data == "undefined")
+            $(this).off('ajax:success')
+            alert 'コメントを100文字以上にしないでください'
+        else
+            $('#ajax_evidence').empty()
+            $('#ajax_evidence').append(data)
 
-$(document).on 'turbolinks:load', ->
     $('.new_alpha_comment').on 'ajax:error', (e, data) ->
-        alert '失敗'
+        alert 'コメントを100文字以上にしないでください'
 
-
-$(document).on 'turbolinks:load', ->
     $('.alpha_dalete_comment').on 'ajax:success', (e, data) ->
         $('#ajax_evidence').empty()
         $('#ajax_evidence').append(data)
 
-$(document).on 'turbolinks:load', ->
     $('.alpha_dalete_comment').on 'ajax:error', (e, data) ->
         alert '失敗'
+
+

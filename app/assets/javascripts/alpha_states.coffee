@@ -36,5 +36,8 @@ $(document).on 'turbolinks:load', ->
 
         .fail (response) ->
             alert '失敗'
+    
+    $('.state_button').click ->
+        Turbolinks.clearCache()
 
     

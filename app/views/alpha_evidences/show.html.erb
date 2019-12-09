@@ -1,17 +1,3 @@
-<% if false %>
-<div class="page-header">
-  <%= link_to alpha_state_path(@alpha_state), class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
-  <% end %>
-  <%= link_to edit_alpha_item_alpha_evidence_path(@alpha_evidence), class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    Edit
-  <% end %>
-  <h3><%= @alpha_evidence.alpha_item.ddescription %></h3>
-</div>
-<% end %>
-
 <div class="page-header">
   <!--<h1><%= @alpha_state.dname %></h1>-->
   <nav aria-label="breadcrumb">
@@ -41,6 +27,7 @@
   
 
 
+</div>
     <h4>根拠</h4>
         <%= form_for [@alpha_item, @alpha_evidence], remote: true do |form| %>
       
@@ -92,19 +79,7 @@
               </div>
             </div>
 
-            <% if false %>
-            <div class="card border-0 bg-comment m-1">
-              <div class="card-body">
-              <%= gravatar_for(User.find(comment.user_id),size:60) %>
-              <%= comment.body %>
-                  
-              <%= link_to alpha_comment_path(comment), method: :delete, class: 'command', date: { confirm: 'sure?' } do %>
-                <i class="fas fa-trash-alt"></i>
-              <% end %>
-              <%= User.find(comment.user_id).name %>
-              </div>
-            </div>   
-            <% end %>
+            
 
           <% end %>
 

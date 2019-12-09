@@ -1,7 +1,8 @@
 class AlphaComment < ApplicationRecord
   belongs_to :alpha_evidence, optional: true
-  belongs_to :scrum_member, optional: true
-
+  belongs_to :user, optional: true
+  validates :body, length: { in: 1..100 }
+  
   def how_long_ago
     if (Time.now - self.created_at) <= 60 * 60
       # 60分以内なら

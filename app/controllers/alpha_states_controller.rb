@@ -23,7 +23,6 @@ class AlphaStatesController < ApplicationController
     else
       @alpha_item = @alpha_state.alpha_items.first
       @alpha_evidence = @alpha_item.alpha_evidence
-
     end
   end
 
