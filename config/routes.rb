@@ -55,7 +55,9 @@ Rails.application.routes.draw do
         resources :alpha_states, shallow: true, only: [ :index, :show ] do
           resources :alpha_items, shallow: true, only: [ :index, :show ] do
             resource :alpha_evidence, shallow: true, only: [ :show, :edit, :update ] do
-              resources :alpha_comments, shallow: true, only: [ :create, :destroy ]
+              resources :alpha_comments, shallow: true, only: [ :create, :destroy ] do
+                resources :likes, shallow: true, only: [ :create, :destroy ]
+              end
             end
           end
         end

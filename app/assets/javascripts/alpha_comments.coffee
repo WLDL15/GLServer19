@@ -26,7 +26,6 @@ $(document).on 'turbolinks:load', ->
 
 $(document).bind 'ready ajaxComplete', ->
     $('.new_alpha_comment').on 'ajax:success', (e, data) ->
-        console.log e
         if (typeof data == "undefined")
             $(this).off('ajax:success')
             alert 'コメントを100文字以上にしないでください'

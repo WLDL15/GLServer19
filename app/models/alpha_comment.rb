@@ -1,7 +1,12 @@
 class AlphaComment < ApplicationRecord
   belongs_to :alpha_evidence, optional: true
   belongs_to :user, optional: true
+  has_many :likes, dependent: :destroy
   validates :body, length: { in: 1..100 }
+
+  def like_user(user_id)
+    likes.find_by(user_id: user_id)
+   end
   
   def how_long_ago
     if (Time.now - self.created_at) <= 60 * 60

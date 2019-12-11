@@ -38,7 +38,16 @@
                     <h4 class="media-heading mt-2 mb-0">
                       <div class="row">
                         <div class="col-md-10">
-                          <span class="cname-style"><%= User.find(comment.user_id).name %> | </span><span class="cday-style"><%= comment.how_long_ago %></span>
+                          <span class="cname-style"><%= User.find(comment.user_id).name %>
+                          <!-- いいね記述部分　-->
+                          <% if comment.like_user(current_user.id) && comment.user_id != current_user.id%>
+                            <%= link_to 'いいね解除',like_path(comment.like_user(current_user.id).id), method: :delete, class: "like_delete", remote: true %>
+                          <% elsif comment.user_id != current_user.id %>
+                            <%= link_to 'いいね',alpha_comment_likes_path(comment), method: :post, class: "like_create", remote: true %>
+                          <% end %>
+
+                          | </span>
+                          <span class="cday-style"><%= comment.how_long_ago %></span>
                         </div>
                         <div class="col-md-1 ml-3 mt-1">
                           <% if comment.user_id == current_user.id %>
