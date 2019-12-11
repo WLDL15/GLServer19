@@ -5,39 +5,40 @@
 $(document).on 'turbolinks:load', ->
     $('.like_create').on 'ajax:success', (e, response) ->
         $('.like_create').off('ajax:success')
-        like_url = "/likes/" + response.id
-        $(this).attr('href', like_url)
-        $(this).html('いいね解除')
-        $(this).data('method', 'delete')
-        $(this).addClass('like_delete')
-        $(this).removeClass('like_create')
+        set_area = $(this)
+        input_html set_area, response
         
     $('.like_delete').on 'ajax:success', (e, response) ->
         $('.like_delete').off('ajax:success')
-        like_url = "/alpha_comments/" + response.id + "/likes"
-        $(this).attr('href', like_url)
-        $(this).html('いいね')
-        $(this).data('method', 'post')
-        $(this).addClass('like_create')
-        $(this).removeClass('like_delete')
+        set_area = $(this)
+        out_html set_area, response
         
 
 $(document).bind 'ready ajaxComplete', ->
     $('.like_create').on 'ajax:success', (e, response) ->
         $('.like_create').off('ajax:success')
-        like_url = "/likes/" + response.id
-        $(this).attr('href', like_url)
-        $(this).html('いいね解除')
-        $(this).data('method', 'delete')
-        $(this).addClass('like_delete')
-        $(this).removeClass('like_create')
+        set_area = $(this)
+        input_html set_area, response
+        
         
     $('.like_delete').on 'ajax:success', (e, response) ->
         $('.like_delete').off('ajax:success')
-        like_url = "/alpha_comments/" + response.id + "/likes"
-        $(this).attr('href', like_url)
-        $(this).html('いいね')
-        $(this).data('method', 'post')
-        $(this).addClass('like_create')
-        $(this).removeClass('like_delete')
-       
+        set_area = $(this)
+        out_html set_area, response
+
+
+input_html = (area, create) ->
+    like_url = "/likes/" + create.id
+    area.attr('href', like_url)
+    area.html('いいね解除')
+    area.data('method', 'delete')
+    area.addClass('like_delete')
+    area.removeClass('like_create')
+
+out_html = (area, destroy) ->
+    like_url = "/alpha_comments/" + destroy.id + "/likes"
+    area.attr('href', like_url)
+    area.html('いいね')
+    area.data('method', 'post')
+    area.addClass('like_create')
+    area.removeClass('like_delete')
