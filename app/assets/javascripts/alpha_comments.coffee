@@ -3,44 +3,31 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-$(document).on 'turbolinks:load', ->
+###$(document).on 'turbolinks:load', ->
     $('.new_alpha_comment').on 'ajax:success', (e, data) ->
         if (typeof data == "undefined")
-            $(this).off('ajax:success')
             alert 'コメントを100文字以上にしないでください'
         else
             $('#ajax_evidence').empty()
             $('#ajax_evidence').append(data)
-        
-
-    $('.new_alpha_comment').on 'ajax:error', (e, data) ->
-        alert 'コメントを100文字以上にしないでください'
+        $(this).off('ajax:success')
 
     $('.alpha_dalete_comment').on 'ajax:success', (e, data) ->
         $('#ajax_evidence').empty()
-        $('#ajax_evidence').append(data)
-
-    $('.alpha_dalete_comment').on 'ajax:error', (e, data) ->
-        alert '失敗'
+        $('#ajax_evidence').append(data)###
 
 
-$(document).bind 'ready ajaxComplete', ->
-    $('.new_alpha_comment').on 'ajax:success', (e, data) ->
-        if (typeof data == "undefined")
-            $(this).off('ajax:success')
-            alert 'コメントを100文字以上にしないでください'
-        else
-            $('#ajax_evidence').empty()
-            $('#ajax_evidence').append(data)
-
-    $('.new_alpha_comment').on 'ajax:error', (e, data) ->
+$(document).on 'turbolinks:load ajax:success','.new_alpha_comment', (e, data) ->
+    if (typeof data == "undefined")
         alert 'コメントを100文字以上にしないでください'
-
-    $('.alpha_dalete_comment').on 'ajax:success', (e, data) ->
+    else
         $('#ajax_evidence').empty()
         $('#ajax_evidence').append(data)
+    $(this).off('ajax:success')
 
-    $('.alpha_dalete_comment').on 'ajax:error', (e, data) ->
-        alert '失敗'
+$(document).on 'turbolinks:load ajax:success','.alpha_dalete_comment', (e, data) ->    
+    $('#ajax_evidence').empty()
+    $('#ajax_evidence').append(data)
+
 
 
