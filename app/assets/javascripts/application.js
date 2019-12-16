@@ -17,14 +17,14 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).on('turbolinks:load',function(){
-    $('.event-spin').click(function(){
-        if($(this).children("i").hasClass("lotate-anime-before")){
-            $(this).children("i").removeClass("lotate-anime-before");
-            $(this).children("i").addClass("lotate-anime-after");
-        }else{
-            $(this).children("i").removeClass("lotate-anime-after");
-            $(this).children("i").addClass("lotate-anime-before");
-        }
+$(document).on('turbolinks:load', function() {
+    
+    var btn = $('.evidence_button')
+    btn.click(function(){
+        btn.parents('#cardbodyselect').parent().removeClass('selected');
+        btn.parents('#cardbodyselect').parent().removeClass('f-selected');
+        $(this).parents('#cardbodyselect').parent().addClass('selected'); 
+        
     });
-});
+    Turbolinks.clearCache()
+ });

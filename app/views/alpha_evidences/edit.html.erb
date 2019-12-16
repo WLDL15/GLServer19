@@ -14,4 +14,26 @@
   <%= @alpha_item.ddescription %>
 </div>
 
-<%= render 'form' %>
+<%= form_with(model: [@alpha_evidence.alpha_item,@alpha_evidence], local: true) do |form| %>
+  <% if @alpha_evidence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@alpha_evidence.errors.count, "error") %> prohibited this alpha_evidence from being saved:</h2>
+
+      <ul>
+      <% @alpha_evidence.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :document %>
+    <%= form.text_field :document, id: :alpha_evidence_document %>
+    <%= form.check_box :completed, id: :alpha_evidence_completed,:as => :boolean%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

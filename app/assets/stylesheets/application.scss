@@ -122,20 +122,76 @@
   text-transform: uppercase;
 }
 
-.lotate-anime-after{
-  transform: rotateZ(180deg);
-  transition: 0.3s;
+
+.fa-black:before
+{
+	color: rgb(0, 0, 0) ;
 }
 
-.lotate-anime-before{
-  transform: rotateZ(0deg);
-  transition: 0.3s;
+div.scrollArea {
+  height: 300px;
+  overflow-y: scroll;
 }
 
-.event-spin{
-  /*疑似クラス*/
+/*スクロールバーの横幅指定*/
+.scrollArea::-webkit-scrollbar {
+  width: 15px;
+}
+/*スクロールバーの背景色・角丸指定*/
+.scrollArea::-webkit-scrollbar-track {
+border-radius: 10px;
+background: #f2f2f2;
+box-shadow: 0 0 4px #aaa inset;
+}
+/*スクロールバーの色・角丸指定*/
+.scrollArea::-webkit-scrollbar-thumb {
+border-radius: 10px;
+background:#09C9D9;
 }
 
-.sidemenu{
-  /*疑似クラス*/
+.selected {
+  background-color: #51d6ff;
+  animation-name: animation-selected;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  transform:translateX(20px)
+}
+
+.f-selected {
+  background-color: #51d6ff;
+  transform:translateX(20px)
+}
+
+@keyframes animation-selected{
+  0%{
+    transform:translateX(0px)
+  }
+  100%{
+    transform:translateX(20px)
+  }
+}
+
+p.cbody-style{
+  font-size:14px; 
+  word-break: break-all;
+}
+
+span.cname-style{
+  font-size:15px; 
+  word-break: break-all;
+}
+
+span.cday-style{
+  font-size:12px; 
+  opacity: 0.5;
+  font-style:italic;
+  word-break: break-all;
+}
+
+.iine-color{
+  color: rgb(255, 0, 0)
+}
+
+.completed-color{
+  background-color: #69e2ce;
 }

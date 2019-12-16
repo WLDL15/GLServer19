@@ -14,7 +14,16 @@ class AlphaStatesController < ApplicationController
     @alpha_state = AlphaState.find(params[:id])
     @project = @alpha_state.alpha_alpha.alpha_framework.project
 
+
     @alpha_alpha = @alpha_state.alpha_alpha
+    if params[:key]
+      @alpha_item = @alpha_state.alpha_items.find(params[:key])
+      @alpha_evidence = @alpha_item.alpha_evidence
+      render partial: "alpha_evidences/form"
+    else
+      @alpha_item = @alpha_state.alpha_items.first
+      @alpha_evidence = @alpha_item.alpha_evidence
+    end
   end
 
 end

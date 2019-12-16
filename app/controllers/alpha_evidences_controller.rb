@@ -9,6 +9,7 @@ class AlphaEvidencesController < ApplicationController
   # GET /alpha_evidences/1
   # GET /alpha_evidences/1.json
   def show
+    puts params
   end
 
   # GET /alpha_evidences/1/edit
@@ -50,27 +51,17 @@ class AlphaEvidencesController < ApplicationController
     end
 
     success = true
-    respond_to do |format|
-      success = @alpha_evidence.update(alpha_evidence_params)
-      if success
-        if changed != 0
-          @alpha_state.completed_items += changed
-          if @alpha_state.alpha_items.size == @alpha_state.completed_items
-            @alpha_state.completed = true
-            @alpha_state.completed_at = DateTime.now
-          else
-            @alpha_state.completed = false
-          end
-          success = @alpha_state.save
+    success = @alpha_evidence.update(alpha_evidence_params)
+    if success
+      if changed != 0
+        @alpha_state.completed_items += changed
+        if @alpha_state.alpha_items.size == @alpha_state.completed_items
+          @alpha_state.completed = true
+          @alpha_state.completed_at = DateTime.now
+        else
+          @alpha_state.completed = false
         end
-      end
-
-      if success
-        format.html { redirect_to alpha_state_path(@alpha_state), notice: 'Alpha evidence was successfully updated.' }
-        format.json { render :show, status: :ok, location: @alpha_evidence }
-      else
-        format.html { render :edit }
-        format.json { render json: @alpha_evidence.errors, status: :unprocessable_entity }
+        success = @alpha_state.save
       end
     end
   end

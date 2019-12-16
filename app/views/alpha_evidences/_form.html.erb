@@ -1,59 +1,82 @@
-<div class="card p-1 mt-1 border-dark">
-  <div class="card-body">
-    <div class="row">
-      <div class="col-auto">
-        <% if state_item.alpha_evidence.completed %>
-          <%= icon("far fa-lg","check-square") %>
-        <% else %>
-          <%= icon("far fa-lg","square") %>
-        <% end %>
-      </div>
-      <div class="col-7">
-        <%= state_item.ddescription %>
-      </div>
-      <div class="col-3 text-center">
-        <%= print_date(state_item.completed_at) %>
-      </div>
-      <div class="col-auto px-0 d-flex align-items-center">
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#evidence<%= state_item.id %>">根拠を書く</button>
-      </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-5">
+
+    <h4><i class="far fa-eye"></i> 根拠</h4>
+    <%= form_for [@alpha_item, @alpha_evidence], remote: true do |form| %>
+    
+        <div class="field">
+        <%= form.text_area :document, id: :alpha_evidence_document, size: "50x5" %>
+        </div>
+    
+        <div class="field">
+        <%= form.check_box :completed, id: :alpha_evidence_completed %>
+        <%= form.label "完了" %>
+        </div>
+
+        <div class="actions">
+        <%= form.submit "変更する", class: "btn btn-primary" %>
+        </div>
+    <% end %>
     </div>
   </div>
-</div>
 
-<div class="modal" id="evidence<%= state_item.id %>" tabindex="-1" role="dialog" aria-labelledby="evidenceLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="evidenceLabel">根拠</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+  <div class="row">
+    <div class="col-10" id="ajax_commnet">
+      <h4 class="mt-4"><i class="far fa-comments"></i> コメント(<%= @alpha_evidence.alpha_comments.count %>)</h4>
+      <% if @alpha_evidence.alpha_comments.any? %>
+        <div class="container-fluied">
+          <div class="row">
+            <div class="col scrollArea">
+              <% @alpha_evidence.alpha_comments.reverse_each do |comment| %>
+              <!-- Media top -->
+                <div class="media m-1 border border-dark rounded">
+                  <div class="media-left media-top m-1">
+                    <%= gravatar_for(User.find(comment.user_id),size:40) %>
+                  </div>
+                  <div class="media-body">
+                    <h4 class="media-heading mt-2 mb-0">
+                      <div class="row">
+                        <div class="col-md-10">
+                          <span class="cname-style"><%= User.find(comment.user_id).name %>
+                          <!-- いいね記述部分　-->
+                          <% if comment.like_user(current_user.id) && comment.user_id != current_user.id%>
+                            <%= link_to like_path(comment.like_user(current_user.id).id), method: :delete, class: "like_delete", remote: true do %>
+                              <i class="far fa-heart"></i>
+                            <% end %>
+                          <% elsif comment.user_id != current_user.id %>
+                            <%= link_to alpha_comment_likes_path(comment), method: :post, class: "like_create", remote: true do %>
+                              <i class="fas fa-heart iine-color"></i>
+                            <% end %>
+                          <% end %>
 
-      <%= form_for state_item.alpha_evidence, url: alpha_item_alpha_evidence_path(state_item), remote: true do |form| %>
-      
-        <div class="field">
-          <%= form.text_area :document, id: :alpha_evidence_document, size: "50x4" %>
-        </div>
-      
-        <div class="field">
-          <%= form.check_box :completed, id: :alpha_evidence_completed %>
-          <%= form.label "完了" %>
-        </div>
-        <div class="actions">
-          <%= form.submit "変更する", class: "btn btn-primary" %>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-        </div>
-        <div class="modal-footer">
-          
+                          | </span>
+                          <span class="cday-style"><%= comment.how_long_ago %></span>
+                        </div>
+                        <div class="col-md-1 ml-3 mt-1">
+                          <% if comment.user_id == current_user.id %>
+                          <small><small>
+                            <%= link_to alpha_comment_path(comment), method: :delete, data: { confirm: "削除しますか？" }, class: "command alpha_dalete_comment", remote: true do%>
+                              <i class="far fa-times-circle fa-2x fa-black"></i>
+                            <% end %>
+                          </small></small>
+                          <% end %>
+                        </div>
+                      </div>
+                    </h4>
+                    <p class="cbody-style mb-1"><%= comment.body %></p>
+                  </div>                       
+                </div>
+              <!-- Media 終わり -->
+              <% end %>
+            </div>
+          </div>
         </div>
       <% end %>
-      
-
-      </div>
+      <%= form_for [@alpha_item, @alpha_evidence ,@alpha_evidence.alpha_comments.build] ,remote: true do |comment| %>
+        <p class="mt-3"><%= comment.text_area :body,  cols: 50, rows: 4 %></p>
+        <p><%= comment.submit "投稿する", class: "btn btn-primary" %></p>
+      <% end %>
     </div>
   </div>
 </div>
-<!-- モーダルおわり -->
