@@ -1,30 +1,15 @@
-<nav class="col-md-2 d-none d-md-block bg-dark sidebar p-0" id="side">
+<nav class="col-md-2 d-none d-md-block bg-light sidebar p-0" id="side">
   <div class="sidebar-sticky pt-0">
-    <ul class="nav flex-column">
-      <li class="nav-item bg-primary pt-0">
-        <%= link_to get_project_name, project_path(current_project), class: 'nav-link text-white', id: 'sidebar-project' %>
-      </li>
-      <li class="nav-item">
-        <!-- <a class="nav-link text-white" href="#" id="sidebar-learning-alpha"><i>ラーニングアルファ</i></a>-->
-        <%= link_to "ラーニングアルファ", project_alpha_alphas_path(current_project), class: 'nav-link text-white', id: 'sidebar-sprintbacklog' %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "プロダクトバックログ", pbl_path(current_project), class: 'nav-link text-white', id: 'sidebar-sprintbacklog' %>
-      </li>
-      <% if get_current_sprint_id != nil %>
-        <li class="nav-item">
-          <%= link_to "スプリントバックログ", sbl_path(get_current_sprint_id), class: 'nav-link text-white', id: 'sidebar-sprintbacklog' %>
-        </li>
-      <% end %>
-      <li class="nav-item">
-        <%= link_to "スプリント", sprints_path(current_project), class: 'nav-link text-white', id: 'sidebar-sprint' %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "チームメンバー", scrum_members_path(current_project), class: 'nav-link text-white', id: 'sidebar-team' %>
-      </li>
-      <li class="nav-item">
-       <a href="#" class="nav-link text-white" id="sidebar-calendar"><i>カレンダー</i></a>
-      </li>
+    <ul class="list-group list-group-flush pi-draggable" draggable="true">
+        <%= sidebar_link_item('プロジェクト詳細',  project_path(get_current_project_id)) %>
+        <%= sidebar_link_item('ラーニングアルファ', project_alpha_alphas_path(current_project)) %>
+        <%= sidebar_link_item('プロダクトバックログ', pbl_path(get_current_project_id)) %>
+        <% if get_current_sprint_id != nil %>
+          <%= sidebar_link_item('スプリントバックログ', sbl_path(get_current_sprint_id)) %>
+        <% end %>
+        <%= sidebar_link_item('スプリント', sprints_path(get_current_project_id)) %>
+        <%= sidebar_link_item('チームメンバー', scrum_members_path(get_current_project_id)) %>
+        <%= sidebar_link_item('カレンダー',"#") %>
     </ul>
   </div>
 </nav>

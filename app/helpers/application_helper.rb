@@ -43,4 +43,27 @@ module ApplicationHelper
     md5_string = md5.to_s
   end
   
+  def moderate_new_edit_button_label()
+		if controller.action_name == "new"
+			"作成する"
+		else
+			"変更する"
+		end
+  end
+
+  def sidebar_link_item(name, path)
+    class_name = 'list-group-item list-group-item-action p-0 nav-item border'
+    if current_page?(path)
+      class_name << ' active'
+    
+      content_tag :li, class:class_name do
+        (link_to name, path, class: 'nav-link text-light')
+      end
+    else
+      content_tag :li, class:class_name do
+        (link_to name, path, class: 'nav-link')
+      end
+    end
+  end
+
 end

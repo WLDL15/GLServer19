@@ -1,15 +1,15 @@
-<%= form_for([@project, @sprint], html: { class: "form-horizontal", role: "form" }) do |f| %>
-<% if @sprint.errors.any? %>
-<div class="alert alert-danger alert-dismissable" role="alert">
-  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-  <h4><%= pluralize(@sprint.errors.count, "error") %> prohibited this sprint from being saved:</h4>
+<%= bootstrap_form_for(@sprint, url: moderate_new_edit_path(@project, @sprint), html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if @sprint.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4><%= pluralize(@sprint.errors.count, "error") %> prohibited this sprint from being saved:</h4>
 
-  <ul>
+    <ul>
     <% @sprint.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
+      <li><%= msg %></li>
     <% end %>
-  </ul>
-</div>
+    </ul>
+  </div>
 <% end %>
 
  <!-- <div class="form-group">
@@ -21,29 +21,12 @@
   <%= f.hidden_field :no, :value => get_sprintno %>
   <%= f.hidden_field :project_id, :value => get_project %>
 
+  <%= f.date_field :start, label: "開始日" %>
+  <%= f.date_field :end, label: "終了日" %>
+  <%= f.text_area :description, label: "スプリントゴール", :rows => '3' %>
 
-  <div class="form-group">
-    <%= f.label :開始日, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.date_select :start, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :終了日, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.date_select :end, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :スプリントゴール, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_area :description, class: "form-control" %>
-    </div>
-  </div>
+  <%= f.submit moderate_new_edit_button_label(), class: "btn btn-primary" %>
 
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit "入力内容を確定する", class: "btn btn-primary" %>
-    </div>
-  </div>
+  <%= link_to 'キャンセル', sprints_path(@project), class: "btn btn-primary"  %>
+
   <% end %>
