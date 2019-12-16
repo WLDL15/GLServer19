@@ -42,11 +42,11 @@
                           <!-- いいね記述部分　-->
                           <% if comment.like_user(current_user.id) && comment.user_id != current_user.id%>
                             <%= link_to like_path(comment.like_user(current_user.id).id), method: :delete, class: "like_delete", remote: true do %>
-                              <i class="far fa-thumbs-up"></i>
+                              <i class="far fa-heart"></i>
                             <% end %>
                           <% elsif comment.user_id != current_user.id %>
                             <%= link_to alpha_comment_likes_path(comment), method: :post, class: "like_create", remote: true do %>
-                              <i class="far fa-thumbs-up thumbs-color"></i>
+                              <i class="fas fa-heart iine-color"></i>
                             <% end %>
                           <% end %>
 
