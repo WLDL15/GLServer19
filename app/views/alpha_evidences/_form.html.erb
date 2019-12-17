@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-5">
+    <div class="col-8">
 
     <h4><i class="far fa-eye"></i> 根拠</h4>
     <%= form_for [@alpha_item, @alpha_evidence], remote: true do |form| %>
@@ -8,21 +8,29 @@
         <div class="field">
         <%= form.text_area :document, id: :alpha_evidence_document, size: "50x5" %>
         </div>
-    
-        <div class="field">
-        <%= form.check_box :completed, id: :alpha_evidence_completed %>
-        <%= form.label "完了" %>
-        </div>
+        
+        <div class="row">
 
-        <div class="actions">
-        <%= form.submit "変更する", class: "btn btn-primary" %>
+          <div class="col">
+            <div class="field ml-2">
+              <%= form.check_box :completed, id: :alpha_evidence_completed %>
+              <%= form.label "完了", {class: 'ml-1 sizing-120'}%>
+            </div>
+          </div>
+
+          <div class="col text-right">
+            <div class="actions">
+            <%= form.submit "変更する", class: "btn btn-primary" %>
+            </div>
+          </div>
+
         </div>
     <% end %>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-10" id="ajax_commnet">
+    <div class="col-8" id="ajax_commnet">
       <h4 class="mt-4"><i class="far fa-comments"></i> コメント(<%= @alpha_evidence.alpha_comments.count %>)</h4>
       <% if @alpha_evidence.alpha_comments.any? %>
         <div class="container-fluied">
@@ -42,24 +50,22 @@
                           <!-- いいね記述部分　-->
                           <% if comment.like_user(current_user.id) && comment.user_id != current_user.id%>
                             <%= link_to like_path(comment.like_user(current_user.id).id), method: :delete, class: "like_delete", remote: true do %>
-                              <i class="far fa-heart"></i>
+                              <i class="fas fa-heart iine-color"></i>
                             <% end %>
                           <% elsif comment.user_id != current_user.id %>
                             <%= link_to alpha_comment_likes_path(comment), method: :post, class: "like_create", remote: true do %>
-                              <i class="fas fa-heart iine-color"></i>
+                              <i class="far fa-heart"></i>
                             <% end %>
                           <% end %>
 
                           | </span>
                           <span class="cday-style"><%= comment.how_long_ago %></span>
                         </div>
-                        <div class="col-md-1 ml-3 mt-1">
+                        <div class="col-md-1 ml-2 mt-0">
                           <% if comment.user_id == current_user.id %>
-                          <small><small>
                             <%= link_to alpha_comment_path(comment), method: :delete, data: { confirm: "削除しますか？" }, class: "command alpha_dalete_comment", remote: true do%>
-                              <i class="far fa-times-circle fa-2x fa-black"></i>
+                              <i class="far fa-times-circle fa-0.5x fa-black"></i>
                             <% end %>
-                          </small></small>
                           <% end %>
                         </div>
                       </div>
@@ -75,7 +81,7 @@
       <% end %>
       <%= form_for [@alpha_item, @alpha_evidence ,@alpha_evidence.alpha_comments.build] ,remote: true do |comment| %>
         <p class="mt-3"><%= comment.text_area :body,  cols: 50, rows: 4 %></p>
-        <p><%= comment.submit "投稿する", class: "btn btn-primary" %></p>
+        <p class="text-right"><%= comment.submit "投稿する", class: "btn btn-primary" %></p>
       <% end %>
     </div>
   </div>
