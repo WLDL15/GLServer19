@@ -52,6 +52,7 @@ class AlphaEvidencesController < ApplicationController
 
     success = true
     success = @alpha_evidence.update(alpha_evidence_params)
+    @evidence_save = false
     if success
       if changed != 0
         @alpha_state.completed_items += changed
@@ -62,6 +63,7 @@ class AlphaEvidencesController < ApplicationController
           @alpha_state.completed = false
         end
         success = @alpha_state.save
+        @evidence_save = true
       end
     end
   end
