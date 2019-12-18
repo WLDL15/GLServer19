@@ -20,6 +20,11 @@
 
             <%= f.label :description, "自己紹介" %>
             <%= f.text_area :description, class: 'list-group-item', :readonly => true, :cols => '40', :rows => '3' %>
+
+            <%= f.label :point, "ポイント" %>
+            <div class="list-group-item">
+              <span>総合ポイント：<%= @user.points_total %></span><span>　いいね：<%= @user.total_like %></span>
+            </div>
             
             <% end %>
           </section>
