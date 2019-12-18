@@ -52,7 +52,8 @@ module ApplicationHelper
   end
 
   def sidebar_link_item(name, path)
-    class_name = 'list-group-item list-group-item-action p-0 nav-item border'
+    class_name = 'list-group-item list-group-item-action p-0 nav-item border-bottom border-secondary'
+
     if current_page?(path)
       class_name << ' active'
     
@@ -65,5 +66,4 @@ module ApplicationHelper
       end
     end
   end
-
 end
