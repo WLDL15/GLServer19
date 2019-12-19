@@ -30,7 +30,7 @@ $(document).on 'turbolinks:load ajax:success','.like_delete', (e, options) ->
 input_html = (area, create) ->
     like_url = "/likes/" + create.id
     area.attr('href', like_url)
-    area.html('<i class="far fa-heart"></i>')
+    area.html('<i class="fas fa-heart iine-color"></i>')
     area.data('method', 'delete')
     area.addClass('like_delete')
     area.removeClass('like_create')
@@ -39,7 +39,7 @@ input_html = (area, create) ->
 out_html = (area, destroy) ->
     like_url = "/alpha_comments/" + destroy.id + "/likes"
     area.attr('href', like_url)
-    area.html('<i class="fas fa-heart iine-color"></i>')
+    area.html('<i class="far fa-heart"></i>')
     area.data('method', 'post')
     area.addClass('like_create')
     area.removeClass('like_delete')
