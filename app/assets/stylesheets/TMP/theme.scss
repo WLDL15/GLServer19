@@ -1,10 +1,47 @@
-/* @import "feathericon"; */
+$md-primary-color-dark: #064583;
+// $md-primary-color: #0095BC;
+$md-primary-color: #00bcd4;
+$md-primary-color-light: #b2ebf2;
+$md-primary-color-text: #ffffff;
+$md-accent-color: #536dfe;
+$md-primary-text-color: #212121;
+$md-secondary-text-color: #757575;
+$md-divider-color: #bdbdbd;
+
+/*
+$theme-colors: (
+  "primary": $md-primary-color,
+  "secondary": $md-primary-color-dark,
+  "light": $md-primary-color-text,
+  "dark": $md-primary-text-color
+);
+*/
+
+.md-bg-primary {
+  background-color: $md-primary-color-light;
+}
+
+.md-bg-secondary {
+  background-color: $md-primary-color-dark;
+}
+
+.md-bg-accent {
+  background-color: $md-accent-color;
+}
+
+.md-bg-error {
+  @extend .bg-danger;
+}
+
+.md-bg-primary-light {
+  background-color: $md-primary-color-light;
+}
+
+.navbar.navbar {
+  background-color: $md-primary-color-dark;
+}
 
 /* navbar を fixed-top にしたとき、下のコンテナが重ならないように */
-
-.navbar {
-  background-color: $oit-school-color;
-}
 
 /* 
  body { 

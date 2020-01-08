@@ -1,7 +1,7 @@
 <div class="container form-signin">
   <div class="text-center">
     <%= form_for(:session, url: login_path) do |f| %>
-        <h1 class="h3 font-weight-normal text-white">ログインしてください</h1>
+        <h1 class="h3 font-weight-normal">ログインしてください</h1>
         <%= f.label :email, class: "sr-only" %>
         <%= f.email_field :email, class: 'form-control', placeholder: "Email address" %>
 
@@ -19,8 +19,8 @@
         %= link_to t('menu.login'), signup_path, class: "btn btn-lg btn-primary btn-block" %>
         -->
 
-        <%= f.submit t('menu.login'), class: "btn btn-lg btn-primary btn-block" %>
-        <%= link_to t('menu.signup'), new_user_path, class: "btn btn-lg btn-primary btn-block" %>
+        <%= f.submit t('menu.login'), class: "btn btn-lg btn-primary btn-block shadow-lg", role: "button", "aria-pressed": "true" %>
+        <%= link_to t('menu.signup'), new_user_path, class: "btn btn-lg btn-primary btn-block shadow-lg" %>
       <% end %>
   </div>
 </div>

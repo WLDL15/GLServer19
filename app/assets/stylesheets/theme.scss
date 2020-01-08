@@ -1,15 +1,15 @@
 // theme
 
-$blue:    #007bff !default;
-$indigo:  #6610f2 !default;
-$purple:  #6f42c1 !default;
-$pink:    #e83e8c !default;
-$red:     #dc3545 !default;
-$orange:  #fd7e14 !default;
-$yellow:  #ffc107 !default;
-$green:   #28a745 !default;
-$teal:    #20c997 !default;
-$cyan:    #17a2b8 !default;
+$blue: #007bff !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #dc3545 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #28a745 !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
 
 $colors: (
   blue: $blue,
@@ -34,5 +34,23 @@ $theme-colors: (
   warning: $yellow,
   danger: $red,
   light: $gray - 100,
-  dark: $gray - 800
+  dark: $gray - 800,
 ) !default;
+
+$oit-school-color: #064583;
+$oit-communication-colo4: #0095bc;
+$oit-bg-color-light: #cbe2ff;
+$oit-bg-color: #6aa7ee;
+$oit-bg-color-dark: #1d95d4;
+
+.oit-bg-color-light {
+  background-color: $oit-bg-color-light;
+}
+
+.oit-bg-color {
+  background-color: $oit-bg-color;
+}
+
+.oit-bg-color-dark {
+  background-color: $oit-bg-color-dark;
+}
