@@ -72,6 +72,9 @@ gem 'rails-i18n', '~> 5.1'
 #gem 'actiontext'
 #gem 'image_processing', '~> 1.2'
 
+#gem 'honor'
+gem 'honor', git: 'https://github.com/WLDL15/honor5.git'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'sqlite3',	'1.3.13'
