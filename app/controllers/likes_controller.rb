@@ -6,7 +6,7 @@ class LikesController < ApplicationController
         @comment.like_count += 1
 
         @user = @comment.user
-        @user.add_points(10, "Awarded for some awesome action", "Like")
+        @user.add_points(3, "Awarded for some awesome action", "Like")
 
         @like.save
         @comment.save
@@ -18,7 +18,7 @@ class LikesController < ApplicationController
         @comment.like_count -= 1
 
         @user = @comment.user
-        @user.subtract_points(10, "Awarded for some awesome action", "Like")
+        @user.subtract_points(3, "Awarded for some awesome action", "Like")
 
         @comment.save
         @like.destroy
