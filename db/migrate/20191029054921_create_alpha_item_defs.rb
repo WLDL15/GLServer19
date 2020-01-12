@@ -7,5 +7,6 @@ class CreateAlphaItemDefs < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_column :alpha_item_defs, :item_level, :integer 
   end
 end
