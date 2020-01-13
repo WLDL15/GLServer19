@@ -4,6 +4,9 @@ class AlphaCommentsController < ApplicationController
         @alpha_evidence = @alpha_item.alpha_evidence
         @alpha_comment = @alpha_evidence.alpha_comments.new(comment_params)
         @alpha_comment.user_id = current_user.id
+        @alpha_commenter = @alpha_comment.user
+        @alpha_commenter.add_points(3, "Awarded for some awesome action", "Comment")
+
         if @alpha_comment.save
             render partial: "alpha_evidences/form"
         end
