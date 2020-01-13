@@ -8,8 +8,7 @@ class SessionsController < ApplicationController
       # success
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      user.last_login_date = Time.now
-      user.save
+
       redirect_back_or user
     else
       # failure
