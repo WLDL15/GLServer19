@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params)
+    @user.last_login_date = Time.now
     if @user.save
       # success
       log_in @user
@@ -62,7 +63,8 @@ class UsersController < ApplicationController
                                  :email,
                                  :password,
                                  :password_confirmation,
-                                 :description)
+                                 :description,
+                                 :last_login_date)
   end
   
   def logged_in_user
