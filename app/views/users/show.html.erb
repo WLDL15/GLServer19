@@ -25,7 +25,14 @@
             <div class="list-group-item">
               <span>総合ポイント：<%= @user.points_total %></span><span>　いいね：<%= @user.total_like %></span>
             </div>
-            
+
+            <%= f.label :badge, "獲得バッヂ" %>
+            <div class="list-group-item">
+              <% @user.badges.each do |badge| %>
+                <div class="badge badge-pill badge-primary"><%= badge.name %></div>
+              <% end %>
+           
+            </div>
             <% end %>
           </section>
         </div>
