@@ -1,0 +1,32 @@
+<div class="page-header">
+  <%= link_to project_sprints_path(@project), class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_version_path(@version), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show version</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @version.name %></dd>
+
+  <dt>Goal:</dt>
+  <dd><%= @version.goal %></dd>
+
+  <dt>Start:</dt>
+  <dd><%= @version.start %></dd>
+
+  <dt>End:</dt>
+  <dd><%= @version.end %></dd>
+
+  <dt>Level:</dt>
+  <dd><%= @version.level %></dd>
+
+  <dt>Project:</dt>
+  <dd><%= @version.project %></dd>
+
+</dl>

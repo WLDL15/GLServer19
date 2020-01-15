@@ -1,5 +1,6 @@
 class Sprint < ApplicationRecord
   belongs_to :project
+  belongs_to :version
   default_scope -> { order(no: :ASC) }
 
   attr_accessor :name

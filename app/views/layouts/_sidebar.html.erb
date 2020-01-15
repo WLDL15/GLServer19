@@ -7,7 +7,7 @@
         <% if get_current_sprint_id != nil %>
           <%= sidebar_link_item('スプリントバックログ', sbl_path(get_current_sprint_id)) %>
         <% end %>
-        <%= sidebar_link_item('スプリント', sprints_path(get_current_project_id)) %>
+        <%= sidebar_link_item('スプリント', project_sprints_path(get_current_project_id)) %>
         <%= sidebar_link_item('チームメンバー', scrum_members_path(get_current_project_id)) %>
         <%= sidebar_link_item('カレンダー',"#") %>
     </ul>
