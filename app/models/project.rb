@@ -4,6 +4,7 @@ class Project < ApplicationRecord
   has_one :alpha_framework, dependent: :destroy
 
   has_many :sprints
+  has_many :versions
 
   has_many :scrum_members
   accepts_nested_attributes_for :scrum_members, allow_destroy: true

@@ -1,3 +1,4 @@
+<% if @version_list.include?(state_item.alpha_item_def.item_level) %>
 <% if @alpha_state.alpha_items.first.id == state_item.id %>
 <div class="card p-1 mt-1 border-dark f-selected" id=card<%= state_item.alpha_evidence.id %>>
 <% else %>
@@ -24,5 +25,5 @@
     </div>
   </div>
 </div>
-
+<% end %>
 <!-- モーダルおわり -->

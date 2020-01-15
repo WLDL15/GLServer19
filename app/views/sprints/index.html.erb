@@ -7,7 +7,7 @@
     <li class="nav-item">
       <%= link_to new_project_sprint_path(@project), class: 'btn btn-primary' do %>
         <%= icon("fas","plus") %>
-        新規スプリント
+        新規バージョン
       <% end %>
     </li>
   </ul>
@@ -17,39 +17,65 @@
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-            <th width="5%">No</th>
-            <th width="15%">開始日</th>
-            <th width="15%">終了日</th>
-            <th width="50%">スプリントゴール</th>
+            <th width="6%">名前</th>
+            <th width="13%">開始日</th>
+            <th width="13%">終了日</th>
+            <th width="40%">バージョンゴール</th>
+            <th width="10%">レベル</th>
             <th width="5%"></th>
             <th></th>
       </tr>
     </thead>
 
     <tbody>
-      <%= content_tag_for(:tr, @sprints) do |sprint| %>
-        <td align="right"><%= sprint.no %></td>
-        <td><%= sprint.start.to_s(:default) %></td>
-        <td><%= sprint.end.to_s(:default) %></td>
-        <td><%= sprint.description %></td>
+      <%= content_tag_for(:tr, @versions) do |version| %>
+        <td align="right"><%= version.name %></td>
+        <td><%= version.start.to_s(:default) %></td>
+        <td><%= version.end.to_s(:default) %></td>
+        <td><%= version.goal %></td>
+        <td><%= version.level %></td>
         <td align="center">
-          <!-- <%= link_to sprint_path(sprint) do %>
+          <!-- <%= link_to version_path(version) do %>
             <%= icon("far","eye") %>
           <% end %> -->
-          <%= link_to edit_sprint_path(sprint) do %>
+          <%= link_to edit_version_path(version) do %>
             <%= icon("fas","pen") %>
           <% end %>
-          <%= link_to edit_sprint_path(sprint) do %>
+          <%= link_to edit_version_path(version) do %>
             <%= icon("fas","book") %>
           <% end %>
         </td>
         <td>
-          <%= link_to sbl_path(sprint) do %>
-            <!-- <%= icon("fas","angle-double-right") %> -->
-            バックログ
+          <%= link_to new_version_sprint_path(version), class: 'btn btn-primary' do %>
+            <%= icon("fas","plus") %>
+            新規スプリント
           <% end %>
         </td>
+
+        <%= content_tag_for(:tr, version.sprints) do |sprint| %>
+          <td align="right"><%= sprint.no %></td>
+          <td><%= sprint.start.to_s(:default) %></td>
+          <td><%= sprint.end.to_s(:default) %></td>
+          <td><%= sprint.description %></td>
+          <td><%= sprint.version.level %></td>
+          <td align="center">
+            <%= link_to edit_sprint_path(sprint) do %>
+              <%= icon("fas","pen") %>
+            <% end %>
+            <%= link_to edit_sprint_path(sprint) do %>
+              <%= icon("fas","book") %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to sbl_path(sprint) do %>
+              <!-- <%= icon("fas","angle-double-right") %> -->
+              バックログ
+            <% end %>
+          </td>
+        <% end %>
+
       <% end %>
+      
     </tbody>
   </table>
 </div>

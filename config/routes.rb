@@ -15,11 +15,17 @@ Rails.application.routes.draw do
 
   # resources :projects
   
-  resources :sprints, :only => [:show, :edit, :update, :destroy]
+  resources :versions, :only => [:show, :edit, :update, :destroy]
 
-  get  '/projects/:project_id/sprints(.:format)'     => 'sprints#index',  :as => 'sprints'
-  get  '/projects/:project_id/sprints/new(.:format)' => 'sprints#new',    :as => 'new_project_sprint'
-  post '/projects/:project_id/sprints(.:format)'     => 'sprints#create', :as => 'project_sprints'
+  get  '/projects/:project_id/versions(.:format)'     => 'versions#index',  :as => 'versions'
+  get  '/projects/:project_id/versions/new(.:format)' => 'versions#new',    :as => 'new_project_sprint'
+  post '/projects/:project_id/versions(.:format)'     => 'versions#create', :as => 'project_versions'
+
+resources :sprints, :only => [:show, :edit, :update, :destroy]
+
+  get  '/versions/:version_id/sprints/new(.:format)' => 'sprints#new',    :as => 'new_version_sprint'
+  post '/versions/:version_id/sprints(.:format)'     => 'sprints#create', :as => 'version_sprints'
+  get '/projects/:project_id/sprints(.:format)' => 'sprints#index_by_project', :as => 'project_sprints'
 
   resources :scrum_members, :only => [:show, :edit, :update, :destroy]
 
