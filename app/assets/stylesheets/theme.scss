@@ -1,56 +1,31 @@
 // theme
 
-$blue: #007bff !default;
-$indigo: #6610f2 !default;
-$purple: #6f42c1 !default;
-$pink: #e83e8c !default;
-$red: #dc3545 !default;
-$orange: #fd7e14 !default;
-$yellow: #ffc107 !default;
-$green: #28a745 !default;
-$teal: #20c997 !default;
-$cyan: #17a2b8 !default;
-
-$colors: (
-  blue: $blue,
-  indigo: $indigo,
-  purple: $purple,
-  pink: $pink,
-  red: $red,
-  orange: $orange,
-  yellow: $yellow,
-  green: $green,
-  teal: $teal,
-  cyan: $cyan,
-  gray: $gray - 600,
-  gray-dark: $gray - 800,
-) !default;
-
-$theme-colors: (
-  primary: $blue,
-  secondary: $indigo,
-  success: $green,
-  info: $cyan,
-  warning: $yellow,
-  danger: $red,
-  light: $gray - 100,
-  dark: $gray - 800,
-) !default;
-
 $oit-school-color: #064583;
 $oit-communication-colo4: #0095bc;
 $oit-bg-color-light: #cbe2ff;
 $oit-bg-color: #6aa7ee;
 $oit-bg-color-dark: #1d95d4;
 
-.oit-bg-color-light {
-  background-color: $oit-bg-color-light;
+/*
+$wmd-bg-color: #01b3e3;
+$wmd-bg-color-light: #4FE4F3;
+$wmd-bg-color-dark: #1d95d4;
+*/
+
+/* udacity-based colors */
+$wmd-bg-color: #01b3e3;
+$wmd-bg-color-light: #4fe4f3;
+$wmd-bg-color-dark: #1d95d4;
+
+.wmd-navbar {
+  background-color: $oit-school-color;
 }
 
-.oit-bg-color {
-  background-color: $oit-bg-color;
-}
+$theme-colors: (
+  'primary': $wmd-bg-color,
+  'secondary': $wmd-bg-color-light,
+  'light': $wmd-bg-color-light,
+  'dark': $oit-school-color,
+);
 
-.oit-bg-color-dark {
-  background-color: $oit-bg-color-dark;
-}
+// $navbar-dark-color: $oit-school-color;

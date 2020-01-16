@@ -1,4 +1,4 @@
-<header class="navbar navbar-expand navbar-dark d-print text-white" role="navigation" id="header">
+<header class="navbar navbar-expand navbar-dark d-print text-white bg-dark" role="navigation" id="header">
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon navbar-dark"></span>
   </button>
@@ -22,8 +22,8 @@
           </div>
         </li>
       </ul>
- <ul class="navbar-nav mx-auto">
-      <%= link_to "GLServer", root_path, class: "h2 mb-0 text-white"%>
+      <ul class="navbar-nav mx-auto">
+        <%= link_to "GLServer", root_path, class: "navbar-brand h2 mb-0 text-white"%>
       </ul>
 
       <ul class="navbar-nav ml-auto">
@@ -46,14 +46,13 @@
         </li>
       </ul>
     <% else %>
- <ul class="navbar-nav mx-auto">
- <%= link_to "GLServer", root_path, class: "d-none d-md-block mb-0  text-white"%>
-</ul>
+      <ul class="navbar-nav mx-auto">
+        <%= link_to "GLServer", root_path, class: "navbar-brand h2 mb-0 text-white" %>
+      </ul>
 
-          <%= link_to help_path, class: "nav-link text-light" do %>
-           <i class="fa fa-question-circle fa-lg mt-0" ></i>
-          <% end %>
-
+      <%= link_to help_path, class: "nav-link text-light" do %>
+        <i class="fa fa-question-circle fa-lg mt-0" ></i>
+      <% end %>
 
     <% end %>
   </div>
