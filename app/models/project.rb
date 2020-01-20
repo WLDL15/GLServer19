@@ -7,6 +7,7 @@ class Project < ApplicationRecord
   has_many :versions
 
   has_many :scrum_members
+  has_many :users, through: :scrum_members
   accepts_nested_attributes_for :scrum_members, allow_destroy: true
 
   has_many :backlog_items
