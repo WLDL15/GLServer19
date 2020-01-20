@@ -19,6 +19,8 @@ class User < ApplicationRecord
   has_many :scrum_members
   has_many :likes
   has_many :alpha_comments
+  has_many :user_badges
+  has_many :badges, through: :user_badges
   accepts_nested_attributes_for :scrum_members, allow_destroy: true
 
   def User.digest(string)
