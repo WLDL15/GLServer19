@@ -35,12 +35,17 @@ class AlphaEvidencesController < ApplicationController
   # PATCH/PUT /alpha_evidences/1
   # PATCH/PUT /alpha_evidences/1.json
   def update
+    @users = @project.users
+    @alpha_item_def = @alpha_item.alpha_item_def
     changed = 0
     if params[:alpha_evidence][:completed] == "1"
       # completed が true に変更されたとき、completed_at に現在日時を設定する
       if @alpha_evidence.completed == false
         changed = 1
         @alpha_evidence.completed_at = DateTime.now
+        @users.each do |user|
+          user.add_points(@alpha_item_def.item_point, "Awarded for some awesome action", "Completed")
+        end
         # completed が true のときに根拠が変更されたとき、completed_at に現在日時を設定する
       elsif params[:alpha_evidence][:document] != @alpha_evidence.document
         @alpha_evidence.completed_at = DateTime.now
