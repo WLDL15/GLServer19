@@ -48,7 +48,10 @@ class User < ApplicationRecord
   end
 
   def total_like
-    alpha_comments.sum(:like_count)
+    alpha_comments.sum(:like_count) 
   end
 
+  def total_comment
+    alpha_comments.count 
+  end
 end
