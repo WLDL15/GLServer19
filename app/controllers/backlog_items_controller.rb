@@ -62,9 +62,15 @@ class BacklogItemsController < ApplicationController
   def create
     @backlog_item = BacklogItem.new(backlog_item_params)
     @project = Project.find(params[:project_id])
+    @users = @project.users
     #byebug
     respond_to do |format|
       if @backlog_item.save
+        if @backlog_item.itemType == 0
+          @users.each do |user|
+            user.add_points(4, "Awarded for some awesome action", "Add_PBL")
+          end
+        end
         #byebug
         if @backlog_item.itemType == 0
           format.html { redirect_to pbl_path(get_current_project_id), notice: 'PBL was successfully created.' }
