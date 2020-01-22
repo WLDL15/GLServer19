@@ -70,6 +70,7 @@ class AlphaEvidencesController < ApplicationController
         success = @alpha_state.save
         @evidence_save = true
       end
+      redirect_to alpha_state_path(id: @alpha_state.id)
     end
   end
 
@@ -85,6 +86,6 @@ class AlphaEvidencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def alpha_evidence_params
-      params.require(:alpha_evidence).permit(:document, :completed, :scrum_member_id, :alpha_item_id)
+      params.require(:alpha_evidence).permit(:document, :completed, :reviewed,:scrum_member_id, :alpha_item_id)
     end
 end

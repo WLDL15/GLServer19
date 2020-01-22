@@ -15,6 +15,7 @@
   </nav>
 </div>
 
+<h3 class="px-2">Level:<%= @version_list.max %></h3>
 <!-- 状態のボタン -->
 <div class="row pl-2">
   <% @alpha_alpha.alpha_states.each_with_index do |alpha_state, index| %>
@@ -30,7 +31,20 @@
 
 <div class="row pt-3 pl-4">
   <div class="col-6">
-    <%= render partial: "alpha_items/form", collection: @alpha_state.alpha_items, as: :state_item %>   
+    <h3>未完了</h3>
+    <div id="form_completed">
+      <%= render partial: "alpha_items/form", collection: @alpha_state.alpha_evidences.where(completed: false), as: :state_evidence %>
+    </div>
+  
+    <h3 class="pt-1">未確認</h3>
+    <div id="form_review">
+      <%= render partial: "alpha_items/review", collection: @alpha_state.alpha_evidences.where(completed: true).where(reviewed: false), as: :state_evidence %>
+    </div>
+
+    <h3 class="pt-1">確認済</h3>
+    <div id="form_reviewed">
+      <%= render partial: "alpha_items/reviewed", collection: @alpha_state.alpha_evidences.where(reviewed: true), as: :state_evidence %>   
+    </div>
   </div>
   <div class="col-6" id="ajax_evidence">
     <%= render partial: "alpha_evidences/form" %> 
