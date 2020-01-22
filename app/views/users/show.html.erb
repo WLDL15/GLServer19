@@ -33,6 +33,11 @@
               <% end %>
            
             </div>
+            <%= f.label :last_login_date, "ログイン日時" %>
+            <div class="list-group-item">
+              <span><%= @user.last_login_date.strftime("%Y/%m/%d %H:%M:%S") %></span>
+            </div>
+
             <% end %>
           </section>
         </div>
