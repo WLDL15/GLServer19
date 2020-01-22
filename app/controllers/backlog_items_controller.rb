@@ -62,14 +62,21 @@ class BacklogItemsController < ApplicationController
   def create
     @backlog_item = BacklogItem.new(backlog_item_params)
     @project = Project.find(params[:project_id])
+    @users = @project.users
     #byebug
     respond_to do |format|
       if @backlog_item.save
         #byebug
         if @backlog_item.itemType == 0
+          @users.each do |user|
+            user.add_points(4, "Awarded for some awesome action", "AddPBL")
+          end
           format.html { redirect_to pbl_path(get_current_project_id), notice: 'PBL was successfully created.' }
           format.json { render :show, status: :created, location: @backlog_item }
         else
+          @assign_scrum_member = ScrumMember.find(@backlog_item.assign_to_id)
+          @assign_user = @assign_scrum_member.user
+          @assign_user.add_points(2, "Awarded for some awesome action", "AddSBL")
           check_state(@backlog_item)
           format.html { redirect_to show_pbl_path(@backlog_item.backlog_item_id), notice: 'SBL was successfully created.' }
           format.json { render :show, status: :created, location: @backlog_item }
@@ -92,7 +99,13 @@ class BacklogItemsController < ApplicationController
   # PATCH/PUT /backlog_items/1
   # PATCH/PUT /backlog_items/1.json
   def update
+    @assign_scrum_member = ScrumMember.find(params[:backlog_item][:assign_to_id])
+    @assign_user = @assign_scrum_member.user
     respond_to do |format|
+      if @backlog_item.assign_to_id != params[:backlog_item][:assign_to_id].to_i
+        @assign_user.add_points(1, "Awarded for some awesome action", "ChangeSBL")
+      end
+
       if @backlog_item.update(backlog_item_params)
         if @backlog_item.itemType == 0
 
@@ -151,6 +164,7 @@ end
       end
 
       if item.state == 3 && item.ended_at == nil
+        @assign_user.add_points(114514, "Awarded for some awesome action", "ChangeSBL")
         item.ended_at = Time.now()
       end
       item.save
