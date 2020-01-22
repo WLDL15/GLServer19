@@ -4,7 +4,7 @@
   </ul>
   <ul class="nav ml-auto">
     <li class="nav-item">
-      <%= link_to sprints_path(@project), class: 'nav-link' do %>
+      <%= link_to project_sprints_path(@sprint.project), class: 'nav-link' do %>
         <%= icon("fas","list") %>
         スプリント一覧
       <% end %>

@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-
+###
 $(document).on 'ajax:success','.edit_alpha_evidence', (e, data) ->
     if data.save
         if data.completed
@@ -33,3 +33,4 @@ $(document).on 'turbolinks:load', ->
 
     $('.edit_alpha_evidence').on 'ajax:error', (e, data) ->
         alert '保存されませんでした'
+###

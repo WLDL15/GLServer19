@@ -35,12 +35,17 @@ class AlphaEvidencesController < ApplicationController
   # PATCH/PUT /alpha_evidences/1
   # PATCH/PUT /alpha_evidences/1.json
   def update
+    @users = @project.users
+    @alpha_item_def = @alpha_item.alpha_item_def
     changed = 0
     if params[:alpha_evidence][:completed] == "1"
       # completed が true に変更されたとき、completed_at に現在日時を設定する
       if @alpha_evidence.completed == false
         changed = 1
         @alpha_evidence.completed_at = DateTime.now
+        @users.each do |user|
+          user.add_points(@alpha_item_def.item_point, "Awarded for some awesome action", "Completed")
+        end
         # completed が true のときに根拠が変更されたとき、completed_at に現在日時を設定する
       elsif params[:alpha_evidence][:document] != @alpha_evidence.document
         @alpha_evidence.completed_at = DateTime.now
@@ -65,6 +70,7 @@ class AlphaEvidencesController < ApplicationController
         success = @alpha_state.save
         @evidence_save = true
       end
+      redirect_to alpha_state_path(id: @alpha_state.id)
     end
   end
 
@@ -80,6 +86,6 @@ class AlphaEvidencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def alpha_evidence_params
-      params.require(:alpha_evidence).permit(:document, :completed, :scrum_member_id, :alpha_item_id)
+      params.require(:alpha_evidence).permit(:document, :completed, :reviewed,:scrum_member_id, :alpha_item_id)
     end
 end

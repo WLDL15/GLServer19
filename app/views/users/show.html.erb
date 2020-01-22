@@ -23,14 +23,21 @@
 
             <%= f.label :point, "ポイント" %>
             <div class="list-group-item">
-              <span>総合ポイント：<%= @user.points_total %></span><span>　いいね：<%= @user.total_like %></span>
+              <span>総合ポイント：<%= @user.points_total %></span><span>　いいね：<%= @user.total_like %></span><span>　コメント：<%= @user.total_comment %></span>
             </div>
 
+            <%= f.label :badge, "獲得バッヂ" %>
+            <div class="list-group-item">
+              <% @user.badges.each do |badge| %>
+                <div class="badge badge-pill badge-primary"><%= badge.name %></div>
+              <% end %>
+           
+            </div>
             <%= f.label :last_login_date, "ログイン日時" %>
             <div class="list-group-item">
               <span><%= @user.last_login_date.strftime("%Y/%m/%d %H:%M:%S") %></span>
             </div>
-            
+
             <% end %>
           </section>
         </div>
