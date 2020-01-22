@@ -22,59 +22,36 @@
 
 
 <%= content_tag_for(:tr, @alpha_alphas) do |alpha_alpha| %>
-<div class="row px-5 py-1">
-  <%= content_tag_for(:td, alpha_alpha.alpha_states) do |alpha_state| %>
-    <% if alpha_state.progress_rate < 1 %>
+  <div class="row px-5 py-1">
+    <%= content_tag_for(:td, alpha_alpha.alpha_states) do |alpha_state| %>
       <div class="col-md-2 border-right border-dark">
-        <div class="card text-center border-dark shadow rounded">
-          <div class="card-header border-dark">
-              <%= alpha_alpha.dname %>
-              <%= alpha_state.completed_items %>/<%= alpha_state.alpha_items.size %>
-          </div>
-          <div class="card-body">
-            <p class="card-text">
-              <%= link_to alpha_state.dname,  alpha_state_path(alpha_state), class: 'btn btn-primary btn-block' %>
-            </p>
-            <% if false %>
-            <a class="btn btn-info btn-block p-2 event-spin" data-toggle="collapse" href="#<%= alpha_state.dname %>" role="button" aria-expanded="false" aria-controls="collapseExample">
-              進捗状況を見る <i class="fa fa-angle-double-down lotate-anime-before"></i>
-            </a>
-            <% end %>
-              進捗状況
-              <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated pg-primary " role="progressbar" style="width: <%= format("%d", alpha_state.progress_rate * 100) %>%;">
-                <%= format("%d", alpha_state.progress_rate * 100) %>%
-                </div>
-              </div>
-              <%= get_update(alpha_state) %>
-            </ul>
-          </div>
+        <% if alpha_state.progress_rate < 1 %>
+          <div class="card text-center border-dark shadow rounded">
+        <% else %>
+          <div class="card text-center border-dark completed-color shadow rounded">
+        <% end %>
+        <div class="card-header border-dark">
+          <%= alpha_alpha.dname %>
+          <% if alpha_state.progress_rate < 1 %>
+            <%= alpha_state.completed_items %>/<%= alpha_state.alpha_items.size %>
+          <% else %>
+            <%= alpha_state.completed_items %>/<%= alpha_state.alpha_items.size %><i class="far fa-check-circle"></i>
+          <% end %>
         </div>
-      </div>
-      <% else %>
-      <div class="col-md-2 border-right border-dark">
-        <div class="card text-center border-dark completed-color shadow rounded">
-          <div class="card-header border-dark">
-            <%= alpha_alpha.dname %>
-            <%= alpha_state.completed_items %>/<%= alpha_state.alpha_items.size %> <i class="far fa-check-circle"></i>
-          </div>
-          <div class="card-body">
-            <p class="card-text">
-              <%= link_to alpha_state.dname,  alpha_state_path(alpha_state), class: 'btn btn-primary btn-block' %>
-            </p>
-                進捗状況
-                <div class="progress">
-                  <div class="progress-bar progress-bar-striped progress-bar-animated pg-primary " role="progressbar" style="width: <%= format("%d", alpha_state.progress_rate * 100) %>%;">
-                    <%= format("%d", alpha_state.progress_rate * 100) %>%
-                  </div>
-                </div>
-                <%= get_update(alpha_state) %>
-              </li>
-            </ul>
+        <div class="card-body">
+          <p class="card-text">
+            <%= link_to alpha_state.dname,  alpha_state_path(alpha_state), class: 'btn btn-primary btn-block' %>
+          </p>
+          <div>進捗状況</div>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated pg-primary " role="progressbar" style="width: <%= format("%d", alpha_state.progress_rate * 100) %>%;">
+                <%= format("%d", alpha_state.progress_rate * 100) %>%
+              </div>
+            </div>
+            <%= get_update(alpha_state) %>
           </div>
         </div>
       </div>
     <% end %>
-  <% end %>
-</div>
+  </div>
 <% end %>
