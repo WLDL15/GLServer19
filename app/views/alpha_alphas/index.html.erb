@@ -46,13 +46,7 @@
                 <%= format("%d", alpha_state.progress_rate * 100) %>%
                 </div>
               </div>
-              <div class="badge badge-pill badge-info mt-2 mb-1">最終更新日:<%= alpha_state.created_at.strftime("%Y/%m/%d") %> </div>
-              <% if false %>
-              <li class="list-group-item">
-              最終更新日:
-              <%= alpha_state.created_at.strftime("%Y/%m/%d") %> 
-              </li>
-              <% end %>
+              <%= get_update(alpha_state) %>
             </ul>
           </div>
         </div>
@@ -74,7 +68,7 @@
                     <%= format("%d", alpha_state.progress_rate * 100) %>%
                   </div>
                 </div>
-                <div class="badge badge-pill badge-info mt-2 mb-1">最終更新日:<%= alpha_state.created_at.strftime("%Y/%m/%d") %> </div>
+                <%= get_update(alpha_state) %>
               </li>
             </ul>
           </div>
