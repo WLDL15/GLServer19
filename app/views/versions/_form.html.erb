@@ -1,4 +1,4 @@
-<%= bootstrap_form_for([@project, @version], html: { class: "form-horizontal", role: "form" }) do |form| %>
+<%= bootstrap_form_for([@project, @version], html: { class: "form-horizontal ml-3", role: "form" }) do |form| %>
   <% if @version.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@version.errors.count, "error") %> prohibited this version from being saved:</h2>
