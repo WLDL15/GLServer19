@@ -8,6 +8,25 @@
 }
 */
 
+body {
+  padding-top: 56px;
+}
+
+/* ナブバーのハンバーガーアイコンの枠線を消す */
+.navbar-dark .navbar-toggler {
+  border-color: $oit-school-color;
+}
+
+.footer {
+  padding-right: 65px;
+  padding-left: 15px;
+  padding-top: 4px;
+  padding-bottom: 7px;
+  margin-right: 0px;
+  margin-left: 0px;
+  background-color: gray('200');
+}
+
 .form-signin {
   width: 100%;
   max-width: 330px;
@@ -34,34 +53,25 @@
   border: 0;
 }
 
-.jumbotron {
-  background-image: url('study-862994_1920.jpg');
-  background-size: cover;
-  background-position: center 60%;
-  position: relative;
-  height: 80vh;
-  min-height: 300px;
-}
-
 /*
  * サイドバー
  */
 
 .sidebar {
-  /* position: fixed; */
-  top: 0;
+  position: fixed;
+  top: 56px;
   bottom: 0;
   left: 0;
   z-index: 100; /* ナビゲーションバーの背面 */
-  padding: 48px 0 0; /* ナビゲーションバーの高さ */
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
 .sidebar-sticky {
   position: relative;
   top: 0;
-  height: calc(100vh - 48px);
-  padding-top: 0.5rem;
+  height: 200px;
+  height: calc(50vh - 48px);
+  padding-top: 0rem;
   overflow-x: hidden;
   overflow-y: auto; /* ビューポートがコンテンツより短い場合、スクロール可能なコンテンツ */
 }

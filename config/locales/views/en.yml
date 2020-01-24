@@ -1,8 +1,8 @@
 en:
   application: 'Base18'
-  developer: 'Web Learning Environment Laboratory, Graduate School and Faculty of Information Science and Technology'
-  copyright: '@2018 Osaka Institute of Technology, All rights reserved.'
-  wellcome: 'Wellcome to Web Learning Environment Laboratory'
+  developer: '@2019 Web Learning Environment Laboratory, Graduate School and Faculty of Information Science and Technology'
+  copyright: '@2019.'
+  wellcome: 'Support your agile PBL projects'
   menu:
     about: 'About'
     contact: 'Contact'

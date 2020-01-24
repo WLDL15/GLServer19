@@ -1,13 +1,11 @@
-<div class="py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 p-5 d-flex flex-column justify-content-center bg-primary shadow-lg">
-        <h3 class="display-4 mb-3 text-white">GLServer</h3>
-        <p class="font-italic mb-4 h4">Support your project<br><br></p>
-      </div>
-      <div class="col-md-6 p-5 bg-light shadow-lg" >
-        <%= render 'layouts/login' %>
-      </div>
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-6 p-5 d-flex flex-column justify-content-center bg-primary shadow-lg">
+      <h3 class="display-4 mb-3 text-white"><%= t("application") %></h3>
+      <p class="h4 mb-4 text-white"><%= t("wellcome") %><br><br></p>
+    </div>
+    <div class="col-md-6 p-5 bg-light shadow-lg" >
+      <%= render 'layouts/login' %>
     </div>
   </div>
 </div>

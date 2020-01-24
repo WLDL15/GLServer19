@@ -1,8 +1,8 @@
 ja:
-  application: 'Base18'
-  developer: 'WEB学習環境研究室, 大阪工業大学　情報科学部'
-  copyright: '@2015-2019 Osaka Institute of Technology, All rights reserved.'
-  wellcome: 'WEB学習環境研究室にようこそ'
+  application: 'GLServer'
+  developer: '大阪工業大学 情報科学部 WEB学習環境研究室'
+  copyright: '@2019'
+  wellcome: 'アジャイル型PBLプロジェクトを支援します'
   menu:  
     account: 'アカウント'
     about: 'サイト情報'
