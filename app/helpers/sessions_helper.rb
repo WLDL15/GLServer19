@@ -3,6 +3,11 @@ module SessionsHelper
   def log_in(user)
     # session.clear
     session[:user_id] = user.id
+    if user.last_login_date.to_date != Date.today
+      user.add_points(1, "Awarded for some awesome action", "Login")
+    end
+    user.last_login_date = Time.now
+    user.save
   end
   
   def remember(user)
