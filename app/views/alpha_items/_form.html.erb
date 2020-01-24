@@ -1,28 +1,44 @@
-<% if @alpha_state.alpha_items.first.id == state_item.id %>
-<div class="card p-1 mt-1 border-dark f-selected" id=card<%= state_item.alpha_evidence.id %>>
-<% else %>
-<div class="card p-1 mt-1 border-dark" id=card<%= state_item.alpha_evidence.id %>>
-<% end %>
-  <div class="card-body" id="cardbodyselect">
-    <div class="row">
-      <div class="col-auto" id=icon<%= state_item.alpha_evidence.id %>>
-        <% if state_item.alpha_evidence.completed %>
-          <%= icon("far fa-lg","check-square") %>
-        <% else %>
+<% if @version_list.include?(state_evidence.alpha_item.alpha_item_def.item_level) %>
+  <% if @alpha_state.alpha_evidences.where(completed: false).first.id == state_evidence.id %>
+    <div class="card p-1 mt-1 border-dark f-selected" id=card<%= state_evidence.id %>>
+  <% else %>
+    <div class="card p-1 mt-1 border-dark" id=card<%= state_evidence.id %>>
+  <% end %>
+    <div class="card-body" id="cardbodyselect">
+      <div class="row">
+        <div class="col-auto" id=icon<%= state_evidence.id %>>
           <%= icon("far fa-lg","square") %>
-        <% end %>
-      </div>
-      <div class="col-7">
-        <%= state_item.ddescription %>
-      </div>
-      <div class="col-3 text-center" id=evidence-completed-<%= state_item.alpha_evidence.id %>>
-        <%= print_date(state_item.completed_at) %>
-      </div>
-      <div class="col-auto px-0 d-flex align-items-center">
-        <%= link_to "根拠", 'javascript:;', class: 'btn btn-primary evidence_button', id: state_item.alpha_evidence.id %>
+        </div>
+        <div class="col-7">
+          (<%= state_evidence.alpha_item.alpha_item_def.item_level %>)<%= state_evidence.alpha_item.ddescription %>
+        </div>
+        <div class="col-3 text-center" id=evidence-completed-<%= state_evidence.alpha_item.alpha_evidence.id %>>
+          <%= print_date(state_evidence.alpha_item.completed_at) %>
+        </div>
+        <div class="col-auto px-0 d-flex align-items-center">
+          <%= link_to "根拠", 'javascript:;', class: 'btn btn-primary evidence_button', id: state_evidence.alpha_item.alpha_evidence.id %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
+<% else %>
+  <div class="card p-1 mt-1 border-dark" id=card<%= state_evidence.id %>>
+    <div class="card-body" id="cardbodyselect">
+      <div class="row">
+        <div class="col-auto" id=icon<%= state_evidence.id %>>
+          <%= icon("far fa-lg","square") %>
+        </div>
+        <div class="col-7">
+          (<%= state_evidence.alpha_item.alpha_item_def.item_level %>)<%= state_evidence.alpha_item.ddescription %>
+        </div>
+        <div class="col-3 text-center" id=evidence-completed-<%= state_evidence.alpha_item.alpha_evidence.id %>>
+          <%= print_date(state_evidence.alpha_item.completed_at) %>
+        </div>
+        <div class="col-auto px-0 d-flex align-items-center">
+          <button type="button" class="btn btn-secondary">根拠</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 <!-- モーダルおわり -->

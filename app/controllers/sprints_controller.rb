@@ -1,6 +1,7 @@
 class SprintsController < ApplicationController
   before_action :set_sprint, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:index, :new, :create]
+  before_action :set_project, only: [:index, :index_by_project]
+  before_action :set_version, only: [:new, :create]
 
   # GET /projects/:project_id/sprints
   # GET /projects/:project_id/sprints.json
@@ -17,22 +18,29 @@ class SprintsController < ApplicationController
   # GET /projects/:project_id/sprints/new
   # GET /projects/:project_id/sprints/new.json
   def new
-     @sprint = @project.sprints.build
+     @sprint = @version.sprints.build
   end
 
   # GET /sprints/1/edit
   def edit
-    @project = @sprint.project
+    @version = @sprint.version
+  end
+
+  def index_by_project
+    @versions = @project.versions
+    @sprints = @project.sprints
+    render action: :index
   end
 
   # POST /projects/:project_id/sprints
   # POST /projects/:project_id/sprints.json
   def create
-    @sprint = @project.sprints.build(sprint_params)
+    @sprint = @version.sprints.build(sprint_params)
+    @sprint.project_id = @version.project_id
 
     respond_to do |format|
       if @sprint.save
-        format.html { redirect_to sprints_path(@project), notice: 'Sprint was successfully created.' }
+        format.html { redirect_to sprint_path(@sprint), notice: 'Sprint was successfully created.' }
         format.json { render :show, status: :created, location: @sprint }
       else
         format.html { render :new }
@@ -47,7 +55,7 @@ class SprintsController < ApplicationController
     @project = @sprint.project
     respond_to do |format|
       if @sprint.update(sprint_params)
-        format.html { redirect_to sprints_path(@project), notice: 'Sprint was successfully updated.' }
+        format.html { redirect_to sprint_path(@sprint), notice: 'Sprint was successfully updated.' }
         format.json { render :show, status: :ok, location: @sprint }
       else
         format.html { render :edit }
@@ -74,6 +82,10 @@ class SprintsController < ApplicationController
 
     def set_sprint
       @sprint = Sprint.find(params[:id])
+    end
+
+    def set_version
+      @version = Version.find(params[:version_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

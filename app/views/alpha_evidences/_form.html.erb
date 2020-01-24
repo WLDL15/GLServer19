@@ -3,7 +3,7 @@
     <div class="col-8">
 
     <h4><i class="far fa-eye"></i> 根拠</h4>
-    <%= form_for [@alpha_item, @alpha_evidence], remote: true do |form| %>
+    <%= form_for [@alpha_item, @alpha_evidence] do |form| %>
     
         <div class="field">
         <%= form.text_area :document, id: :alpha_evidence_document, size: "50x5" %>
@@ -13,14 +13,23 @@
 
           <div class="col">
             <div class="field ml-2">
+            <% if !@alpha_evidence.completed %>
               <%= form.check_box :completed, id: :alpha_evidence_completed %>
               <%= form.label "完了", {class: 'ml-1 sizing-120'}%>
+            <% elsif @version_list.max != @alpha_item.alpha_item_def.item_level and !@alpha_evidence.reviewed %>
+              <%= form.check_box :reviewed, id: :alpha_evidence_reviewed %>
+              <%= form.label "確認", {class: 'ml-1 sizing-120'}%>
+            <% end %>
             </div>
           </div>
 
           <div class="col text-right">
             <div class="actions">
-            <%= form.submit "変更する", class: "btn btn-primary" %>
+              <% if !@alpha_evidence.reviewed %>
+                <%= form.submit "変更する", class: "btn btn-primary" %>
+              <% else %>
+                <button type="button" class="btn btn-secondary">変更する</button>
+              <% end %>
             </div>
           </div>
 
@@ -57,6 +66,7 @@
                               <i class="far fa-heart"></i>
                             <% end %>
                           <% end %>
+                          <span id="count_like_<%= comment.id %>">(<%= comment.like_count %>)</span>
 
                           | </span>
                           <span class="cday-style"><%= comment.how_long_ago %></span>
