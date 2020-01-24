@@ -43,12 +43,14 @@ class AlphaEvidencesController < ApplicationController
       if @alpha_evidence.completed == false
         changed = 1
         @alpha_evidence.completed_at = DateTime.now
+        @alpha_state.update_evidence = Date.today
         @users.each do |user|
           user.add_points(@alpha_item_def.item_point, "Awarded for some awesome action", "Completed")
         end
         # completed が true のときに根拠が変更されたとき、completed_at に現在日時を設定する
       elsif params[:alpha_evidence][:document] != @alpha_evidence.document
         @alpha_evidence.completed_at = DateTime.now
+        @alpha_state.update_evidence = Date.today
       end
     elsif @alpha_evidence.completed == true
       # 根拠が完了だったときに、completed を false に変更する
@@ -64,6 +66,7 @@ class AlphaEvidencesController < ApplicationController
         if @alpha_state.alpha_items.size == @alpha_state.completed_items
           @alpha_state.completed = true
           @alpha_state.completed_at = DateTime.now
+          @alpha_state.update_evidence = Date.today
         else
           @alpha_state.completed = false
         end
