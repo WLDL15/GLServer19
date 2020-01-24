@@ -1,26 +1,26 @@
 <div class="container form-signin">
   <div class="text-center">
     <%= form_for(:session, url: login_path) do |f| %>
-        <h1 class="h3 font-weight-normal text-white">ログインしてください</h1>
+        <h1 class="h3 font-weight-normal">ログインしてください</h1>
         <%= f.label :email, class: "sr-only" %>
-        <%= f.email_field :email, class: 'form-control', placeholder: "Email address" %>
+        <%= f.email_field :email, class: "form-control shadow-lg", placeholder: "Email address" %>
 
         <%= f.label :password, class: "sr-only"  %>
-        <%= f.password_field :password, class: 'form-control mt-2', placeholder: "Password" %>
+        <%= f.password_field :password, class: "form-control mt-2 shadow-lg", placeholder: "Password" %>
 
-        <div class="checkbox text-left">
-          <%= f.label :remember_me, class: "inline w-100 ml-2 mt-2" do %>
-            <%= f.check_box :remember_me %>
+        <div class="form-group form-check my-2 pl-0">
+          <%= f.check_box :remember_me, class: "form-check-input" %>
+          <%= f.label :remember_me, class: "form-check-label" do %>
             <span class="text-black">Remember me on this computer</span>
           <% end %>
         </div>
 
         <!-- 
-        %= link_to t('menu.login'), signup_path, class: "btn btn-lg btn-primary btn-block" %>
+        %= link_to t("menu.login"), signup_path, class: "btn btn-lg btn-primary btn-block" %>
         -->
 
-        <%= f.submit t('menu.login'), class: "btn btn-lg btn-primary btn-block" %>
-        <%= link_to t('menu.signup'), new_user_path, class: "btn btn-lg btn-primary btn-block" %>
+        <%= f.submit t("menu.login"), class: "btn btn-lg btn-primary btn-block shadow-lg", role: "button", "aria-pressed": "true" %>
+        <%= link_to t("menu.signup"), new_user_path, class: "btn btn-lg btn-primary btn-block shadow-lg" %>
       <% end %>
   </div>
 </div>

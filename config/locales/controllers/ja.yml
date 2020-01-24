@@ -1,7 +1,7 @@
 ja:
   users_controller:
     create:
-      flash_success: 'BASE17へようこそ！'
+      flash_success: '#{t("application")}へようこそ！'
     update:
       flash_success: 'プロフィールが更新されました'
     destroy:

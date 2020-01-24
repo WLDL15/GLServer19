@@ -1,31 +1,25 @@
-<div class="container-fluid pt-5">
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <div class="card p-4 bg-info text-dark">
+<div class="container-fluid m-2">
+  <div class="row justify-content-md-center">
+    <div class="card bg-info text-dark">
         <div class="card-body">
-          <%= form_for(@user) do |f| %>
+          <%= bootstrap_form_for(@user, html: { class: "form-horizontal", role: "form" }) do |f| %>
           <%= render 'shared/error_messages' %>
 
           <h2>新規アカウント作成</h2>
 
-          <%= f.label :name, "ユーザ名" %>
-          <%= f.text_field :name, class: 'form-control', :placeholder => "e1c00999" %>
+          <%= f.text_field :name, label: 'ユーザ名', placeholder: 'example' %>
 
-          <%= f.label :email, "メールアドレス" %>
-          <%= f.email_field :email, class: 'form-control', :placeholder => "example@company.com" %>
+          <%= f.email_field :email, label: 'メールアドレス', placeholder: "example@company.com" %>
 
-          <%= f.label :password, "パスワード" %>
-          <%= f.password_field :password, class: 'form-control', :placeholder => "Password" %>
+          <%= f.password_field :password, label: 'パスワード', placeholder: "Password" %>
 
-          <%= f.label :password_confirmation, "パスワード(確認用)" %>
-          <%= f.password_field :password_confirmation, class: 'form-control', :placeholder => "Password(Confirmation)" %>
-          <%= f.submit "アカウントを作成する", class: "btn btn-lg btn-block btn-primary" %>
+          <%= f.password_field :password_confirmation, label: 'パスワード(確認用)', placeholder: "Password(Confirmation)" %>
+
+          <%= f.submit "アカウントを作成する", class: "btn btn-lg btn-block btn-primary mt-2" %>
+
+          <%= link_to "アカウント作成を中止する", root_path, class: 'mt-5 text-white' %>
 
           <% end %>
-
-          <%= link_to "アカウント作成を中止する", root_path %>
-        </div>
       </div>
     </div>
   </div>

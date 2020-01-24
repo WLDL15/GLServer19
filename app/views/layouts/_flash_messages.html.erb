@@ -1,0 +1,10 @@
+<div class="container remove-left-margin col-sm-10" id="koushin">
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do %>
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+      <%= msg %>
+    <% end %>
+  <% end %>
+</div>
