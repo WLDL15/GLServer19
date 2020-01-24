@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(@sprint, url: moderate_new_edit_path(@project, @sprint), html: { class: "form-horizontal", role: "form" }) do |f| %>
+<%= bootstrap_form_for(@sprint, url: moderate_new_edit_path(@version, @sprint), html: { class: "form-horizontal", role: "form" }) do |f| %>
   <% if @sprint.errors.any? %>
     <div class="alert alert-danger alert-dismissable" role="alert">
     <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -27,6 +27,6 @@
 
   <%= f.submit moderate_new_edit_button_label(), class: "btn btn-primary" %>
 
-  <%= link_to 'キャンセル', sprints_path(@project), class: "btn btn-primary"  %>
+  <%= link_to 'キャンセル', project_sprints_path(@version.project), class: "btn btn-primary"  %>
 
   <% end %>

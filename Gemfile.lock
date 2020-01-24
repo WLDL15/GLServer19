@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/WLDL15/honor5.git
+  revision: 22754a940a077658f384fc78fdaab3b98600f16a
+  specs:
+    honor (2.0.1)
+      rails (>= 4.0)
+
+GIT
   remote: https://github.com/codahale/bcrypt-ruby.git
   revision: 4279fa01f083b48de9a18c54423453059074ba77
   specs:
@@ -261,6 +268,7 @@ DEPENDENCIES
   faker (= 1.4.2)
   font-awesome-sass
   guard-minitest (= 2.3.1)
+  honor!
   jbuilder (= 2.7.0)
   jquery-rails
   minitest-reporters (= 1.0.5)

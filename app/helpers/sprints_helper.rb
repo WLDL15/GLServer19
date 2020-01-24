@@ -27,7 +27,7 @@ module SprintsHelper
 	def get_sprintno
 		case controller.action_name
 		when "new", "create"
-			@lastnum = Sprint.where(project_id: params[:project_id]).last
+			@lastnum = Sprint.where(project_id: @version.project_id).last
 			if @lastnum == nil
 				@num = 1
 			else 
@@ -49,9 +49,9 @@ module SprintsHelper
 		end
 	end
 
-	def moderate_new_edit_path(project, sprint)
+	def moderate_new_edit_path(version, sprint)
 		if controller.action_name == "new"
-			project_sprints_path(project)
+			version_sprints_path(version)
 		else
 			sprint_path(sprint)
 		end

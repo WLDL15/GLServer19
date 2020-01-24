@@ -11,5 +11,6 @@ class CreateAlphaComments < ActiveRecord::Migration[5.1]
     end
     remove_foreign_key :alpha_comments, :scrum_members
     remove_reference :alpha_comments, :scrum_member
+    add_column :alpha_comments, :like_count, :integer, default: 0
   end
 end

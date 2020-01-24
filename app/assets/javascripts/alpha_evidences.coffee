@@ -2,17 +2,17 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-
+###
 $(document).on 'ajax:success','.edit_alpha_evidence', (e, data) ->
-    console.log 'aaaaa'
-    if data.completed
-        $('#icon' + data.id).empty()
-        $('#icon' + data.id).append('<i class="far fa-lg fa-check-square"></i>')
-        $('#evidence-completed-' + data.id).html(data.date)
-    else
-        $('#icon' + data.id).empty()
-        $('#icon' + data.id).append('<i class="far fa-lg fa-square"></i>')
-        $('#evidence-completed-' + data.id).html("")
+    if data.save
+        if data.completed
+            $('#icon' + data.id).empty()
+            $('#icon' + data.id).append('<i class="far fa-lg fa-check-square"></i>')
+            $('#evidence-completed-' + data.id).html(data.date)
+        else
+            $('#icon' + data.id).empty()
+            $('#icon' + data.id).append('<i class="far fa-lg fa-square"></i>')
+            $('#evidence-completed-' + data.id).html("")
 
     $('.edit_alpha_evidence').on 'ajax:error', (e, data) ->
         alert '保存されませんでした'
@@ -33,3 +33,4 @@ $(document).on 'turbolinks:load', ->
 
     $('.edit_alpha_evidence').on 'ajax:error', (e, data) ->
         alert '保存されませんでした'
+###

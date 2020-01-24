@@ -21,7 +21,7 @@ $(document).on 'turbolinks:load ajax:success','.like_create', (e, options) ->
     input_html set_area, options
     $(this).off('ajax:success')
     
-$(document).on 'ajax:success','.like_delete', (e, options) ->
+$(document).on 'turbolinks:load ajax:success','.like_delete', (e, options) ->
     set_area = $(this)
     out_html set_area, options
     $(this).off('ajax:success')
@@ -34,6 +34,7 @@ input_html = (area, create) ->
     area.data('method', 'delete')
     area.addClass('like_delete')
     area.removeClass('like_create')
+    $("#count_like_" + create.alpha_comment_id ).html('(' + create.count + ')')
 
 out_html = (area, destroy) ->
     like_url = "/alpha_comments/" + destroy.id + "/likes"
@@ -42,3 +43,4 @@ out_html = (area, destroy) ->
     area.data('method', 'post')
     area.addClass('like_create')
     area.removeClass('like_delete')
+    $("#count_like_" + destroy.id ).html('(' + destroy.count + ')')

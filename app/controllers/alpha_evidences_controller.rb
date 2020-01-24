@@ -35,15 +35,22 @@ class AlphaEvidencesController < ApplicationController
   # PATCH/PUT /alpha_evidences/1
   # PATCH/PUT /alpha_evidences/1.json
   def update
+    @users = @project.users
+    @alpha_item_def = @alpha_item.alpha_item_def
     changed = 0
     if params[:alpha_evidence][:completed] == "1"
       # completed が true に変更されたとき、completed_at に現在日時を設定する
       if @alpha_evidence.completed == false
         changed = 1
         @alpha_evidence.completed_at = DateTime.now
+        @alpha_state.update_evidence = Date.today
+        @users.each do |user|
+          user.add_points(@alpha_item_def.item_point, "Awarded for some awesome action", "Completed")
+        end
         # completed が true のときに根拠が変更されたとき、completed_at に現在日時を設定する
       elsif params[:alpha_evidence][:document] != @alpha_evidence.document
         @alpha_evidence.completed_at = DateTime.now
+        @alpha_state.update_evidence = Date.today
       end
     elsif @alpha_evidence.completed == true
       # 根拠が完了だったときに、completed を false に変更する
@@ -52,17 +59,21 @@ class AlphaEvidencesController < ApplicationController
 
     success = true
     success = @alpha_evidence.update(alpha_evidence_params)
+    @evidence_save = false
     if success
       if changed != 0
         @alpha_state.completed_items += changed
         if @alpha_state.alpha_items.size == @alpha_state.completed_items
           @alpha_state.completed = true
           @alpha_state.completed_at = DateTime.now
+          @alpha_state.update_evidence = Date.today
         else
           @alpha_state.completed = false
         end
         success = @alpha_state.save
+        @evidence_save = true
       end
+      redirect_to alpha_state_path(id: @alpha_state.id)
     end
   end
 
@@ -78,6 +89,6 @@ class AlphaEvidencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def alpha_evidence_params
-      params.require(:alpha_evidence).permit(:document, :completed, :scrum_member_id, :alpha_item_id)
+      params.require(:alpha_evidence).permit(:document, :completed, :reviewed,:scrum_member_id, :alpha_item_id)
     end
 end
