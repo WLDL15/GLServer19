@@ -1,21 +1,25 @@
 <div class="page-header">
-  <!--<h1><%= @alpha_state.dname %></h1>-->
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item active" aria-current="page">
-        <%= link_to @project.get_framework_dname, project_alpha_alphas_path(@project) %>
-      </li>
-      <li class="breadcrumb-item active" aria-current="page">
-        <%= @alpha_alpha.dname %>
-      </li>
-      <li class="breadcrumb-item active" aria-current="page">
-        チェックリスト
-      </li>
-    </ol>
-  </nav>
+      <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+              <%= link_to @project.get_framework_dname, project_alpha_alphas_path(@project) %>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              <%= @alpha_alpha.dname %>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              チェックリスト
+            </li>
+            <li class="ml-auto">
+              <h5 class="mb-0">
+                Level:<%= @version_list.max %>
+              </h5>
+            </li>
+          </ol>
+          
+      </nav>
 </div>
 
-<h3 class="px-2">Level:<%= @version_list.max %></h3>
 <!-- 状態のボタン -->
 <div class="row pl-2">
   <% @alpha_alpha.alpha_states.each_with_index do |alpha_state, index| %>

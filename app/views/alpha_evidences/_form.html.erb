@@ -2,13 +2,21 @@
   <div class="row">
     <div class="col-8">
 
-    <h4><i class="far fa-eye"></i> 根拠</h4>
+    <div class="row">
+      <div class="col">
+        <h4><i class="far fa-eye"></i> 根拠</h4>
+      </div>
+      <div class="col text-right">
+        <%= put_update_user %>
+      </div>
+    </div>
+
     <%= form_for [@alpha_item, @alpha_evidence] do |form| %>
     
         <div class="field">
         <%= form.text_area :document, id: :alpha_evidence_document, size: "50x5" %>
         </div>
-        
+
         <div class="row">
 
           <div class="col">
@@ -18,7 +26,7 @@
               <%= form.label "完了", {class: 'ml-1 sizing-120'}%>
             <% elsif @version_list.max != @alpha_item.alpha_item_def.item_level and !@alpha_evidence.reviewed %>
               <%= form.check_box :reviewed, id: :alpha_evidence_reviewed %>
-              <%= form.label "確認", {class: 'ml-1 sizing-120'}%>
+              <%= form.label "確認", {class: 'ml-1 sizing-120'}%> 
             <% end %>
             </div>
           </div>
