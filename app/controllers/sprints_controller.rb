@@ -34,6 +34,9 @@ class SprintsController < ApplicationController
   def index_by_project
     @versions = @project.versions
     @sprints = @project.sprints
+    if @versions.exists?
+      @check_version = @project.start - 1
+    end
     render action: :index
   end
 

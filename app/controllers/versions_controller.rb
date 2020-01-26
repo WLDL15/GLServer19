@@ -32,12 +32,12 @@ class VersionsController < ApplicationController
   # POST /versions.json
   def create
     @version = @project.versions.build(version_params)
-    @version.end = @version.start + (@project.length * @version.length)
+    @version.end = @version.start + ((@project.length * @version.length) - 1)
 
     respond_to do |format|
       if @version.save
-        @version.length.times do |length|
-          @version.sprints.create()
+        @version.length.times do |index|
+          @sprint = @version.sprints.create(no: create_get_sprintno, project_id: @project.id, start: return_start(index), end: return_end(index))
         end
         format.html { redirect_to @version, notice: 'Version was successfully created.' }
         format.json { render :show, status: :created, location: @version }
@@ -52,9 +52,13 @@ class VersionsController < ApplicationController
   # PATCH/PUT /versions/1.json
   def update
     @project = @version.project
-    @version.end = @version.start + (@project.length * 2 - 1)
+    @version.end = params[:version][:start].to_date + (@project.length * params[:version][:length].to_i - 1)
+    length = @version.length
+    before_date = @version.start
     respond_to do |format|
       if @version.update(version_params)
+        update_date(before_date)
+        update_length(length)
         format.html { redirect_to @version, notice: 'Version was successfully updated.' }
         format.json { render :show, status: :ok, location: @version }
       else
