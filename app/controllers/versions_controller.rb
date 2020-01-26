@@ -16,7 +16,12 @@ class VersionsController < ApplicationController
 
   # GET /versions/new
   def new
-    @version = @project.versions.build
+    @version = @project.versions.new
+    if @project.versions.exists?
+      @version.start = @project.versions.maximum(:end) + 1
+    else
+      @version.start = @project.start
+    end
   end
 
   # GET /versions/1/edit
@@ -27,9 +32,13 @@ class VersionsController < ApplicationController
   # POST /versions.json
   def create
     @version = @project.versions.build(version_params)
+    @version.end = @version.start + (@project.length * @version.length)
 
     respond_to do |format|
       if @version.save
+        @version.length.times do |length|
+          @version.sprints.create()
+        end
         format.html { redirect_to @version, notice: 'Version was successfully created.' }
         format.json { render :show, status: :created, location: @version }
       else
@@ -43,6 +52,7 @@ class VersionsController < ApplicationController
   # PATCH/PUT /versions/1.json
   def update
     @project = @version.project
+    @version.end = @version.start + (@project.length * 2 - 1)
     respond_to do |format|
       if @version.update(version_params)
         format.html { redirect_to @version, notice: 'Version was successfully updated.' }
@@ -76,6 +86,6 @@ class VersionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def version_params
-      params.require(:version).permit(:name, :goal, :start, :end, :level, :project_id)
+      params.require(:version).permit(:name, :goal, :start, :end, :level, :project_id, :length)
     end
 end

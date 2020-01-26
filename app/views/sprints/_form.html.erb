@@ -21,9 +21,25 @@
   <%= f.hidden_field :no, :value => get_sprintno %>
   <%= f.hidden_field :project_id, :value => get_project %>
 
-  <%= f.date_field :start, label: "開始日" %>
-  <%= f.date_field :end, label: "終了日" %>
-  <%= f.text_area :description, label: "スプリントゴール", :rows => '3' %>
+  <% if controller.action_name != "new" %>
+    <% if @sprint.start > Date.today %>
+      <%= f.date_field :start, label: "開始日" %>
+      <%= f.date_field :end, label: "終了日" %>
+      <%= f.text_area :description, label: "スプリントゴール", :rows => '3' %>
+    <% elsif @sprint.end > Date.today %>
+      <%= f.date_field :start, label: "開始日", readonly: true %>
+      <%= f.date_field :end, label: "終了日", readonly: true %>
+      <%= f.text_area :description, label: "スプリントゴール", :rows => '3' %>
+    <% else %>
+      <%= f.date_field :start, label: "開始日", readonly: true %>
+      <%= f.date_field :end, label: "終了日" , readonly: true %>
+      <%= f.text_area :description, label: "スプリントゴール", :rows => '3', readonly: true %>
+    <% end %>
+  <% else %>
+    <%= f.date_field :start, label: "開始日" %>
+    <%= f.date_field :end, label: "終了日" %>
+    <%= f.text_area :description, label: "スプリントゴール", :rows => '3' %>
+  <% end %>
 
   <%= f.submit moderate_new_edit_button_label(), class: "btn btn-primary" %>
 
