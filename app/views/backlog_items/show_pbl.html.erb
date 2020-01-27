@@ -16,56 +16,61 @@
   <h1>プロダクトバックログ項目の詳細</h1>
 </div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4">
 
+<div class="container-fluid p-0">
+<dl class="row">
 
-<dl class="dl-horizontal">
+  <dt class="col-3">項目番号:</dt>
+  <dd class="col-9 pb-1"><%= @backlog_item.no %></dd>
 
-  <dt>項目番号:</dt>
-  <dd><%= @backlog_item.no %></dd>
-
-  <dt>スプリント:</dt>
+  <dt class="col-3">スプリント:</dt>
   <% if @backlog_item.sprint == nil %> 
-  <dd>未選択</dd>
+  <dd class="col-9 pb-1">未選択</dd>
   <% else %>
-  <dd>第<%= @backlog_item.sprint.no %>スプリント</dd>
+  <dd class="col-9 pb-1">第<%= @backlog_item.sprint.no %>スプリント</dd>
   <% end %>
 
-  <dt>開発タイプ:</dt>
-  <dd><%= @backlog_item.dev_type %></dd>
+  <dt class="col-3">開発タイプ:</dt>
+  <dd class="col-9 pb-1"><%= @backlog_item.dev_type %></dd>
 
-  <dt>状態:</dt>
-  <dd><%= BacklogItem::BACKLOG_ITEM_ROLS[@backlog_item.state] %></dd>
+  <dt class="col-3">状態:</dt>
+  <dd class="col-9 pb-1"><%= BacklogItem::BACKLOG_ITEM_ROLS[@backlog_item.state] %></dd>
 
-  <dt>見積り:</dt>
-  <dd><%= @backlog_item.estimate %></dd>
+  <dt class="col-3">見積り:</dt>
+  <dd class="col-9 pb-1"><%= @backlog_item.estimate %></dd>
 
-  <dt>開始日:</dt>
-  <dd><%= @backlog_item.started_at %></dd>
+  <dt class="col-3">開始日:</dt>
+  <dd class="col-9 pb-1"><%= @backlog_item.started_at %></dd>
 
-  <dt>終了日:</dt>
-  <dd><%= @backlog_item.ended_at %></dd>
+  <dt class="col-3">終了日:</dt>
+  <dd class="col-9 pb-1"><%= @backlog_item.ended_at %></dd>
 
-  <dt>内容:</dt>
-  <dd><%= @backlog_item.description %></dd>
+  <dt class="col-3">内容:</dt>
+  <dd class="col-9 pb-1"><%= @backlog_item.description %></dd>
 
-  <dt>備考:</dt>
-  <dd><%= @backlog_item.supplement %></dd>
+  <dt class="col-3">備考:</dt>
+  <dd class="col-9 pb-1"><%= @backlog_item.supplement %></dd>
 
-  <dt>優先度:</dt>
-  <dd><%= @backlog_item.priority %></dd>
+  <dt class="col-3">優先度:</dt>
+  <dd class="col-9 pb-1"><%= @backlog_item.priority %></dd>
 
-  <dt>価値:</dt>
-  <dd><%= @backlog_item.value %></dd>
+  <dt class="col-3">価値:</dt>
+  <dd class="col-9 pb-1"><%= @backlog_item.value %></dd>
 
-  <dt>作成者:</dt>
-  <dd><%= @author.name %></dd>
+  <dt class="col-3">作成者:</dt>
+  <dd class="col-9 pb-1"><%= @author.name %></dd>
 
-  <dt>作成日:</dt>
-  <dd><%= @backlog_item.created_at.to_s(:published_on) %></dd>
+  <dt class="col-3">作成日:</dt>
+  <dd class="col-9 pb-1"><%= @backlog_item.created_at.to_s(:published_on) %></dd>
 
 </dl>
+</div>
+</div>
 
-<div class="table-responsive">
+<div class="col-8 table-responsive p-0">
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
@@ -92,4 +97,7 @@
 
     </tbody>
   </table>
+</div>
+
+</div>
 </div>
