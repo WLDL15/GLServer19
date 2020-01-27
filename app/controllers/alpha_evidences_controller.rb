@@ -73,8 +73,8 @@ class AlphaEvidencesController < ApplicationController
         success = @alpha_state.save
         @evidence_save = true
       end
-      redirect_to alpha_state_path(id: @alpha_state.id)
     end
+    redirect_to alpha_state_path(id: @alpha_state.id)
   end
 
   private

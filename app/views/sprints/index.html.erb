@@ -30,8 +30,15 @@
     <tbody>
       <%= content_tag_for(:tr, @versions) do |version| %>
         <td align="right"><%= version.name %></td>
-        <td><%= version.start.to_s(:default) %></td>
-        <td><%= version.end.to_s(:default) %></td>
+        <% if @check_version < version.start %>
+          <td><%= version.start.to_s(:default) %></td>
+          <td><%= version.end.to_s(:default) %></td>
+        <% else %>
+          <td class="text-danger"><%= version.start.to_s(:default) %><div class="badge badge-danger">！</div></td>
+          <td class="text-danger"><%= version.end.to_s(:default) %></td>
+        <% end %>
+        <% @check_version = version.end %>
+
         <td><%= version.goal %></td>
         <td><%= version.level %></td>
         <td align="center">
@@ -46,9 +53,16 @@
           <% end %>
         </td>
         <td>
-          <%= link_to new_version_sprint_path(version), class: 'btn btn-primary' do %>
-            <%= icon("fas","plus") %>
-            新規スプリント
+          <% if version.end > Date.today %>
+            <%= link_to new_version_sprint_path(version), class: 'btn btn-primary' do %>
+              <%= icon("fas","plus") %>
+              新規スプリント
+            <% end %>
+          <% else %>
+            <%= link_to "#", class: 'btn btn-secondary' do %>
+              <%= icon("fas","plus") %>
+              新規スプリント
+            <% end %>
           <% end %>
         </td>
 
