@@ -18,7 +18,12 @@ class SprintsController < ApplicationController
   # GET /projects/:project_id/sprints/new
   # GET /projects/:project_id/sprints/new.json
   def new
-     @sprint = @version.sprints.build
+    @sprint = @version.sprints.new
+    if @version.sprints.exists?
+      @sprint.start = @version.sprints.maximum(:end) + 1
+    else
+      @sprint.start = @version.start
+    end
   end
 
   # GET /sprints/1/edit
@@ -29,6 +34,9 @@ class SprintsController < ApplicationController
   def index_by_project
     @versions = @project.versions
     @sprints = @project.sprints
+    if @versions.exists?
+      @check_version = @project.start - 1
+    end
     render action: :index
   end
 

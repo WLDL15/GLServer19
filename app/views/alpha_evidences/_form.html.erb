@@ -25,8 +25,10 @@
 
           <div class="col text-right">
             <div class="actions">
-              <% if !@alpha_evidence.reviewed %>
+              <% if @version_list.include?(@alpha_item.alpha_item_def.item_level) %>
                 <%= form.submit "変更する", class: "btn btn-primary" %>
+              <% elsif @alpha_evidence.reviewed %>
+                <button type="button" class="btn btn-secondary">変更する</button>
               <% else %>
                 <button type="button" class="btn btn-secondary">変更する</button>
               <% end %>
