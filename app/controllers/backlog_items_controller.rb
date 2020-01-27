@@ -164,7 +164,7 @@ end
       end
 
       if item.state == 3 && item.ended_at == nil
-        @assign_user.add_points(114514, "Awarded for some awesome action", "ChangeSBL")
+        @assign_user.add_points(2, "Awarded for some awesome action", "ChangeSBL")
         item.ended_at = Time.now()
       end
       item.save

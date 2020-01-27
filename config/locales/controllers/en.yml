@@ -1,7 +1,7 @@
 ja:
   users_controller:
     create:
-      flash_success: 'Welcome to the BASE17!'
+      flash_success: 'Welcome to the #{t("application")}!'
     update:
       flash_success: 'Profile updated'
     destroy:
