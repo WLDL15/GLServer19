@@ -1,4 +1,9 @@
+
+<% if @stage == 1 and @alpha_evidence.id == state_evidence.id %>
+<div class="card p-1 mt-1 border-dark f-selected" id=card<%= state_evidence.id %>>
+<% else %>
 <div class="card p-1 mt-1 border-dark" id=card<%= state_evidence.id %>>
+<% end %>
     <div class="card-body" id="cardbodyselect">
       <div class="row">
         <div class="col-auto" id=icon<%= state_evidence.id %>>
