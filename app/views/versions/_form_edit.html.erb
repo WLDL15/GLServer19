@@ -11,7 +11,35 @@
     </div>
   <% end %>
 
-  <% if @version.start > Date.today %>
+  <% if current_project.versions.where.not(id: @version.id).where('start <= ? and end >= ?', @version.end, @version.start).exists? or current_project.start > @version.start%>
+    <div class="field">
+      <%= form.text_field :name, id: :version_name, readonly: true %>
+    </div>
+
+    <div class="field">
+      <%= form.text_area :goal, id: :version_goal, readonly: true %>
+    </div>
+
+    <div class="field">
+      <%= form.date_field :start, id: :version_starte %>
+    </div>
+
+    <div class="field">
+      <%= form.number_field :length, id: :length_end, min:0 %>
+    </div>
+
+    <div class="field">
+      <%= form.number_field :level, id: :version_level, readonly: true %>
+    </div>
+
+    <div class="field">
+      <%= form.hidden_field :project_id, id: :version_project_id %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
+  <% elsif @version.start > Date.today %>
     <div class="field">
       <%= form.text_field :name, id: :version_name %>
     </div>
@@ -25,11 +53,11 @@
     </div>
 
     <div class="field">
-      <%= form.number_field :length, id: :length_end %>
+      <%= form.number_field :length, id: :length_end,min:0 %>
     </div>
 
     <div class="field">
-      <%= form.number_field :level, id: :version_level %>
+      <%= form.number_field :level, id: :version_level,min:1,max:5 %>
     </div>
 
     <div class="field">
@@ -53,7 +81,7 @@
     </div>
 
     <div class="field">
-      <%= form.number_field :length, id: :length_end, readonly: true %>
+      <%= form.number_field :length, id: :length_end,min:0 %>
     </div>
 
     <div class="field">
