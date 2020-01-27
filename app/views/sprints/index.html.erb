@@ -46,9 +46,16 @@
           <% end %>
         </td>
         <td>
-          <%= link_to new_version_sprint_path(version), class: 'btn btn-primary' do %>
-            <%= icon("fas","plus") %>
-            新規スプリント
+          <% if version.end > Date.today %>
+            <%= link_to new_version_sprint_path(version), class: 'btn btn-primary' do %>
+              <%= icon("fas","plus") %>
+              新規スプリント
+            <% end %>
+          <% else %>
+            <%= link_to "#", class: 'btn btn-secondary' do %>
+              <%= icon("fas","plus") %>
+              新規スプリント
+            <% end %>
           <% end %>
         </td>
 

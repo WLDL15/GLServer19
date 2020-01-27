@@ -14,7 +14,7 @@ class AlphaStatesController < ApplicationController
     @alpha_state = AlphaState.find(params[:id])
     @project = @alpha_state.alpha_alpha.alpha_framework.project
 
-    @version_list = []
+    @version_list = [0]
     @versions = @project.versions.where('start <= ?', Date.today).where('end >= ?', Date.today)
     @versions.each do |version|
       (version.level + 1).times do |count|
