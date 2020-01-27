@@ -34,7 +34,7 @@
           <td><%= version.start.to_s(:default) %></td>
           <td><%= version.end.to_s(:default) %></td>
         <% else %>
-          <td class="text-danger"><%= version.start.to_s(:default) %><div class="badge badge-danger">上記バージョン期間と<br/>整合性が取れません！</div></td>
+          <td class="text-danger"><%= version.start.to_s(:default) %><div class="badge badge-danger">！</div></td>
           <td class="text-danger"><%= version.end.to_s(:default) %></td>
         <% end %>
         <% @check_version = version.end %>
