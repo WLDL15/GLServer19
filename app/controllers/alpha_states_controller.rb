@@ -29,7 +29,14 @@ class AlphaStatesController < ApplicationController
       @alpha_evidence = @alpha_item.alpha_evidence
       render partial: "alpha_evidences/form"
     else
-      @alpha_evidence = @alpha_state.alpha_evidences.where(completed: false).first
+      if @alpha_evidence = @alpha_state.alpha_evidences.where(completed: false).first
+        @stage = 0
+      elsif @alpha_evidence = @alpha_state.alpha_evidences.where(completed: true, reviewed: false).first
+        @stage = 1
+      else 
+        @alpha_evidence = @alpha_state.alpha_evidences.where(reviewed: true).first
+        @stage = 2
+      end
       @alpha_item = @alpha_evidence.alpha_item
     end
   end
