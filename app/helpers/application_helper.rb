@@ -52,9 +52,11 @@ module ApplicationHelper
   end
 
   # サイドバー用の HTML 要素を生成する
-  def sidebar_link_item(name, path)
-    class_name = 'nav-item'
-
-    link_to name, path, class: 'list-group-item list-group-item-action font-weight-bold bg-secondary'
+  def sidebar_link_item(name, path, target)
+    if controller.controller_name == target
+      link_to name, path, class: 'list-group-item list-group-item-action font-weight-bold bg-secondary active'
+    else
+      link_to name, path, class: 'list-group-item list-group-item-action font-weight-bold bg-secondary'
+    end
   end
 end
