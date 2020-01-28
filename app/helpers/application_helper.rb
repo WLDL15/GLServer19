@@ -55,16 +55,6 @@ module ApplicationHelper
   def sidebar_link_item(name, path)
     class_name = 'nav-item'
 
-    if current_page?(path)
-      class_name << ' active'
-    
-      content_tag :li, class: class_name do
-        (link_to name, path, class: 'nav-link text-white')
-      end
-    else
-      content_tag :li, class:class_name do
-        (link_to name, path, class: 'nav-link text-white')
-      end
-    end
+    link_to name, path, class: 'list-group-item list-group-item-action font-weight-bold bg-secondary'
   end
 end

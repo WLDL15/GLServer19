@@ -1,15 +1,12 @@
-<div class="sidebar-sticky">
-    <ul class="nav flex-column">
-        <%= sidebar_link_item('プロジェクト詳細',  project_path(get_current_project_id)) %>
-        <%= sidebar_link_item('チームメンバー', scrum_members_path(get_current_project_id)) %>
-        <%= sidebar_link_item('スプリント', project_sprints_path(get_current_project_id)) %>
+<div class="list-group list-group-flush">
+  <%= sidebar_link_item('プロジェクト詳細',  project_path(get_current_project_id)) %>
+  <%= sidebar_link_item('チームメンバー', scrum_members_path(get_current_project_id)) %>
+  <%= sidebar_link_item('スプリント', project_sprints_path(get_current_project_id)) %>
 
-        <%= sidebar_link_item('プロダクトバックログ', pbl_path(get_current_project_id)) %>
-        <% if get_current_sprint_id != nil %>
-          <%= sidebar_link_item('スプリントバックログ', sbl_path(get_current_sprint_id)) %>
-        <% end %>
-        <%= sidebar_link_item('ラーニングアルファ', project_alpha_alphas_path(current_project)) %>
-        <%= sidebar_link_item('カレンダー',"#") %>
-    </ul>
+  <%= sidebar_link_item('プロダクトバックログ', pbl_path(get_current_project_id)) %>
+  <% if get_current_sprint_id != nil %>
+      <%= sidebar_link_item('スプリントバックログ', sbl_path(get_current_sprint_id)) %>
+  <% end %>
+  <%= sidebar_link_item('ラーニングアルファ', project_alpha_alphas_path(current_project)) %>
+  <%= sidebar_link_item('カレンダー',"#") %>
 </div>
-
