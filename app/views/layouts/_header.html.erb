@@ -7,7 +7,7 @@
     <% if logged_in? %>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle text-light" data-toggle="dropdown"><%= get_project_name %></a>
+          <a href="#" class="nav-link dropdown-toggle text-white" data-toggle="dropdown"><%= get_project_name %></a>
           <div class="dropdown-menu" id="menu-project">
             <%= link_to "すべてのプロジェクト", projects_path, class: "dropdown-item" %>
             <%= link_to new_project_path, class: 'dropdown-item' do %>
@@ -30,7 +30,7 @@
 
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle text-light" data-toggle="dropdown"><%= current_user.name %></a>
+          <a href="#" class="nav-link dropdown-toggle text-white" data-toggle="dropdown"><%= current_user.name %></a>
           <div class="dropdown-menu dropdown-menu-right" id="menu-user">
             
             <%= link_to "プロジェクト一覧",  projects_path, class: "dropdown-item" %>
@@ -42,7 +42,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <%= link_to help_path, class: "nav-link text-light" do %>
+          <%= link_to help_path, class: "nav-link text-white" do %>
            <i class="fa fa-question-circle fa-lg mt-0" ></i>
           <% end %>
         </li>
