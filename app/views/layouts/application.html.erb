@@ -15,8 +15,10 @@
     <div class="container-fluid ">
       <div class="row">
         <% if current_project && controller.controller_name != "ProjectsController" %>
-          <nav  class="col-md-2 sidebar px-0 d-none d-md-block text-white bg-dark" id="sidebar">
-            <%= render 'layouts/sidebar' %>
+          <nav  class="col-md-2 sidebar px-0 d-none d-md-block text-white" id="sidebar">
+            <div class="sidebar-sticky" role="navigation">
+              <%= render 'layouts/sidebar' %>
+            </div>
           </nav>
 
           <main class="col-md-9 ml-sm-auto col-lg-10 px-0" role="main">

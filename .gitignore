@@ -10,8 +10,6 @@
 # Ignore bundler config.
 /.bundle
 /vendor/bundle
-/.vscode
-/.idea
 
 # node.js のモジュール保存用のディレクトリ
 /node_modules
@@ -35,14 +33,18 @@
 /tmp
 !/tmp/.keep
 
-# Ignore Byebug command history file.
-.byebug_history
-
 *~
 *.bak
 *.tmp
 
+# Ignore Byebug command history file.
+.byebug_history
+
+/.vscode
+/.idea
+.project
 .DS_Store
+.secret
 
 /public/assets
-
+/spring
