@@ -14,7 +14,7 @@ class AlphaStatesController < ApplicationController
     @alpha_state = AlphaState.find(params[:id])
     @project = @alpha_state.alpha_alpha.alpha_framework.project
 
-    @version_list = []
+    @version_list = [0]
     @versions = @project.versions.where('start <= ?', Date.today).where('end >= ?', Date.today)
     @versions.each do |version|
       (version.level + 1).times do |count|
@@ -29,7 +29,14 @@ class AlphaStatesController < ApplicationController
       @alpha_evidence = @alpha_item.alpha_evidence
       render partial: "alpha_evidences/form"
     else
-      @alpha_evidence = @alpha_state.alpha_evidences.where(completed: false).first
+      if @alpha_evidence = @alpha_state.alpha_evidences.where(completed: false).first
+        @stage = 0
+      elsif @alpha_evidence = @alpha_state.alpha_evidences.where(completed: true, reviewed: false).first
+        @stage = 1
+      else 
+        @alpha_evidence = @alpha_state.alpha_evidences.where(reviewed: true).first
+        @stage = 2
+      end
       @alpha_item = @alpha_evidence.alpha_item
     end
   end

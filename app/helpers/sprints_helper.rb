@@ -40,6 +40,16 @@ module SprintsHelper
 		end
 	end
 
+	def create_get_sprintno
+		@lastnum = Sprint.where(project_id: @version.project_id).last
+		if @lastnum == nil
+			@num = 1
+		else
+			@num = @lastnum.no
+			@num = @num + 1
+		end
+	end
+
 	def get_project
 		case controller.action_name
 		when "new", "create"
@@ -54,6 +64,36 @@ module SprintsHelper
 			version_sprints_path(version)
 		else
 			sprint_path(sprint)
+		end
+	end
+
+	def return_start(index)
+		@version.start + (index * @project.length)
+	end
+
+	def return_end(index)
+		@version.start + ((index + 1) * @project.length - 1)
+	end
+
+	def update_length(length)
+		if length < params[:version][:length].to_i
+			((length+1)..params[:version][:length].to_i).each do |index|
+				@version.sprints.create(no: create_get_sprintno, project_id: @project.id, start: return_start(index - 1), end: return_end(index - 1))
+			end
+		elsif length > params[:version][:length].to_i
+			(length - params[:version][:length].to_i).times do |index| 
+				@version.sprints.last.destroy
+			end
+		end 
+	end
+
+	def update_date(before_date)
+		if before_date != params[:version][:start].to_date
+			@version.sprints.each do |sprint|
+				sprint.start += params[:version][:start].to_date - before_date
+				sprint.end += params[:version][:start].to_date - before_date
+				sprint.save
+			end
 		end
 	end
 end

@@ -2,7 +2,6 @@
   <%= sidebar_link_item('プロジェクト詳細',  project_path(get_current_project_id), "projects") %>
   <%= sidebar_link_item('チームメンバー', scrum_members_path(get_current_project_id), "scrum_members") %>
   <%= sidebar_link_item('スプリント', project_sprints_path(get_current_project_id), "sprints") %>
-
   <%= sidebar_link_item('プロダクトバックログ', pbl_path(get_current_project_id), "backlog_items") %>
   <% if get_current_sprint_id != nil %>
       <%= sidebar_link_item('スプリントバックログ', sbl_path(get_current_sprint_id), "Project") %>

@@ -23,16 +23,56 @@
 
             <%= f.label :point, "ポイント" %>
             <div class="list-group-item">
-              <span>総合ポイント：<%= @user.points_total %></span><span>　いいね：<%= @user.total_like %></span><span>　コメント：<%= @user.total_comment %></span>
+              <h4>
+                <span class="badge badge-primary">
+                  総合ポイント <span class="badge badge-light"><%= @user.points_total %></span>
+                </span>
+                <span class="badge badge-primary">
+                いいね数 <span class="badge badge-light"><%= @user.total_like %></span>
+                </span>
+                <span class="badge badge-primary">
+                コメント数 <span class="badge badge-light"><%= @user.total_comment %></span>
+                </span>
+              <span class="badge badge-primary">
+                ログイン日数 <span class="badge badge-light"><%= @user.login_count %></span>
+                </span>
+              </h4>
+            </div>
+            
+            <%= f.label :badge, "獲得ポイントバッヂ" %>
+            <div class="list-group-item">
+            <div>次回バッヂ獲得まで　<%= next_point_badge(@user) %>　ポイント必要です。</div>
+            <hr class="m-1">
+              <% if @user.badges.empty? == true %>
+                <div>まだ獲得していません</div>
+              <% else %>
+                <div class="row">
+                  <% @user.badges.each do |badge| %>
+                    <div class="col-2 text-center">
+                    <div><img src="/assets/<%= badge.image %>" alt="" width= "60px"> </div>
+                    <div class="badge badge-pill badge-primary"><%= badge.name %></div>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
 
-            <%= f.label :badge, "獲得バッヂ" %>
+            <%= f.label :badge, "獲得実績バッヂ" %>
             <div class="list-group-item">
-              <% @user.badges.each do |badge| %>
-                <div class="badge badge-pill badge-primary"><%= badge.name %></div>
-              <% end %>
-           
+              <% if @user.condition_badges.empty? == true %>
+                <div>まだ獲得していません</div>
+              <% else %>
+                <div class="row">
+                  <% @user.condition_badges.each do |condition_badge| %>
+                    <div class="col-2 text-center">
+                      <div><img src="/assets/<%= condition_badge.image %>" alt="" width= "60px"></div>
+                      <div class="badge badge-pill badge-primary"><%= condition_badge.name %></div>
+                    </div>
+                  <% end %> 
+                </div>
+              <% end %>     
             </div>
+
             <%= f.label :last_login_date, "ログイン日時" %>
             <div class="list-group-item">
               <span><%= @user.last_login_date.strftime("%Y/%m/%d %H:%M:%S") %></span>

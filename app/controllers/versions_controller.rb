@@ -16,7 +16,12 @@ class VersionsController < ApplicationController
 
   # GET /versions/new
   def new
-    @version = @project.versions.build
+    @version = @project.versions.new
+    if @project.versions.exists?
+      @version.start = @project.versions.maximum(:end) + 1
+    else
+      @version.start = @project.start
+    end
   end
 
   # GET /versions/1/edit
@@ -27,9 +32,13 @@ class VersionsController < ApplicationController
   # POST /versions.json
   def create
     @version = @project.versions.build(version_params)
+    @version.end = @version.start + ((@project.length * @version.length) - 1)
 
     respond_to do |format|
       if @version.save
+        @version.length.times do |index|
+          @sprint = @version.sprints.create(no: create_get_sprintno, project_id: @project.id, start: return_start(index), end: return_end(index))
+        end
         format.html { redirect_to @version, notice: 'Version was successfully created.' }
         format.json { render :show, status: :created, location: @version }
       else
@@ -43,8 +52,13 @@ class VersionsController < ApplicationController
   # PATCH/PUT /versions/1.json
   def update
     @project = @version.project
+    @version.end = params[:version][:start].to_date + (@project.length * params[:version][:length].to_i - 1)
+    length = @version.length
+    before_date = @version.start
     respond_to do |format|
       if @version.update(version_params)
+        update_date(before_date)
+        update_length(length)
         format.html { redirect_to @version, notice: 'Version was successfully updated.' }
         format.json { render :show, status: :ok, location: @version }
       else
@@ -76,6 +90,6 @@ class VersionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def version_params
-      params.require(:version).permit(:name, :goal, :start, :end, :level, :project_id)
+      params.require(:version).permit(:name, :goal, :start, :end, :level, :project_id, :length)
     end
 end

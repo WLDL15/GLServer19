@@ -56,7 +56,7 @@ class AlphaEvidencesController < ApplicationController
       # 根拠が完了だったときに、completed を false に変更する
       changed = -1
     end
-
+    @alpha_evidence.update_user = current_user.name
     success = true
     success = @alpha_evidence.update(alpha_evidence_params)
     @evidence_save = false
@@ -73,8 +73,8 @@ class AlphaEvidencesController < ApplicationController
         success = @alpha_state.save
         @evidence_save = true
       end
-      redirect_to alpha_state_path(id: @alpha_state.id)
     end
+    redirect_to alpha_state_path(id: @alpha_state.id)
   end
 
   private

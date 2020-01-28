@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]  
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,   only: :destroy
-  before_action :give_badge,   only: :show
-  
+  before_action :give_point_badge,   only: :show
+  before_action :give_conditon_badge, only: :show
   def index
     #@users = User.all
     @users = User.paginate(page: params[:page])
@@ -64,7 +64,8 @@ class UsersController < ApplicationController
                                  :password,
                                  :password_confirmation,
                                  :description,
-                                 :last_login_date)
+                                 :last_login_date,
+                                 :login_count)
   end
   
   def logged_in_user
@@ -84,7 +85,7 @@ class UsersController < ApplicationController
     redirect_to root_url unless current_user.admin?
   end
 
-  def give_badge
+  def give_point_badge
     @user = User.find(params[:id])
     @badges = Badge.where(need_point: 0..@user.points_total)
     @badges.each do |give_badge|
@@ -93,5 +94,37 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def give_conditon_badge
+    @user = User.find(params[:id])
+    if @user.total_like >= 10
+      UserConditionBadge.find_or_create_by(user_id: @user.id, condition_badge_id: 1)
+    end
+    if @user.total_like >= 50
+      UserConditionBadge.find_or_create_by(user_id: @user.id, condition_badge_id: 2)
+    end
+    if @user.total_like >= 100
+      UserConditionBadge.find_or_create_by(user_id: @user.id, condition_badge_id: 3)
+    end
+    if @user.total_comment >= 5
+      UserConditionBadge.find_or_create_by(user_id: @user.id, condition_badge_id: 4)
+    end
+    if @user.total_comment >= 15
+      UserConditionBadge.find_or_create_by(user_id: @user.id, condition_badge_id: 5)
+    end
+    if @user.total_comment >= 50
+      UserConditionBadge.find_or_create_by(user_id: @user.id, condition_badge_id: 6)
+    end
+    if @user.login_count >= 3
+      UserConditionBadge.find_or_create_by(user_id: @user.id, condition_badge_id: 7)
+    end
+    if @user.login_count >= 15
+      UserConditionBadge.find_or_create_by(user_id: @user.id, condition_badge_id: 8)
+    end
+    if @user.login_count >= 30
+      UserConditionBadge.find_or_create_by(user_id: @user.id, condition_badge_id: 9)
+    end
+  end
+
 
 end
