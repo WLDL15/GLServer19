@@ -19,7 +19,8 @@
   <%= f.static_control :role, label: "役割", value: ScrumMember::SCRUM_MEMBER_ROLS[@scrum_member.role] %>
   <%= f.text_area :description, label: "コメント", :rows => '4' %>
 
-  <%= f.submit "変更する", class: "btn btn-primary" %>
-  <%= link_to 'キャンセル', project_scrum_members_path(@project), class: "btn btn-primary" %>
-  
+  <div class="btn-group d-flex mx-auto mb-3">
+    <%= f.submit "変更する", class: "btn btn-primary w-100 shadow-lg mr-2" %>
+    <%= link_to 'キャンセル', project_scrum_members_path(@project), class: "btn btn-primary w-100 shadow-lg" %>
+  </div>
 <% end %>
