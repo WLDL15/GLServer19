@@ -23,8 +23,8 @@
 
   <% if controller.action_name != "new" %>
     <% if @sprint.start > Date.today %>
-      <%= f.date_field :start, label: "開始日" %>
-      <%= f.date_field :end, label: "終了日" %>
+      <%= f.date_field :start, label: "開始日", readonly: true %>
+      <%= f.date_field :end, label: "終了日", readonly: true %>
       <%= f.text_area :description, label: "スプリントゴール", :rows => '3' %>
     <% elsif @sprint.end > Date.today %>
       <%= f.date_field :start, label: "開始日", readonly: true %>

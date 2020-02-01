@@ -99,13 +99,10 @@ class BacklogItemsController < ApplicationController
   # PATCH/PUT /backlog_items/1
   # PATCH/PUT /backlog_items/1.json
   def update
-    @assign_scrum_member = ScrumMember.find(params[:backlog_item][:assign_to_id])
-    @assign_user = @assign_scrum_member.user
+    if params[:backlog_item][:itemType].to_i == 1
+      @assign_user = User.find(@backlog_item.assign_to_id)
+    end
     respond_to do |format|
-      if @backlog_item.assign_to_id != params[:backlog_item][:assign_to_id].to_i
-        @assign_user.add_points(1, "Awarded for some awesome action", "ChangeSBL")
-      end
-
       if @backlog_item.update(backlog_item_params)
         if @backlog_item.itemType == 0
 
@@ -113,7 +110,10 @@ class BacklogItemsController < ApplicationController
          format.json { render :show, status: :ok, location: @backlog_item }
        end
 
-       if @backlog_item.itemType == 1 
+       if @backlog_item.itemType == 1
+        if User.find(@backlog_item.assign_to_id) != @assign_user
+          User.find(@backlog_item.assign_to_id).add_points(1, "Awarded for some awesome action", "ChangeSBL")
+        end 
         check_state(@backlog_item)
 
         format.html { redirect_to show_sbl_path(@backlog_item), notice: 'SBL was successfully updated.' }
