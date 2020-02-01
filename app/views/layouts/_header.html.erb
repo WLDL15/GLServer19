@@ -1,60 +1,62 @@
-<header class="navbar navbar-expand navbar-dark d-print text-white bg-info" role="navigation" id="header" style="	background-image: url(https://pingendo.com/site-assets/cover.jpg); background-position: top left;	background-size: 100%;	background-repeat: repeat;">
-  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+<header class="navbar navbar-expand navbar-dark d-print text-white bg-info" role="navigation" id="header"
+  style="	background-image: url(https://pingendo.com/site-assets/cover.jpg); background-position: top left;	background-size: 100%;	background-repeat: repeat;">
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon navbar-dark"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <% if logged_in? %>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle text-light" data-toggle="dropdown"><%= get_project_name %></a>
-          <div class="dropdown-menu" id="menu-project">
-            <%= link_to "すべてのプロジェクト", projects_path, class: "dropdown-item" %>
-            <%= link_to new_project_path, class: 'dropdown-item' do %>
-              <%= icon("fas", "plus") %>プロジェクト
-            <% end %>
-            <% if Project.exists? %>
-            <div class="dropdown-divider"></div>
-            <% end %>
-            <% all_project.each do |project| %>
-              <%= link_to project.name, project_path(project), class: "dropdown-item" %>
-            <% end %>
-          </div>
-        </li>
-      </ul>
- <ul class="navbar-nav mx-auto">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle text-light" data-toggle="dropdown"><%= get_project_name %></a>
+        <div class="dropdown-menu" id="menu-project">
+          <%= link_to "すべてのプロジェクト", projects_path, class: "dropdown-item" %>
+          <%= link_to new_project_path, class: 'dropdown-item' do %>
+          <%= icon("fas", "plus") %>プロジェクト
+          <% end %>
+          <% if Project.exists? %>
+          <div class="dropdown-divider"></div>
+          <% end %>
+          <% all_project.each do |project| %>
+          <%= link_to project.name, project_path(project), class: "dropdown-item" %>
+          <% end %>
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav mx-auto">
       <%= link_to "GLSever", root_path, class: "lead mb-0  text-white"%>
-      </ul>
+    </ul>
 
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <%= link_to help_path, class: "nav-link text-light" do %>
-           <i class="fa fa-question-circle fa-lg mt-0" ></i>
-          <% end %>
-        </li>
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle text-light" data-toggle="dropdown"><%= current_user.name %></a>
-          <div class="dropdown-menu dropdown-menu-right" id="menu-user">
-            
-            <%= link_to "プロジェクト一覧",  projects_path, class: "dropdown-item" %>
-            <%= link_to "プロフィールの編集",  current_user, class: "dropdown-item" %>
-            <%= link_to "ユーザ一覧", users_path, class: "dropdown-item" %>
-            <%= link_to "設定", "#", class: "dropdown-item" %>
-            <div class="dropdown-divider"></div>
-            <%= link_to "ログアウト", logout_path, class: "dropdown-item", method: "delete", data: { confirm: "本当にログアウトしますか？" } %>
-          </div>
-        </li>
-      </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <%= link_to help_path, class: "nav-link text-light" do %>
+        <i class="fa fa-question-circle fa-lg mt-0"></i>
+        <% end %>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle text-light" data-toggle="dropdown"><%= current_user.name %></a>
+        <div class="dropdown-menu dropdown-menu-right" id="menu-user">
+
+          <%= link_to "プロジェクト一覧",  projects_path, class: "dropdown-item" %>
+          <%= link_to "プロフィールの編集",  current_user, class: "dropdown-item" %>
+          <%= link_to "ユーザ一覧", users_path, class: "dropdown-item" %>
+          <%= link_to "設定", "#", class: "dropdown-item" %>
+          <div class="dropdown-divider"></div>
+          <%= link_to "ログアウト", logout_path, class: "dropdown-item", method: "delete", data: { confirm: "本当にログアウトしますか？" } %>
+        </div>
+      </li>
+    </ul>
     <% else %>
- <ul class="navbar-nav mx-auto">
- <%= link_to "GLSever", root_path, class: "d-none d-md-block lead mb-0  text-white"%>
-</ul>
+    <ul class="navbar-nav mx-auto">
+      <%= link_to "GLSever", root_path, class: "d-none d-md-block lead mb-0  text-white"%>
+    </ul>
 
-          <%= link_to help_path, class: "nav-link text-light" do %>
-           <i class="fa fa-question-circle fa-lg mt-0" ></i>
-          <% end %>
+    <%= link_to help_path, class: "nav-link text-light" do %>
+    <i class="fa fa-question-circle fa-lg mt-0"></i>
+    <% end %>
 
-     
+
     <% end %>
   </div>
 </header>

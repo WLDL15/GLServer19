@@ -72,13 +72,17 @@ gem 'rails-i18n', '~> 5.1'
 #gem 'actiontext'
 #gem 'image_processing', '~> 1.2'
 
+#gem 'material-sass'
+#em 'material_icons'
+gem 'bootstrap-material-design'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'sqlite3',	'1.3.13'
   gem 'byebug',		'3.4.0'
   #gem 'spring',		'1.1.3'
-  gem 'ruby-debug-ide'
-  gem 'debase'
+  #gem 'ruby-debug-ide'
+  #gem 'debase'
   
   # vscodeでの整形用のgem。エラーとなるためコメント化
   #gem 'prettier', '~> 0.15.1'

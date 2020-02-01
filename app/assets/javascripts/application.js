@@ -13,12 +13,16 @@
 //= require jquery3
 //= require jquery_ujs
 //= require popper
+//= require bootstrap-material-design
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
 
+$(document).on('ready page:load', function() {
+    $.material.init();
+  });
+
 $(document).on('turbolinks:load', function() {
-    
     var btn = $('.evidence_button')
     btn.click(function(){
         btn.parents('#cardbodyselect').parent().removeClass('selected');
