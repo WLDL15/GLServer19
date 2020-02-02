@@ -7,6 +7,8 @@ class LikesController < ApplicationController
 
         @user = @comment.user
         @user.add_points(3, "Awarded for some awesome action", "Like")
+        @user.total_point += 3
+        @user.save
 
         @like.save
         @comment.save

@@ -1,0 +1,161 @@
+<div class="container-fulid pt-5">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 text-center">
+      <div class="card p-1 shadow">
+        <div class="card-body">
+          <section class="user_info">
+              <h2><i class="fas fa-trophy"></i>ランキング</h2>
+          <% @users.order(:total_point).reverse.each.with_index(1) do |user,index| %>
+            <% if index == 30 %>
+                <% break %>
+            <% end %>
+            <% if index == 1 %>
+                <div class="card m-1 shadow bg-gold">
+            <% elsif index == 2 %>
+                <div class="card m-1 shadow bg-silver">
+            <% elsif index == 3%>
+                <div class="card m-1 shadow bg-bronze">
+            <% else %>
+                <div class="card m-1 shadow">
+            <% end %>
+            <% if index == 1 || index == 2 || index == 3 %>
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-2 text-center">
+                            <h1><i class="fas fa-award"></i> <%= index %>位</h1>
+                            </div>
+                            <div class="col-2 text-center">
+                                <div data-toggle="tooltip" title="<%= user.name %>"><%= gravatar_for(user, size:50) %></div>                            
+                            </div>
+                            <div class="col-2 text-center">
+                                <% if user.badges.exists? %>
+                                    <div><img src="/assets/<%= user.badges.last.image %>" alt="" width= "80px" class="border border-dark" ></div>
+                                <% elsif %>
+                                    <div>未取得</div>
+                                <% end %>
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col text-center ">
+                                        <div>獲得ポイント</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col  text-center">
+                                        <h3><%= user.total_point %>ポイント</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% else %>
+                <div class="card-body pb-1 pt-3">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-2 text-center">
+                                <h4><%= index %>位</h4>
+                            </div>
+                            <div class="col-2 text-center">
+                            <div data-toggle="tooltip" title="<%= user.name %>"><%= gravatar_for(user, size:30) %></div>     
+                            </div>
+                            <div class="col-2 text-center">
+                                <% if user.badges.exists? %>
+                                    <div><img src="/assets/<%= user.badges.last.image %>" alt="" width= "40px" class="border border-dark" ></div>
+                                <% elsif %>
+                                    <div>未取得</div>
+                                <% end %>
+                            </div>
+                            <div class="col-6 text-center">
+                                <div><%= user.total_point %>ポイント</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col mr-5">
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="row">
+                    <h4>
+                        <div class="col"><%= gravatar_for(current_user, size:50) %>あなたの記録</div>
+                        <hr>
+                        <div class="col">
+                            <div><span class="badge badge-primary">総合ポイント <span class="badge badge-light"><%= current_user.total_point %></span></span></div>
+                            <div><span class="badge badge-primary">いいね数 <span class="badge badge-light"><%= current_user.total_like %></span></span></div>
+                            <div><span class="badge badge-primary">コメント数 <span class="badge badge-light"><%= current_user.total_comment %></span></span></div>
+                            <div><span class="badge badge-primary">ログイン日数 <span class="badge badge-light"><%= current_user.login_count %></span></span></div>
+                        </div>
+                        <hr>
+                        <div class="col">あなたのランク</div>
+                        <div class="col text-center">
+                            <% if current_user.badges.exists? %>
+                                <img src="/assets/<%= current_user.badges.last.image %>" alt="" width= "200px" >
+                                <span class="col badge badge-primary"><%= current_user.badges.last.name %></span>
+                            <% elsif %>
+                                未取得
+                            <% end %>
+                        </div>
+                    </h4>
+                    <div class="col-12">次回バッヂ獲得まで　<%= next_point_badge(@user) %>　ポイント</div>
+                    <hr>
+                    <div class="col-12 text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">獲得バッヂの表示</button></div>
+                    <div class="modal" tabindex="-1" id="exampleModal">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title">獲得ポイントバッヂ</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div><!-- /.modal-header -->
+                                <div class="modal-body">
+                                    <div class="row">
+                                    <% if @user.badges.empty? == true %>
+                                        <div>まだ獲得していません</div>
+                                    <% else %>
+                                        <% current_user.badges.each do |badge| %>
+                                            <div class="col-2 text-center">
+                                                <div><img src="/assets/<%= badge.image %>" alt="" width= "60px"> </div>
+                                                <small><div class="badge badge-pill badge-primary"><%= badge.name %></div></small>
+                                            </div>
+                                        <% end %>
+                                    <% end %>
+                                    </div>
+                                </div><!-- /.modal-body -->
+                                <div class="modal-header">
+                                    <h5 class="modal-title">獲得実績バッヂ</h5>
+                                </div><!-- /.modal-header -->
+                                <div class="modal-body">
+                                    <div class="row">
+                                    <% if @user.badges.empty? == true %>
+                                        <div>まだ獲得していません</div>
+                                    <% else %>
+                                        <% current_user.condition_badges.each do |condition_badge| %>
+                                            <div class="col-2 text-center">
+                                                <div><img src="/assets/<%= condition_badge.image %>" alt="" width= "60px"> </div>
+                                                <small><div class="badge badge-pill badge-primary"><%= condition_badge.name %></div></small>
+                                            </div>
+                                        <% end %>
+                                    <% end %>
+                                    </div>
+                                </div><!-- /.modal-body -->
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                                </div><!-- /.modal-footer -->
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
