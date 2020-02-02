@@ -1,6 +1,6 @@
 <div class="container-fluid m-2">
   <div class="row justify-content-md-center">
-    <div class="card bg-info text-dark">
+    <div class="card bg-primary text-dark">
         <div class="card-body">
           <%= bootstrap_form_for(@user, html: { class: "form-horizontal", role: "form" }) do |f| %>
           <%= render 'shared/error_messages' %>
@@ -15,10 +15,11 @@
 
           <%= f.password_field :password_confirmation, label: 'パスワード(確認用)', placeholder: "Password(Confirmation)" %>
 
-          <%= f.submit "アカウントを作成する", class: "btn btn-lg btn-block btn-primary mt-2" %>
+          <div class="btn-group d-flex mx-auto mb-3">
+            <%= f.submit moderate_new_edit_button_label(), class: "btn btn-lg btn-block btn-primary mt-2" %>
 
-          <%= link_to "アカウント作成を中止する", root_path, class: 'mt-5 text-white' %>
-
+            <%= link_to "キャンセル", root_path, class: 'mt-5 text-white' %>
+          </div>
           <% end %>
       </div>
     </div>
