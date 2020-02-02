@@ -3,8 +3,8 @@
 # チーム1/5 95
 AlphaItemDef.seed_once(:id,
     { id: 95, dseq:'1', ddescription: 'メンバが決まっている', alpha_state_def_id: 16, item_level:1, item_point:2 },
-    { id: 96, dseq:'2', ddescription: 'スクラムマスタが決まっている', alpha_state_def_id: 16, item_level:1, item_point:2 },
-    { id: 97, dseq:'3', ddescription: 'プロジェクトオーナが決まっている', alpha_state_def_id: 16, item_level:1, item_point:2 },
+    { id: 96, dseq:'2', ddescription: '/スクラムマスタ/が決まっている', alpha_state_def_id: 16, item_level:1, item_point:2 },
+    { id: 97, dseq:'3', ddescription: '/オーナ/が決まっている', alpha_state_def_id: 16, item_level:1, item_point:2 },
     { id: 98, dseq:'4', ddescription: 'メンバの個性を理解し、互いに尊重している', alpha_state_def_id: 16, item_level:1, item_point:6 },
     { id: 99, dseq:'5', ddescription: 'メンバの役割（記録係、チェック係、励まし係など）を決めている', alpha_state_def_id: 16, item_level:1, item_point:5 },
     { id: 100, dseq:'6', ddescription: 'マスタはメンバのコミュニケーションを活発にするための支援をしている', alpha_state_def_id: 16, item_level:1, item_point:5 }
@@ -33,19 +33,19 @@ AlphaItemDef.seed_once(:id,
 
 # チーム4/5 114
 AlphaItemDef.seed_once(:id,
-    { id: 114, dseq:'1', ddescription: 'スプリントでリリースするインクリメントのスコープと優先順位をメンバ全員が理解している', alpha_state_def_id: 19, item_level:2, item_point:4 },
-    { id: 115, dseq:'2', ddescription: '動くインクリメントをリリースするためにチームの共有情報が活用されている', alpha_state_def_id: 19, item_level:3, item_point:4 },
+    { id: 114, dseq:'1', ddescription: '/スプリント/でリリースする/インクリメント/のスコープと優先順位をメンバ全員が理解している', alpha_state_def_id: 19, item_level:2, item_point:4 },
+    { id: 115, dseq:'2', ddescription: '動く/インクリメント/をリリースするためにチームの共有情報が活用されている', alpha_state_def_id: 19, item_level:3, item_point:4 },
     { id: 116, dseq:'3', ddescription: '協力して実行するタスクを増やすための方法（プラクティス・ツール）を採用している', alpha_state_def_id: 19, item_level:2, item_point:4 },
     { id: 117, dseq:'4', ddescription: 'メンバが協力して行うタスクが増えている', alpha_state_def_id: 19, item_level:3, item_point:4 },
     { id: 118, dseq:'5', ddescription: 'メンバ全員がゴールに向かって協力している実感が持てている', alpha_state_def_id: 19, item_level:4, item_point:3 },
-    { id: 119, dseq:'6', ddescription: 'スプリントゴールを満たす動くインクリメントをスプリントでリリースしている', alpha_state_def_id: 19, item_level:3, item_point:4 },
+    { id: 119, dseq:'6', ddescription: 'スプリントゴールを満たす動く/インクリメント/をスプリントでリリースしている', alpha_state_def_id: 19, item_level:3, item_point:4 },
     { id: 120, dseq:'7', ddescription: 'マスタは効率的で楽しい開発となるようにチームを支援している', alpha_state_def_id: 19, item_level:3, item_point:4 }
 )
 
 # チーム5/5 121
 AlphaItemDef.seed_once(:id,
-    { id: 122, dseq:'1', ddescription: 'チームの開発状況をメンバ全員で振り返り、KPTにまとめている', alpha_state_def_id: 20, item_level:4, item_point:3 },
-    { id: 123, dseq:'2', ddescription: 'KPTのPからＴが提案され、次のスプリントでTがKに改善されている', alpha_state_def_id: 20, item_level:4, item_point:3 },
+    { id: 122, dseq:'1', ddescription: 'チームの開発状況をメンバ全員で振り返り、/KPT/にまとめている', alpha_state_def_id: 20, item_level:4, item_point:3 },
+    { id: 123, dseq:'2', ddescription: '/KPT/のPからＴが提案され、次のスプリントでTがKに改善されている', alpha_state_def_id: 20, item_level:4, item_point:3 },
     { id: 124, dseq:'3', ddescription: 'チームがより効果的・効率的に働くための方法（プラクティス・ツール）を採用している', alpha_state_def_id: 20, item_level:4, item_point:3 },
     { id: 125, dseq:'4', ddescription: 'バグの発生や仕様の変更などの障害にメンバ全員で対応できている', alpha_state_def_id: 20, item_level:4, item_point:4 },
     { id: 126, dseq:'5', ddescription: 'チームの作業負荷が片寄らないように調整ができている', alpha_state_def_id: 20, item_level:4, item_point:3 },

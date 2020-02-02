@@ -39,8 +39,7 @@ class VersionsController < ApplicationController
         @version.length.times do |index|
           @sprint = @version.sprints.create(no: create_get_sprintno, project_id: @project.id, start: return_start(index), end: return_end(index))
         end
-        format.html { redirect_to @version, notice: 'Version was successfully created.' }
-        format.json { render :show, status: :created, location: @version }
+        format.html { redirect_to project_sprints_path(@project.id), notice: 'Version was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @version.errors, status: :unprocessable_entity }
@@ -59,8 +58,7 @@ class VersionsController < ApplicationController
       if @version.update(version_params)
         update_date(before_date)
         update_length(length)
-        format.html { redirect_to @version, notice: 'Version was successfully updated.' }
-        format.json { render :show, status: :ok, location: @version }
+        format.html { redirect_to project_sprints_path(@project.id), notice: 'Version was successfully updated.' }
       else
         format.html { render :edit }
         format.json { render json: @version.errors, status: :unprocessable_entity }

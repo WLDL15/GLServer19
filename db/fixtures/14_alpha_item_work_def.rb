@@ -3,18 +3,18 @@
 # 仕事1/5 65
 AlphaItemDef.seed_once(:id,
     { id: 65, dseq:'1', ddescription: '全員がプロジェクトのビジョンを共有するためのイベントを開催している', alpha_state_def_id: 11, item_level:2, item_point:3 },
-    { id: 66, dseq:'2', ddescription: 'プロダクトバックログの優先順位の基準が定義されている', alpha_state_def_id: 11, item_level:2, item_point:4 },
+    { id: 66, dseq:'2', ddescription: '/プロダクトバックログ/の優先順位の基準が定義されている', alpha_state_def_id: 11, item_level:2, item_point:4 },
     { id: 67, dseq:'3', ddescription: 'プロジェクトのリスク(技術、人的リソース、機関など)が識別されている', alpha_state_def_id: 11, item_level:2, item_point:4 },
     { id: 68, dseq:'4', ddescription: '開発環境と開発ツールを決定している', alpha_state_def_id: 11, item_level:2, item_point:4 }
 )
 
 # 仕事2/5 69
 AlphaItemDef.seed_once(:id,
-    { id: 69, dseq:'1', ddescription: '開発ツールを利用してアーキテクチャのサンプルアプリが作成でき、開発環境において実行できることを確認している', alpha_state_def_id: 12, item_level:2, item_point:3 },
+    { id: 69, dseq:'1', ddescription: '開発ツールを利用して/アーキテクチャ/のサンプルアプリが作成でき、開発環境において実行できることを確認している', alpha_state_def_id: 12, item_level:2, item_point:3 },
     { id: 70, dseq:'2', ddescription: '開発環境と開発ツールをインストールする方法が明確になっている', alpha_state_def_id: 12, item_level:2, item_point:5 },
     { id: 71, dseq:'3', ddescription: 'チーム全員が、開発環境と開発ツールをインストールする方法を理解している', alpha_state_def_id: 12, item_level:2, item_point:5 },
     { id: 72, dseq:'4', ddescription: 'チーム全員が開発環境と開発ツールを利用できる状態にある', alpha_state_def_id: 12, item_level:2, item_point:4 },
-    { id: 73, dseq:'5', ddescription: '用するアプリケーションフレームワークやライブラリの学習リソース（ウェブサイトや書籍など）のリストを作成している', alpha_state_def_id: 12, item_level:2, item_point:4 }
+    { id: 73, dseq:'5', ddescription: '用する/アプリケーションフレームワーク/やライブラリの学習リソース（ウェブサイトや書籍など）のリストを作成している', alpha_state_def_id: 12, item_level:2, item_point:4 }
 )
 
 # 仕事3/5 74
@@ -31,7 +31,7 @@ AlphaItemDef.seed_once(:id,
 # 仕事4/5 81
 AlphaItemDef.seed_once(:id,
     { id: 81, dseq:'1', ddescription: 'タスクの終了時に、完了日、作業時間などを記録している', alpha_state_def_id: 14, item_level:3, item_point:3 },
-    { id: 82, dseq:'2', ddescription: 'チームのベロシティを計測している', alpha_state_def_id: 14, item_level:2, item_point:4 },
+    { id: 82, dseq:'2', ddescription: 'チームの/ベロシティ/を計測している', alpha_state_def_id: 14, item_level:2, item_point:4 },
     { id: 83, dseq:'3', ddescription: 'タスクの進捗を可視化するためにスプリントの残作業時間をグラフ化している', alpha_state_def_id: 14, item_level:4, item_point:3 },
     { id: 84, dseq:'4', ddescription: 'タスクのDoneの定義が守られているかを検査している', alpha_state_def_id: 14, item_level:4, item_point:3 },
     { id: 85, dseq:'5', ddescription: '共有されたソースが定期的に更新されているかを検査している', alpha_state_def_id: 14, item_level:4, item_point:3 },
@@ -44,7 +44,7 @@ AlphaItemDef.seed_once(:id,
     { id: 88, dseq:'1', ddescription: 'ソフトウェア製品の外部品質の６つの特性を理解している', alpha_state_def_id: 15, item_level:2, item_point:4 },
     { id: 89, dseq:'2', ddescription: 'ソフトウェアテストのプロセスと技法を理解している', alpha_state_def_id: 15, item_level:5, item_point:4 },
     { id: 90, dseq:'3', ddescription: 'ソースがレビューされ、担当者以外の人が理解できている', alpha_state_def_id: 15, item_level:5, item_point:4 },
-    { id: 91, dseq:'4', ddescription: 'オーナはシステムの機能と品質がリリース可能なレベルであるかを合意している', alpha_state_def_id: 15, item_level:4, item_point:4 },
+    { id: 91, dseq:'4', ddescription: '/オーナ/はシステムの機能と品質がリリース可能なレベルであるかを合意している', alpha_state_def_id: 15, item_level:4, item_point:4 },
     { id: 92, dseq:'5', ddescription: 'チームはリリースのために不足している機能や品質を識別している', alpha_state_def_id: 15, item_level:5, item_point:4 },
     { id: 93, dseq:'6', ddescription: 'チームはリリースのために追加作業が必要かを検討している', alpha_state_def_id: 15, item_level:5, item_point:4 },
     { id: 94, dseq:'7', ddescription: 'チームはリリースに必要な追加作業を実施している', alpha_state_def_id: 15, item_level:5, item_point:5 }
