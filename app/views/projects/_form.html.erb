@@ -22,8 +22,8 @@
 
   <%= f.text_area :description, label: "概要", :rows => '3' %>
 
-  <%= f.submit "変更する", class: "btn btn-primary" %>
-
-  <%= link_to 'キャンセル', projects_path, class: "btn btn-primary"  %>
-
+  <div class="btn-group d-flex mx-auto mb-3">
+    <%= f.submit moderate_new_edit_button_label(), class: "btn btn-primary w-100 shadow-lg mr-2" %>
+    <%= link_to 'キャンセル', projects_path, class: "btn btn-primary w-100 shadow-lg"  %>
+  </div>
 <% end %>

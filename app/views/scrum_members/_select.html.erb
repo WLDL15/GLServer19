@@ -38,9 +38,9 @@
       </tbody>
     </table>
 
-    <div class="form-group">
-      <%= f.submit '選択したユーザを参加させる', class: "btn btn-primary" %>
-      <%= link_to 'キャンセル', project_scrum_members_path(@project), class: "btn btn-primary"  %>
+    <div class="btb-group d-flex mx-auto mb-3">
+      <%= f.submit '選択したユーザを参加させる', class: "btn btn-primary w-100 shadow-lg mr-2" %>
+      <%= link_to 'キャンセル', project_scrum_members_path(@project), class: "btn btn-primary w-100 shadow-lg"  %>
     </div>
 
   <% end %>
