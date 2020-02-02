@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]  
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,   only: :destroy
-  before_action :give_point_badge,   only: :show
-  before_action :give_conditon_badge, only: :show
+  before_action :give_point_badge,   only: [:show, :leader_board]
+  before_action :give_conditon_badge, only: [:show, :leader_board]
   def index
     #@users = User.all
     @users = User.paginate(page: params[:page])
@@ -17,6 +17,10 @@ class UsersController < ApplicationController
     # debugger
   end
   
+  def leader_board
+    @users = User.all
+  end
+
   def create
     @user = User.new(user_params)
     @user.last_login_date = Time.mktime(1970, 1, 1, 0, 0, 0)

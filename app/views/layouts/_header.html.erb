@@ -35,6 +35,7 @@
             
             <%= link_to "プロジェクト一覧",  projects_path, class: "dropdown-item" %>
             <%= link_to "プロフィールの編集",  current_user, class: "dropdown-item" %>
+            <%= link_to "リーダーボード",  leader_board_path(current_user), class: "dropdown-item" %>
             <%= link_to "ユーザ一覧", users_path, class: "dropdown-item" %>
             <%= link_to "設定", "#", class: "dropdown-item" %>
             <div class="dropdown-divider"></div>

@@ -46,6 +46,8 @@ class AlphaEvidencesController < ApplicationController
         @alpha_state.update_evidence = Date.today
         @users.each do |user|
           user.add_points(@alpha_item_def.item_point, "Awarded for some awesome action", "Completed")
+          user.total_point += @alpha_item_def.item_point
+          user.save
         end
         # completed が true のときに根拠が変更されたとき、completed_at に現在日時を設定する
       elsif params[:alpha_evidence][:document] != @alpha_evidence.document
