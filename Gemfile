@@ -107,3 +107,11 @@ group :production do
   gem 'rails_12factor', '0.0.2'
   #gem 'puma',		'2.11.1'
 end
+
+# issue 48 Bump rack from 2.0.7 to 2.0.8
+gem 'rack', '~> 2.0.8'
+
+# issue 41 Bump loofah from 2.3.0 to 2.4.0
+gem 'crass', '~> 1.0.5'
+gem 'loofah','~> 2.4.0'
+gem 'nokogiri', '~> 1.10.7'
