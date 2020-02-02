@@ -37,15 +37,31 @@ $udcy-bg-color: #01b3e3;
 $udcy-bg-color-light: #4fe4f3;
 $udcy-bg-color-dark: #1d95d4;
 
+$wldl-primary: #3190d2;
+$wldl-primary-dark: $oit-school-color;
+$wldl-primary-light: #91c6e7;
+$wldl-secondary: #834506;
+$wldl-secondary-dark: #4d1000;
+$wldl-secondary-light: #da9b6c;
+
 // 配色を変更したい場合は、次を変更する
 $theme-colors: (
-  'primary': $udcy-bg-color,
+  'primary': $wldl-primary,
   // メインカラー
     'secondary': $udcy-bg-color-light,
   // アクセントカラー
-    'light': $udcy-bg-color-light,
-  'dark': $oit-school-color // サブカラー,
+    'light': $wldl-primary-light,
+  'dark': $wldl-primary-dark // サブカラー,,
 );
+
+/* 
+$theme-colors: (
+  'primary': $udcy-bg-color,          // メインカラー
+  'secondary': $udcy-bg-color-light,  // アクセントカラー
+  'light': $udcy-bg-color-light,
+  'dark': $oit-school-color           // サブカラー,
+);
+*/
 
 // navbar, sidebar の背景色は、次を変更しても現在はできない！
 $wldl-navbar-bg: $oit-school-color;
