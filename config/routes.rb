@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :users
 
   get  '/users/:id/editpassword(.:format)'     => 'users#edit_password',  :as => 'edit_password'
-
+  get  '/users/:id/leader_board(.:format)'     => 'users#leader_board',  :as => 'leader_board'
   # resources :projects
   
   resources :versions, :only => [:show, :edit, :update, :destroy]

@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 },
                      presence: true,
                      allow_nil: true
-  
+
   has_many :scrum_members
   has_many :likes
   has_many :alpha_comments
