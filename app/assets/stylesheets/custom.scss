@@ -1,5 +1,29 @@
 /* @import "feathericon"; */
 
+$oit-school-color: #064583; // 大阪工業大学のスクールカラー: 紺青色
+$oit-communication-colo4: #0095bc; // 大阪工業大学のコミュニケーションカラー: シアン色
+$oit-bg-color-light: #cbe2ff;
+$oit-bg-color: #6aa7ee;
+$oit-bg-color-dark: #1d95d4;
+
+/* udacity-based colors */
+$udcy-bg-color: #01b3e3;
+$udcy-bg-color-light: #4fe4f3;
+$udcy-bg-color-dark: #1d95d4;
+
+$gray-200: #e9ecef !default;
+
+$wldl-gold: #dbb400;
+$wldl-silver: #b2baba;
+$wldl-bronze: #9a6229;
+
+// navbar, sidebar の背景色は、次を変更しても現在はできない！
+$wldl-navbar-bg: $oit-school-color;
+$wldl-sidebar-bg: $udcy-bg-color-light;
+
+// footer の背景色を変更したい場合は、次を変更する
+$wldl-footer-bg: $gray-200;
+
 /* navbar を fixed-top にしたとき、下のコンテナが重ならないように */
 
 body {
