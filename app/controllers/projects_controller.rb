@@ -36,6 +36,14 @@ class ProjectsController < ApplicationController
         set_current_project(@project)
         @project.build_framework("ラーニングアルファ")
         
+        @version = @project.versions.new(name: "バージョン1", start: @project.start, level: 1, project_id: @project.id, length: 1)
+        @version.end = @version.start + ((@project.length * @version.length) - 1)
+        @version.save
+
+        @version.length.times do |index|
+          @sprint = @version.sprints.create(no: create_get_sprintno, project_id: @project.id, start: return_start(index), end: return_end(index))
+        end
+
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
