@@ -8,7 +8,7 @@ body {
 
 /* ナブバーのハンバーガーアイコンの枠線を消す */
 .navbar-dark .navbar-toggler {
-  
+  border-color: $wldl-navbar-bg;
 }
 
 .footer {
