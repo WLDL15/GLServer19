@@ -6,14 +6,14 @@
   <% end %>
     <div class="card-body" id="cardbodyselect">
       <div class="row">
-        <div class="col-auto" id=icon<%= state_evidence.id %>>
-          <%= icon("far fa-lg","square") %>
+        <div class="col-auto p-0">
+          <img src="/assets/level<%= state_evidence.alpha_item.alpha_item_def.item_level %>" alt="" width= "60px" >
         </div>
         <div class="col-7">
-          (<%= state_evidence.alpha_item.alpha_item_def.item_level %>)<%= return_tooltip(state_evidence.alpha_item.ddescription).html_safe %>
+          <%= return_tooltip(state_evidence.alpha_item.ddescription).html_safe %>
         </div>
         <div class="col-3 text-center" id=evidence-completed-<%= state_evidence.alpha_item.alpha_evidence.id %>>
-          <%= print_date(state_evidence.alpha_item.completed_at) %>
+        <%= print_date(state_evidence.alpha_item.completed_at) %>
         </div>
         <div class="col-auto px-0 d-flex align-items-center">
           <%= link_to "根拠", 'javascript:;', class: 'btn btn-primary evidence_button', id: state_evidence.alpha_item.alpha_evidence.id %>
@@ -22,14 +22,14 @@
     </div>
   </div>
 <% else %>
-  <div class="card p-1 mt-1 border-dark" id=card<%= state_evidence.id %>>
+  <div class="card p-1 mt-1 border-dark">
     <div class="card-body" id="cardbodyselect">
       <div class="row">
-        <div class="col-auto" id=icon<%= state_evidence.id %>>
-          <%= icon("far fa-lg","square") %>
+        <div class="col-auto p-0">
+            <img src="/assets/level<%= state_evidence.alpha_item.alpha_item_def.item_level %>" alt="" width= "60px" >
         </div>
         <div class="col-7">
-          (<%= state_evidence.alpha_item.alpha_item_def.item_level %>)<%= return_tooltip(state_evidence.alpha_item.ddescription).html_safe %>
+          <%= return_tooltip(state_evidence.alpha_item.ddescription).html_safe %>
         </div>
         <div class="col-3 text-center" id=evidence-completed-<%= state_evidence.alpha_item.alpha_evidence.id %>>
           <%= print_date(state_evidence.alpha_item.completed_at) %>

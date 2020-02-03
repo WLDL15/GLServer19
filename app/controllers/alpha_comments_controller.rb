@@ -6,8 +6,8 @@ class AlphaCommentsController < ApplicationController
         @alpha_comment = @alpha_evidence.alpha_comments.new(comment_params)
         @alpha_comment.user_id = current_user.id
         @alpha_commenter = @alpha_comment.user
-        @alpha_commenter.add_points(500, "Awarded for some awesome action", "Comment")
-        @alpha_commenter.total_point += 500
+        @alpha_commenter.add_points(3, "Awarded for some awesome action", "Comment")
+        @alpha_commenter.total_point += 3
         @alpha_commenter.save
 
         if @alpha_comment.save

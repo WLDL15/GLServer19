@@ -31,7 +31,7 @@
                             </div>
                             <div class="col-2 text-center">
                                 <% if user.badges.exists? %>
-                                    <div><img src="/assets/<%= user.badges.last.image %>" alt="" width= "80px" class="border border-dark" ></div>
+                                    <div><img src="/assets/<%= user.badges.last.image %>" alt="" width= "60px" ></div>
                                 <% elsif %>
                                     <div>未取得</div>
                                 <% end %>
@@ -63,7 +63,7 @@
                             </div>
                             <div class="col-2 text-center">
                                 <% if user.badges.exists? %>
-                                    <div><img src="/assets/<%= user.badges.last.image %>" alt="" width= "40px" class="border border-dark" ></div>
+                                    <div><img src="/assets/<%= user.badges.last.image %>" alt="" width= "40px"></div>
                                 <% elsif %>
                                     <div>未取得</div>
                                 <% end %>
@@ -85,34 +85,31 @@
         <div class="card shadow">
             <div class="card-body">
                 <div class="row">
-                    <h4>
-                        <div class="col"><%= gravatar_for(current_user, size:50) %>あなたの記録</div>
-                        <hr>
-                        <div class="col">
-                            <div><span class="badge badge-primary">総合ポイント <span class="badge badge-light"><%= current_user.total_point %></span></span></div>
-                            <div><span class="badge badge-primary">いいね数 <span class="badge badge-light"><%= current_user.total_like %></span></span></div>
-                            <div><span class="badge badge-primary">コメント数 <span class="badge badge-light"><%= current_user.total_comment %></span></span></div>
-                            <div><span class="badge badge-primary">ログイン日数 <span class="badge badge-light"><%= current_user.login_count %></span></span></div>
-                        </div>
-                        <hr>
-                        <div class="col">あなたのランク</div>
-                        <div class="col text-center">
-                            <% if current_user.badges.exists? %>
-                                <img src="/assets/<%= current_user.badges.last.image %>" alt="" width= "200px" >
-                                <span class="col badge badge-primary"><%= current_user.badges.last.name %></span>
-                            <% elsif %>
-                                未取得
-                            <% end %>
-                        </div>
-                    </h4>
-                    <div class="col-12">次回バッヂ獲得まで　<%= next_point_badge(@user) %>　ポイント</div>
-                    <hr>
-                    <div class="col-12 text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">獲得バッヂの表示</button></div>
+                <h4 class="col text-center"><%= gravatar_for(current_user, size:50) %>あなたの記録</h4>
+                </div>
+                <hr>
+                <div class="row h4"><span class="badge badge-primary">総合ポイント <span class="badge badge-light"><%= current_user.total_point %></span></span></div>
+                <div class="row h4"><span class="badge badge-primary">いいね数 <span class="badge badge-light"><%= current_user.total_like %></span></span></div>
+                <div class="row h4"><span class="badge badge-primary">コメント数 <span class="badge badge-light"><%= current_user.total_comment %></span></span></div>
+                <div class="row h4"><span class="badge badge-primary">ログイン日数 <span class="badge badge-light"><%= current_user.login_count %></span></span></div>
+                <hr>
+                <div class="row"><h4 class="col text-center">あなたのランク</div>
+                <hr>
+                    <% if current_user.badges.exists? %>
+                    <div class="row"><div class="col text-center"><img src="/assets/<%= current_user.badges.last.image %>" alt="" width= "200px" ></div></div>
+                    <div class="row"><div class="col text-center"><div class="badge badge-primary"><%= current_user.badges.last.name %></span></div></div></div>
+                    <% elsif %>
+                    <div class="row text-center"><h5 class="col text-center">未取得です</h5> </div>
+                    <% end %>
+                <div class="row">次回バッヂ獲得まで　<%= next_point_badge(@user) %>　ポイント</div>
+                <hr>
+                <div class="row text-center"><div class="col text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">獲得バッヂの表示</button></div></div>
+
                     <div class="modal" tabindex="-1" id="exampleModal">
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title">獲得ポイントバッヂ</h5>
+                                <h5 class="modal-title"><i class="fas fa-award"></i> 獲得ポイントバッヂ</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -132,11 +129,11 @@
                                     </div>
                                 </div><!-- /.modal-body -->
                                 <div class="modal-header">
-                                    <h5 class="modal-title">獲得実績バッヂ</h5>
+                                    <h5 class="modal-title"><i class="fas fa-award"></i> 獲得実績バッヂ</h5>
                                 </div><!-- /.modal-header -->
                                 <div class="modal-body">
                                     <div class="row">
-                                    <% if @user.badges.empty? == true %>
+                                    <% if @user.condition_badges.empty? == true %>
                                         <div>まだ獲得していません</div>
                                     <% else %>
                                         <% current_user.condition_badges.each do |condition_badge| %>
@@ -154,7 +151,7 @@
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
-                </div>
+                
             </div>
         </div>
     </div>
