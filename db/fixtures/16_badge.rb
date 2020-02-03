@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 Badge.seed_once(:id,
-    { id: 1, name:'BIGINNER-C-', need_point:5, image:"biginner1" },
-    { id: 2, name:'BIGINNER-B-', need_point:10, image:"biginner2" },
-    { id: 3, name:'BIGINNER-A-', need_point:30, image:"biginner3" },
-    { id: 4, name:'BIGINNER-S-', need_point:50, image:"biginner4" },
-    { id: 5, name:'BIGINER-SS-', need_point:100, image:"biginner5" },
+    { id: 1, name:'BEGINNER-C-', need_point:5, image:"beginner1" },
+    { id: 2, name:'BEGINNER-B-', need_point:10, image:"beginner2" },
+    { id: 3, name:'BEGINNER-A-', need_point:30, image:"beginner3" },
+    { id: 4, name:'BEGINNER-S-', need_point:50, image:"beginner4" },
+    { id: 5, name:'BEGINER-SS-', need_point:100, image:"beginner5" },
     { id: 6, name:'BRONZE-C-', need_point:150, image:"bronze1" },
     { id: 7, name:'BRONZE-B-', need_point:200, image:"bronze2" },
     { id: 8, name:'BRONZE-A-', need_point:300, image:"bronze3" },
