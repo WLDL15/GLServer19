@@ -5,15 +5,11 @@
 <% end %>
     <div class="card-body" id="cardbodyselect">
       <div class="row">
-        <div class="col-auto" id=icon<%= state_evidence.id %>>
-          <% if state_evidence.completed %>
-            <%= icon("far fa-lg","check-square") %>
-          <% else %>
-            <%= icon("far fa-lg","square") %>
-          <% end %>
+        <div class="col-auto p-0">
+          <img src="/assets/level<%= state_evidence.alpha_item.alpha_item_def.item_level %>" alt="" width= "60px" >
         </div>
         <div class="col-7">
-          (<%= state_evidence.alpha_item.alpha_item_def.item_level %>)<%= state_evidence.alpha_item.ddescription %>
+          <%= state_evidence.alpha_item.ddescription %>
         </div>
         <div class="col-3 text-center" id=evidence-completed-<%= state_evidence.id %>>
           <%= print_date(state_evidence.alpha_item.completed_at) %>
