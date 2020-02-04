@@ -88,10 +88,10 @@ module SprintsHelper
 	end
 
 	def update_date(before_date)
-		if before_date != params[:version][:start].to_date
+		if before_date != params[:version][:start_day].to_date
 			@version.sprints.each do |sprint|
-				sprint.start += params[:version][:start].to_date - before_date
-				sprint.end += params[:version][:start].to_date - before_date
+				sprint.start += params[:version][:start_day].to_date - before_date
+				sprint.end += params[:version][:start_day].to_date - before_date
 				sprint.save
 			end
 		end
