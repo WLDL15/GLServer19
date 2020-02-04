@@ -21,7 +21,7 @@ module ApplicationHelper
         date.strftime('%Y/%m/%d')
       else
         # date が半年以内ならば、月日と時刻を返す
-        date.strftime('%m/%d %m:%d')
+        date.strftime('%m/%d %H:%M')
       end
     end
   end
