@@ -20,7 +20,7 @@ class VersionsController < ApplicationController
     if @project.versions.exists?
       @version.start_day = @project.versions.maximum(:end_day) + 1
     else
-      @version.start_day = @project.start_day
+      @version.start_day = @project.start
     end
   end
 
