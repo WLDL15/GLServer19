@@ -51,7 +51,7 @@ class VersionsController < ApplicationController
   # PATCH/PUT /versions/1.json
   def update
     @project = @version.project
-    @version.end_day = params[:version][:start].to_date + (@project.length * params[:version][:length].to_i - 1)
+    @version.end_day = params[:version][:start_day].to_date + (@project.length * params[:version][:length].to_i - 1)
     length = @version.length
     before_date = @version.start_day
     respond_to do |format|
