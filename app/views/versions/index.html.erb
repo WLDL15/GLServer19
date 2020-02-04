@@ -26,8 +26,8 @@
       <%= content_tag_for(:tr, @versions) do |version| %>
             <td><%= version.name %></td>
             <td><%= version.goal %></td>
-            <td><%= version.start %></td>
-            <td><%= version.end %></td>
+            <td><%= version.start_day %></td>
+            <td><%= version.end_day %></td>
             <td><%= version.level %></td>
             <td><%= version.project %></td>
             <td><%= link_to 'Show', version %></td>

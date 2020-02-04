@@ -30,7 +30,7 @@ class AlphaCommentsController < ApplicationController
 
         def set_version_list
             @version_list = [0]
-            @versions = current_project.versions.where('start <= ?', Date.today).where('end >= ?', Date.today)
+            @versions = current_project.versions.where('start_day <= ?', Date.today).where('end_day >= ?', Date.today)
             @versions.each do |version|
                 (version.level + 1).times do |count|
                     @version_list.push(count)

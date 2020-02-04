@@ -17,7 +17,7 @@ class VersionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create version" do
     assert_difference('Version.count') do
-      post versions_url, params: { version: { end: @version.end, goal: @version.goal, level: @version.level, name: @version.name, project_id: @version.project_id, start: @version.start } }
+      post versions_url, params: { version: { end_day: @version.end_day, goal: @version.goal, level: @version.level, name: @version.name, project_id: @version.project_id, start_day: @version.start_day } }
     end
 
     assert_redirected_to version_url(Version.last)
@@ -34,7 +34,7 @@ class VersionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update version" do
-    patch version_url(@version), params: { version: { end: @version.end, goal: @version.goal, level: @version.level, name: @version.name, project_id: @version.project_id, start: @version.start } }
+    patch version_url(@version), params: { version: { end_day: @version.end_day, goal: @version.goal, level: @version.level, name: @version.name, project_id: @version.project_id, start_day: @version.start_day } }
     assert_redirected_to version_url(@version)
   end
 

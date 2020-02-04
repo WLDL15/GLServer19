@@ -18,9 +18,9 @@ class VersionsController < ApplicationController
   def new
     @version = @project.versions.new
     if @project.versions.exists?
-      @version.start = @project.versions.maximum(:end) + 1
+      @version.start_day = @project.versions.maximum(:end) + 1
     else
-      @version.start = @project.start
+      @version.start_day = @project.start_day
     end
   end
 
@@ -32,7 +32,7 @@ class VersionsController < ApplicationController
   # POST /versions.json
   def create
     @version = @project.versions.build(version_params)
-    @version.end = @version.start + ((@project.length * @version.length) - 1)
+    @version.end_day = @version.start_day + ((@project.length * @version.length) - 1)
 
     respond_to do |format|
       if @version.save
@@ -51,9 +51,9 @@ class VersionsController < ApplicationController
   # PATCH/PUT /versions/1.json
   def update
     @project = @version.project
-    @version.end = params[:version][:start].to_date + (@project.length * params[:version][:length].to_i - 1)
+    @version.end_day = params[:version][:start].to_date + (@project.length * params[:version][:length].to_i - 1)
     length = @version.length
-    before_date = @version.start
+    before_date = @version.start_day
     respond_to do |format|
       if @version.update(version_params)
         update_date(before_date)
@@ -88,6 +88,6 @@ class VersionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def version_params
-      params.require(:version).permit(:name, :goal, :start, :end, :level, :project_id, :length)
+      params.require(:version).permit(:name, :goal, :start_day, :end_day, :level, :project_id, :length)
     end
 end

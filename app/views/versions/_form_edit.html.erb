@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <% if current_project.versions.where.not(id: @version.id).where('start <= ? and end >= ?', @version.end, @version.start).exists? or current_project.start > @version.start%>
+  <% if current_project.versions.where.not(id: @version.id).where('start_day <= ? and end_day >= ?', @version.end_day, @version.start_day).exists? or current_project.start > @version.start_day%>
     <div class="field">
       <%= form.text_field :name, id: :version_name, readonly: true %>
     </div>
@@ -39,7 +39,7 @@
     <div class="actions">
       <%= form.submit class: "btn btn-primary" %>
     </div>
-  <% elsif @version.start > Date.today %>
+  <% elsif @version.start_day > Date.today %>
     <div class="field">
       <%= form.text_field :name, id: :version_name %>
     </div>
@@ -67,7 +67,7 @@
     <div class="actions">
       <%= form.submit class: "btn btn-primary" %>
     </div>
-  <% elsif @version.end >= Date.today %>
+  <% elsif @version.end_day >= Date.today %>
     <div class="field">
       <%= form.text_field :name, id: :version_name, readonly: true %>
     </div>

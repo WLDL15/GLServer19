@@ -68,11 +68,11 @@ module SprintsHelper
 	end
 
 	def return_start(index)
-		@version.start + (index * @project.length)
+		@version.start_day + (index * @project.length)
 	end
 
 	def return_end(index)
-		@version.start + ((index + 1) * @project.length - 1)
+		@version.start_day + ((index + 1) * @project.length - 1)
 	end
 
 	def update_length(length)

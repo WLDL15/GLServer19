@@ -31,14 +31,14 @@
       <%= content_tag_for(:tr, @versions) do |version| %>
 
         <td align="right"><%= version.name %></td>
-        <% if @check_version < version.start %>
-          <td><%= version.start.to_s(:default) %></td>
-          <td><%= version.end.to_s(:default) %></td>
+        <% if @check_version < version.start_day %>
+          <td><%= version.start_day.to_s(:default) %></td>
+          <td><%= version.end_day.to_s(:default) %></td>
         <% else %>
-          <td class="text-danger"><%= version.start.to_s(:default) %><div class="badge badge-danger">！</div></td>
-          <td class="text-danger"><%= version.end.to_s(:default) %></td>
+          <td class="text-danger"><%= version.start_day.to_s(:default) %><div class="badge badge-danger">！</div></td>
+          <td class="text-danger"><%= version.end_day.to_s(:default) %></td>
         <% end %>
-        <% @check_version = version.end %>
+        <% @check_version = version.end_day %>
 
         <td><%= version.goal %></td>
         <td><%= version.level %></td>
@@ -54,7 +54,7 @@
           <% end %>
         </td>
         <td>
-          <% if version.end > Date.today %>
+          <% if version.end_day > Date.today %>
             <%= link_to version, method: :delete, class: 'btn btn-primary', data: { confirm: 'Are you sure?' } do %>
               <%= icon("fas","minus") %>
               バージョン削除

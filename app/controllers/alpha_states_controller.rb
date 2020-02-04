@@ -15,7 +15,7 @@ class AlphaStatesController < ApplicationController
     @project = @alpha_state.alpha_alpha.alpha_framework.project
 
     @version_list = [0]
-    @versions = @project.versions.where("start <= ?", Date.today).where("end >= ?", Date.today)
+    @versions = @project.versions.where("start_day <= ?", Date.today).where("end_day >= ?", Date.today)
     @versions.each do |version|
       (version.level + 1).times do |count|
         @version_list.push(count)

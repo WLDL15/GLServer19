@@ -22,7 +22,7 @@ class SprintsController < ApplicationController
     if @version.sprints.exists?
       @sprint.start = @version.sprints.maximum(:end) + 1
     else
-      @sprint.start = @version.start
+      @sprint.start = @version.start_day
     end
   end
 
