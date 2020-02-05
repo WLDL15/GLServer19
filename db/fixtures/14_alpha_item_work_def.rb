@@ -21,7 +21,7 @@ AlphaItemDef.seed_once(:id,
 AlphaItemDef.seed_once(:id,
     { id: 90, dseq:'1', ddescription: 'メンバは自分の意志でタスクを選択し、作業を進めている', alpha_state_def_id: 13, item_level:2, item_point:5 },
     { id: 91, dseq:'2', ddescription: '開発環境と開発ツールを利用して開発している', alpha_state_def_id: 13, item_level:1, item_point:3 },
-    { id: 92, dseq:'3', ddescription: 'タスクのDoneの条件を定義し、それを守ることに同意している', alpha_state_def_id: 13, item_level:2, item_point:3 }
+    { id: 92, dseq:'3', ddescription: 'タスクのDoneの条件を定義し、それを守ることに同意している', alpha_state_def_id: 13, item_level:2, item_point:3 },
     { id: 93, dseq:'4', ddescription: 'メンバはタスクのDoneの定義に従ってタスクの進捗状況を更新している', alpha_state_def_id: 13, item_level:3, item_point:3 },
     { id: 94, dseq:'5', ddescription: 'メンバはタスクの進捗を適切に更新しており、全員がそれを容易に閲覧できる', alpha_state_def_id: 13, item_level:3, item_point:5 },
     { id: 95, dseq:'6', ddescription: 'ソースが共有されており、定期的に最新版に更新されている', alpha_state_def_id: 13, item_level:3, item_point:5 },
