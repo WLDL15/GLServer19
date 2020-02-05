@@ -32,9 +32,9 @@ AlphaItemDef.seed_once(:id,
 
 # 仕事4/5 81
 AlphaItemDef.seed_once(:id,
- /   { id: 98, dseq:'1', ddescription: '/スプリント/でリリースする/インクリメント/のスコープと優先順位を理解している', alpha_state_def_id: 14, item_level:1, item_point:4 },
- /   { id: 99, dseq:'2', ddescription: '/インクリメント/をリリースするために必要な作業が明確になっている', alpha_state_def_id: 14, item_level:1, item_point:5 },
- /   { id: 100, dseq:'3', ddescription: 'マスタは、スプリントの終了時に/インクリメント/が完成するように、チームを支援している', alpha_state_def_id: 14, item_level:1, item_point:5 },
+    { id: 98, dseq:'1', ddescription: '/スプリント/でリリースする/インクリメント/のスコープと優先順位を理解している', alpha_state_def_id: 14, item_level:1, item_point:4 },
+    { id: 99, dseq:'2', ddescription: '/インクリメント/をリリースするために必要な作業が明確になっている', alpha_state_def_id: 14, item_level:1, item_point:5 },
+    { id: 100, dseq:'3', ddescription: 'マスタは、スプリントの終了時に/インクリメント/が完成するように、チームを支援している', alpha_state_def_id: 14, item_level:1, item_point:5 },
     { id: 101, dseq:'4', ddescription: 'タスクのDoneの定義が守られているかを検査している', alpha_state_def_id: 14, item_level:2, item_point:3 },
     { id: 102, dseq:'5', ddescription: 'タスクの終了時に、完了日、作業時間などを記録している', alpha_state_def_id: 14, item_level:3, item_point:3 },
     { id: 103, dseq:'6', ddescription: 'チームの/ベロシティ/を計測している', alpha_state_def_id: 14, item_level:2, item_point:4 },
