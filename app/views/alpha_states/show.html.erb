@@ -37,7 +37,7 @@
   <div class="col-6">
     <h3>未完了</h3>
     <div id="form_completed">
-      <%= render partial: "alpha_items/form", collection: @alpha_state.alpha_evidences.where(completed: false), as: :state_evidence %>
+      <%= render partial: "alpha_items/form", collection: @alpha_state.alpha_evidences.where(completed: false).order(:id), as: :state_evidence %>
     </div>
   
     <h3 class="pt-1">未確認</h3>
