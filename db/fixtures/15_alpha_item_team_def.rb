@@ -3,7 +3,7 @@
 # チーム1/5 95
 AlphaItemDef.seed_once(:id,
     { id: 116, dseq:'1', ddescription: 'メンバが決まっている', alpha_state_def_id: 16, item_level:1, item_point:2 },
-    { id: 117, dseq:'2', ddescription: 'スクラムチームの３つのロールを理解している', alpha_state_def_id: 16, item_level:1, item_point:2 }
+    { id: 117, dseq:'2', ddescription: 'スクラムチームの３つのロールを理解している', alpha_state_def_id: 16, item_level:1, item_point:2 },
     { id: 118, dseq:'3', ddescription: '/スクラムマスタ/が決まっている', alpha_state_def_id: 16, item_level:1, item_point:2 },
     { id: 119, dseq:'4', ddescription: '/オーナ/が決まっている', alpha_state_def_id: 16, item_level:1, item_point:2 },
     { id: 120, dseq:'5', ddescription: 'メンバの個性を理解し、互いに尊重している', alpha_state_def_id: 16, item_level:2, item_point:6 },
