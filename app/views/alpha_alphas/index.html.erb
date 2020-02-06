@@ -23,7 +23,7 @@
 
 <%= content_tag_for(:tr, @alpha_alphas) do |alpha_alpha| %>
   <div class="row px-5 py-1">
-    <%= content_tag_for(:td, alpha_alpha.alpha_states) do |alpha_state| %>
+    <%= content_tag_for(:td, alpha_alpha.alpha_states.order(:id)) do |alpha_state| %>
       <div class="col-md-2 border-right border-dark">
         <% if alpha_state.progress_rate < 1 %>
           <div class="card text-center border-dark shadow rounded">
