@@ -5,7 +5,7 @@ class AlphaAlphasController < ApplicationController
   def index
     #@alpha_alphas = AlphaAlpha.all
     @project = Project.find(params[:project_id])
-    @alpha_alphas = @project.alpha_framework.alpha_alphas
+    @alpha_alphas = @project.alpha_framework.alpha_alphas.order(:id)
   end
 
   # GET /alpha_alphas/1
