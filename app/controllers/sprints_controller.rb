@@ -32,7 +32,7 @@ class SprintsController < ApplicationController
   end
 
   def index_by_project
-    @versions = @project.versions.order(:start)
+    @versions = @project.versions.order(:id)
     @sprints = @project.sprints
     if @versions.exists?
       @check_version = @project.start - 1
