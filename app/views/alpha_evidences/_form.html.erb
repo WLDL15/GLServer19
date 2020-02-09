@@ -55,7 +55,7 @@
         <div class="container-fluied">
           <div class="row">
             <div class="col scrollArea">
-              <% @alpha_evidence.alpha_comments.reverse_each do |comment| %>
+              <% @alpha_evidence.alpha_comments.order(:id).reverse_each do |comment| %>
               <!-- Media top -->
                 <div class="media m-1 border border-dark rounded">
                   <div class="media-left media-top m-1">
