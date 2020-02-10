@@ -54,7 +54,7 @@ class AlphaEvidencesController < ApplicationController
         @alpha_evidence.completed_at = DateTime.now
         @alpha_state.update_evidence = Date.today
       end
-    elsif @alpha_evidence.completed == true
+    elsif @alpha_evidence.completed == true && !params[:alpha_evidence][:reviewed]
       # 根拠が完了だったときに、completed を false に変更する
       changed = -1
     end

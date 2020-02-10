@@ -39,6 +39,11 @@
     <div id="form_completed">
       <%= render partial: "alpha_items/form", collection: @alpha_state.alpha_evidences.where(completed: false), as: :state_evidence %>
     </div>
+
+    <h3 class="pt-1">完了済</h3>
+    <div id="form_checked">
+      <%= render partial: "alpha_items/checked", collection: @alpha_state.alpha_evidences.where(completed: true).where(reviewed: false), as: :state_evidence %>
+    </div>
   
     <h3 class="pt-1">未確認</h3>
     <div id="form_review">
