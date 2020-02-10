@@ -10,29 +10,27 @@
       </ul>
     </div>
   <% end %>
-<div class="field">
+    <%= form.label :name, "名前" %>
     <%= form.text_field :name, id: :version_name %>
-</div>
 
-<div class="field">
+
+
     <%= form.label :goal, "ゴール" %>
-    <%= form.text_area :goal %>
-</div>
+    <%= form.text_area :goal, id: :version_goal %>
 
-<div class="field">
+
+
     <%= form.label :start_day, "開始日" %>
-    <%= form.date_field :start_day %>
-</div>
+    <%= form.date_field :start_day, id: :version_starte %>
 
-<div class="field">
+
+
     <%= form.label :length, "スプリント数" %>
-    <%= form.number_field :length, min:0 %>
-</div>
+    <%= form.number_field :length, id: :length_end,min:0 %>
 
-<div class="field">
-    <%= form.label :level, "level" %>
-    <%= form.number_field :level, min:1,max:5 %>
-</div>
+
+    <%= form.label :level, "レベル" %>
+    <%= form.number_field :level, id: :version_level,min:1,max:5 %>
 
 <div class="field">
     <%= form.hidden_field :project_id, id: :version_project_id %>
