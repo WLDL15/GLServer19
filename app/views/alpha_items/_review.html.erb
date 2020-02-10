@@ -10,7 +10,7 @@
           <img src="/assets/level<%= state_evidence.alpha_item.alpha_item_def.item_level %>" alt="" width= "60px" >
         </div>
         <div class="col-7">
-          <%= state_evidence.alpha_item.ddescription %>
+          <%= return_tooltip(state_evidence.alpha_item.ddescription).html_safe %>
         </div>
         <div class="col-3 text-center" id=evidence-completed-<%= state_evidence.id %>>
           <%= print_date(state_evidence.alpha_item.completed_at) %>
