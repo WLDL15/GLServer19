@@ -108,6 +108,7 @@ class BacklogItemsController < ApplicationController
     end
     respond_to do |format|
       if @backlog_item.assign_to_id != params[:backlog_item][:assign_to_id].to_i
+        puts "||||||||||||||||||||||||||||||||||||||||||||||||||||"
         @assign_user.add_points(1, "Awarded for some awesome action", "ChangeSBL")
         @assign_user.total_point += 1
         @assign_user.save
@@ -122,6 +123,7 @@ class BacklogItemsController < ApplicationController
 
        if @backlog_item.itemType == 1
         if User.find(@backlog_item.assign_to_id) != @assign_user
+          puts "-------------------------------------------------"
           User.find(@backlog_item.assign_to_id).add_points(1, "Awarded for some awesome action", "ChangeSBL")
         end 
         check_state(@backlog_item)
