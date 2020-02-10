@@ -56,7 +56,7 @@ class AlphaEvidencesController < ApplicationController
       end
     elsif @alpha_evidence.completed == true
       # 根拠が完了だったときに、completed を false に変更する
-      changed = -1
+      changed = 0
     end
     @alpha_evidence.update_user = current_user.name
     success = true
