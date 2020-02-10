@@ -16,22 +16,22 @@
 
 <div class="field">
     <%= form.label :goal, "ゴール" %>
-    <%= form.text_area :goal, id: :version_goal %>
+    <%= form.text_area :goal %>
 </div>
 
 <div class="field">
     <%= form.label :start_day, "開始日" %>
-    <%= form.date_field :start_day, id: :version_starte %>
+    <%= form.date_field :start_day %>
 </div>
 
 <div class="field">
     <%= form.label :length, "スプリント数" %>
-    <%= form.number_field :length, id: :length_end,min:0 %>
+    <%= form.number_field :length, min:0 %>
 </div>
 
 <div class="field">
     <%= form.label :level, "level" %>
-    <%= form.number_field :level, id: :version_level,min:1,max:5 %>
+    <%= form.number_field :level, min:1,max:5 %>
 </div>
 
 <div class="field">
