@@ -4,7 +4,7 @@ ja:
     email: "電子メール"
     password: "パスワード"
     password_confirmation: "パスワードの確認"
-    level: "レベル"
+    level: "習熟レベル"
     start_day: "開始日"
     goal: "ゴール"
     length: "スプリント数"    
