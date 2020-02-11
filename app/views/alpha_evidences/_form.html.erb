@@ -21,10 +21,10 @@
 
           <div class="col">
             <div class="field ml-2">
-            <% if !@alpha_evidence.completed %>
+            <% if @version_list.max == @alpha_evidence.alpha_item.alpha_item_def.item_level or  !@alpha_evidence.completed %>
               <%= form.check_box :completed, id: :alpha_evidence_completed %>
               <%= form.label "完了", {class: 'ml-1 sizing-120'}%>
-            <% elsif @version_list.max != @alpha_item.alpha_item_def.item_level and !@alpha_evidence.reviewed %>
+            <% elsif !@alpha_evidence.reviewed %>
               <%= form.check_box :reviewed, id: :alpha_evidence_reviewed %>
               <%= form.label "確認", {class: 'ml-1 sizing-120'}%> 
             <% end %>
