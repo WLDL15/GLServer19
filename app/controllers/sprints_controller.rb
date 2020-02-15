@@ -22,7 +22,7 @@ class SprintsController < ApplicationController
     if @version.sprints.exists?
       @sprint.start = @version.sprints.maximum(:end) + 1
     else
-      @sprint.start = @version.start
+      @sprint.start = @version.start_day
     end
   end
 
@@ -32,7 +32,7 @@ class SprintsController < ApplicationController
   end
 
   def index_by_project
-    @versions = @project.versions
+    @versions = @project.versions.order(:id)
     @sprints = @project.sprints
     if @versions.exists?
       @check_version = @project.start - 1

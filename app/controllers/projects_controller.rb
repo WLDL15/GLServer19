@@ -36,8 +36,8 @@ class ProjectsController < ApplicationController
         set_current_project(@project)
         @project.build_framework("ラーニングアルファ")
         
-        @version = @project.versions.new(name: "バージョン1", start: @project.start, level: 1, project_id: @project.id, length: 1)
-        @version.end = @version.start + ((@project.length * @version.length) - 1)
+        @version = @project.versions.new(name: "バージョン1", start_day: @project.start, level: 1, project_id: @project.id, length: 1)
+        @version.end_day = @version.start_day + ((@project.length * @version.length) - 1)
         @version.save
 
         @version.length.times do |index|

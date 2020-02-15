@@ -107,7 +107,7 @@ class BacklogItemsController < ApplicationController
       @assign_user = User.find(@backlog_item.assign_to_id)
     end
     respond_to do |format|
-      if @backlog_item.assign_to_id != params[:backlog_item][:assign_to_id].to_i
+      if params[:backlog_item][:itemType].to_i == 1 && @backlog_item.assign_to_id != params[:backlog_item][:assign_to_id].to_i
         @assign_user.add_points(1, "Awarded for some awesome action", "ChangeSBL")
         @assign_user.total_point += 1
         @assign_user.save

@@ -3,7 +3,7 @@
 # チーム1/5 95
 AlphaItemDef.seed_once(:id,
     { id: 116, dseq:'1', ddescription: 'メンバが決まっている', alpha_state_def_id: 16, item_level:1, item_point:2 },
-    { id: 117, dseq:'2', ddescription: 'スクラムチームの３つのロールを理解している', alpha_state_def_id: 16, item_level:1, item_point:2 }
+    { id: 117, dseq:'2', ddescription: 'スクラムチームの３つのロールを理解している', alpha_state_def_id: 16, item_level:1, item_point:2 },
     { id: 118, dseq:'3', ddescription: '/スクラムマスタ/が決まっている', alpha_state_def_id: 16, item_level:1, item_point:2 },
     { id: 119, dseq:'4', ddescription: '/オーナ/が決まっている', alpha_state_def_id: 16, item_level:1, item_point:2 },
     { id: 120, dseq:'5', ddescription: 'メンバの個性を理解し、互いに尊重している', alpha_state_def_id: 16, item_level:2, item_point:6 },
@@ -22,13 +22,13 @@ AlphaItemDef.seed_once(:id,
 
 # チーム3/5 107
 AlphaItemDef.seed_once(:id,
-/    { id: 127, dseq:'1', ddescription: '日次スクラムを定期的に開催している', alpha_state_def_id: 18, item_level:1, item_point:5 },
-/    { id: 128, dseq:'2', ddescription: 'チーム全員が日次スクラムに参加している', alpha_state_def_id: 18, item_level:1, item_point:5 },
-/    { id: 129, dseq:'3', ddescription: 'マスタは、日次スクラムが定期的に実施されるようにチームを支援している', alpha_state_def_id: 18, item_level:1, item_point:6 },
-/    { id: 130, dseq:'4', ddescription: 'メンバの進捗情報を共有している', alpha_state_def_id: 18, item_level:2, item_point:3 },
-/    { id: 131, dseq:'5', ddescription: 'メンバの次の計画を共有している', alpha_state_def_id: 18, item_level:2, item_point:3 },
-/    { id: 132, dseq:'6', ddescription: 'メンバの障害情報を共有している', alpha_state_def_id: 18, item_level:2, item_point:6 },
-/    { id: 133, dseq:'7', ddescription: '全員がコミュニケーションのためのツールを使い、決めた利用ルールを守っている', alpha_state_def_id: 18, item_level:2, item_point:4 },
+    { id: 127, dseq:'1', ddescription: '日次スクラムを定期的に開催している', alpha_state_def_id: 18, item_level:1, item_point:5 },
+    { id: 128, dseq:'2', ddescription: 'チーム全員が日次スクラムに参加している', alpha_state_def_id: 18, item_level:1, item_point:5 },
+    { id: 129, dseq:'3', ddescription: 'マスタは、日次スクラムが定期的に実施されるようにチームを支援している', alpha_state_def_id: 18, item_level:1, item_point:6 },
+    { id: 130, dseq:'4', ddescription: 'メンバの進捗情報を共有している', alpha_state_def_id: 18, item_level:2, item_point:3 },
+    { id: 131, dseq:'5', ddescription: 'メンバの次の計画を共有している', alpha_state_def_id: 18, item_level:2, item_point:3 },
+    { id: 132, dseq:'6', ddescription: 'メンバの障害情報を共有している', alpha_state_def_id: 18, item_level:2, item_point:6 },
+    { id: 133, dseq:'7', ddescription: '全員がコミュニケーションのためのツールを使い、決めた利用ルールを守っている', alpha_state_def_id: 18, item_level:2, item_point:4 },
     { id: 134, dseq:'8', ddescription: '決定した共有法が実施され、メンバ全員が互いの状況を理解しているという実感が持てている', alpha_state_def_id: 18, item_level:3, item_point:3 },
     { id: 135, dseq:'9', ddescription: 'マスタは情報共有を促進するための支援をしている', alpha_state_def_id: 18, item_level:3, item_point:6 }
 )
@@ -38,16 +38,16 @@ AlphaItemDef.seed_once(:id,
     { id: 136, dseq:'1', ddescription: '/インクリメント/をリリースするために全員が協力している', alpha_state_def_id: 19, item_level:1, item_point:4 },
     { id: 137, dseq:'2', ddescription: '分担が明確になっている', alpha_state_def_id: 19, item_level:1, item_point:4 },
     { id: 138, dseq:'3', ddescription: '開発作業を協力しておこなっている', alpha_state_def_id: 19, item_level:1, item_point:4 },
-    { id: 139, dseq:'4', ddescription: 'マスターは、作業が分担して行われるように支援している', alpha_state_def_id: 19, item_level:, item_point:6 },
+    { id: 139, dseq:'4', ddescription: 'マスターは、作業が分担して行われるように支援している', alpha_state_def_id: 19, item_level:1, item_point:6 },
     { id: 140, dseq:'5', ddescription: 'メンバのコミュニケーションが増え、協力して開発するタスクが増えている', alpha_state_def_id: 19, item_level:2, item_point:4 },
     { id: 141, dseq:'6', ddescription: 'チーム全員がゴールに向かって協力している実感が持てている', alpha_state_def_id: 19, item_level:2, item_point:4 },
     { id: 142, dseq:'7', ddescription: '他メンバの障害を理解し、それをチームで解決するために行動している', alpha_state_def_id: 19, item_level:2, item_point:4 },
-    { id: 143, dseq:'8', ddescription: 'マスタは効率的で楽しい開発となるようにチームを支援している', alpha_state_def_id: 19, item_level:2, item_point:5 }
+    { id: 143, dseq:'8', ddescription: 'マスタは効率的で楽しい開発となるようにチームを支援している', alpha_state_def_id: 19, item_level:2, item_point:5 },
 
     { id: 144, dseq:'9', ddescription: '動く/インクリメント/をリリースするためにチームの共有情報が活用されている', alpha_state_def_id: 19, item_level:3, item_point:4 },
     { id: 145, dseq:'10', ddescription: 'メンバが協力して行うタスクが増えている', alpha_state_def_id: 19, item_level:3, item_point:4 },
     { id: 146, dseq:'11', ddescription: 'メンバ全員がゴールに向かって協力している実感が持てている', alpha_state_def_id: 19, item_level:4, item_point:3 },
-    { id: 147, dseq:'12', ddescription: 'スプリントゴールを満たす動く/インクリメント/をスプリントでリリースしている', alpha_state_def_id: 19, item_level:3, item_point:4 },
+    { id: 147, dseq:'12', ddescription: 'スプリントゴールを満たす動く/インクリメント/をスプリントでリリースしている', alpha_state_def_id: 19, item_level:3, item_point:4 }
  
 )
 

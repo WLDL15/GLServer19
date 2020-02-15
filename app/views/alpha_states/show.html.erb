@@ -22,7 +22,7 @@
 
 <!-- 状態のボタン -->
 <div class="row pl-2">
-  <% @alpha_alpha.alpha_states.each_with_index do |alpha_state, index| %>
+  <% @alpha_alpha.alpha_states.order(:id).each_with_index do |alpha_state, index| %>
     <div class="col-2">
       <% if (index+1)%5 == params[:id].to_i%5 %>
         <%= link_to alpha_state.dname, alpha_state_path(alpha_state), class: 'btn btn-primary btn-block state_button' %>
@@ -37,7 +37,12 @@
   <div class="col-6">
     <h3>未完了</h3>
     <div id="form_completed">
-      <%= render partial: "alpha_items/form", collection: @alpha_state.alpha_evidences.where(completed: false), as: :state_evidence %>
+      <%= render partial: "alpha_items/form", collection: @alpha_state.alpha_evidences.where(completed: false).order(:id), as: :state_evidence %>
+    </div>
+
+    <h3 class="pt-1">完了済</h3>
+    <div id="form_checked">
+      <%= render partial: "alpha_items/checked", collection: @alpha_state.alpha_evidences.where(completed: true).where(reviewed: false), as: :state_evidence %>
     </div>
   
     <h3 class="pt-1">未確認</h3>

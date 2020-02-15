@@ -12,7 +12,7 @@ class Sprint < ApplicationRecord
 
 
 	def date_check
-		if self.start.nil? == false && self.end.nil? == false && self.start >= self.end
+		if self.start.nil? == false && self.end.nil? == false && self.start > self.end
 			errors.add(:start, "開始日を正しく記入して下さい。")
 			errors.add(:end, "終了日を正しく記入して下さい。")
 		end

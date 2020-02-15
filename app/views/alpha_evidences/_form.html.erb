@@ -21,10 +21,10 @@
 
           <div class="col">
             <div class="field ml-2">
-            <% if !@alpha_evidence.completed %>
+            <% if @version_list.max == @alpha_evidence.alpha_item.alpha_item_def.item_level or  !@alpha_evidence.completed %>
               <%= form.check_box :completed, id: :alpha_evidence_completed %>
               <%= form.label "完了", {class: 'ml-1 sizing-120'}%>
-            <% elsif @version_list.max != @alpha_item.alpha_item_def.item_level and !@alpha_evidence.reviewed %>
+            <% elsif !@alpha_evidence.reviewed %>
               <%= form.check_box :reviewed, id: :alpha_evidence_reviewed %>
               <%= form.label "確認", {class: 'ml-1 sizing-120'}%> 
             <% end %>
@@ -33,7 +33,7 @@
 
           <div class="col text-right">
             <div class="actions">
-              <% if @version_list.include?(@alpha_item.alpha_item_def.item_level) %>
+              <% if @version_list.include?(@alpha_item.alpha_item_def.item_level)  && @alpha_evidence.reviewed == false %>
                 <%= form.submit "変更する", class: "btn btn-primary" %>
               <% elsif @alpha_evidence.reviewed %>
                 <button type="button" class="btn btn-secondary">変更する</button>
@@ -55,7 +55,7 @@
         <div class="container-fluied">
           <div class="row">
             <div class="col scrollArea">
-              <% @alpha_evidence.alpha_comments.reverse_each do |comment| %>
+              <% @alpha_evidence.alpha_comments.order(:id).reverse_each do |comment| %>
               <!-- Media top -->
                 <div class="media m-1 border border-dark rounded">
                   <div class="media-left media-top m-1">
