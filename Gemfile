@@ -109,7 +109,7 @@ group :production do
 end
 
 # issue 48 Bump rack from 2.0.7 to 2.0.8
-gem 'rack', '~> 2.0.8'
+gem 'rack', '~> 2.1.4'
 
 # issue 41 Bump loofah from 2.3.0 to 2.4.0
 gem 'crass', '~> 1.0.5'

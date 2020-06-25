@@ -155,7 +155,9 @@ GEM
       method_source (~> 0.9.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    rack (2.0.8)
+    puma (4.3.5)
+      nio4r (~> 2.0)
+    rack (2.1.4)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.1.7)
@@ -276,7 +278,8 @@ DEPENDENCIES
   nokogiri (~> 1.10.7)
   pg (= 0.18)
   pry-rails
-  rack (~> 2.0.8)
+  puma
+  rack (~> 2.1.4)
   rails (~> 5.1.6)
   rails-i18n (~> 5.1)
   rails_12factor (= 0.0.2)
